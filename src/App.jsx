@@ -1,3 +1,4 @@
+import logo from "./JMSPrint.png";
 import React from "react";
 import { ShieldCheck, Box, Wrench, MapPin, ShoppingBag, Sparkles, Cuboid, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
