@@ -10,7 +10,7 @@ export default function App() {
       <section className="hero">
         <div className="heroGrid">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <img src={logo} alt="JMSPrint logo" className="JMSPrint" />
+            <h1 className="logo-text">JMSPrint</h1>
             <p className="pill">Praktiske 3D-printede løsninger laget i Norge</p>
             <h1>Smarte 3D-printede løsninger for hobby, hjem og garasje.</h1>
             <p className="lead">
