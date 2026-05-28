@@ -5,6 +5,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@vercel/analytics": "^2.0.1",
     "@vitejs/plugin-react": "latest",
     "framer-motion": "latest",
@@ -14,3 +15,14 @@
     "vite": "latest"
   }
 }
+=======
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "lucide-react": "latest",
+    "framer-motion": "latest"
+  },
+  "devDependencies": {}
+}
+>>>>>>> 78dd7d69b77321d03b740f816e0d419ded099c3c
