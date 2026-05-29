@@ -159,7 +159,7 @@ export default function App() {
            href="mailto:post@jmsprint.no?subject=Forespørsel%20om%20custom%203D-print&body=Hei%20JMSPrint%2C%0A%0AJeg%20ønsker%20pris%20på%20custom%203D-print.%0A"
            className="mailLink"
 >
-  mailto:kontakt@jmsprint.no
+  kontakt@jmsprint.no
 </a>
 
           <p>Facebook / Finn.no / nettbutikk kommer snart</p>
