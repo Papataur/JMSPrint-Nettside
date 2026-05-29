@@ -155,7 +155,12 @@ export default function App() {
         <div className="contactBox">
           <p className="contactTitle">Kontakt</p>
 
-          <p>post@jmsprint.no</p>
+          <a
+           href="mailto:post@jmsprint.no?subject=Forespørsel%20om%20custom%203D-print&body=Hei%20JMSPrint%2C%0A%0AJeg%20ønsker%20pris%20på%20custom%203D-print.%0A"
+           className="mailLink"
+>
+  post@jmsprint.no
+</a>
 
           <p>Facebook / Finn.no / nettbutikk kommer snart</p>
         </div>
