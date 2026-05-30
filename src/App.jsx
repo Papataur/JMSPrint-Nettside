@@ -161,12 +161,9 @@ export default function App() {
   kontakt@jmsprint.no
 </a>
 
-          Facebook / Finn.no / TikTok / Nettbutikk kommer snart
-        </div>
-      </section>
-    </main>
-  );
-}
+          <p>
+  Facebook / Finn.no / TikTok / Nettbutikk kommer snart
+</p>
 
 function ProductCard({ icon, title, text }) {
   return (
