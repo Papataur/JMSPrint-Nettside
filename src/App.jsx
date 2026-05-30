@@ -2,6 +2,7 @@ import logo from "./JMSPrint.png";
 import boksaapner from "./boksaapner.jpg";
 import headsetholder from "./headsetholder.jpg";
 import salttrakt from "./salttrakt.jpg";
+import plantemerker from "./plantemerker.jpg";
 import React from "react";
 import {
   ShieldCheck,
@@ -177,6 +178,13 @@ export default function App() {
             title="Salttrakt til oppvaskmaskin"
             price="69 kr + frakt"
             text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
+          />
+
+          <ProductItem
+            image={plantemerker}
+            title="Plantemerker"
+            price="Fra 49 kr"
+            text="Praktiske plantemerker til drivhus, potter og hage. Kan lages i flere farger."
           />
         </div>
       </section>
