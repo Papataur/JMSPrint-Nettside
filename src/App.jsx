@@ -1,7 +1,7 @@
+import logo from "./JMSPrint.png";
 import boksaapner from "./boksaapner.jpg";
 import headsetholder from "./headsetholder.jpg";
-import tomatstotte from "./tomatstotte.jpg";
-import logo from "./JMSPrint.png";
+import jojo from "./jojo.jpg";
 import React from "react";
 import {
   ShieldCheck,
@@ -147,6 +147,40 @@ export default function App() {
         />
       </section>
 
+      <section id="butikk" className="shopSection">
+        <div className="sectionIntro">
+          <p>Produkter</p>
+          <h2>Klare produkter</h2>
+          <span>
+            Praktiske 3D-printede produkter laget i slitesterk PETG. Flere
+            farger kan velges ved bestilling.
+          </span>
+        </div>
+
+        <div className="shopGrid">
+          <ProductItem
+            image={boksaapner}
+            title="10-pk boksåpnere"
+            price="99 kr + frakt"
+            text="Praktiske boksåpnere printet i PETG. Perfekt til kjøkken, tur, festival eller hytte."
+          />
+
+          <ProductItem
+            image={headsetholder}
+            title="Headset-holder"
+            price="Fra 79 kr"
+            text="Holder til headset for vegg, skrivebord eller gaming-oppsett. Kan lages i flere farger."
+          />
+
+          <ProductItem
+            image={jojo}
+            title="PETG Jojo"
+            price="Fra 79 kr"
+            text="Solid jojo printet i PETG. Flere farger tilgjengelig."
+          />
+        </div>
+      </section>
+
       <section id="kontakt" className="contact">
         <h2>Har du en idé du ønsker printet?</h2>
 
@@ -172,12 +206,35 @@ export default function App() {
   );
 }
 
+function ProductItem({ image, title, price, text }) {
+  return (
+    <div className="shopCard">
+      <img src={image} alt={title} className="shopImage" />
+
+      <div className="shopContent">
+        <h3>{title}</h3>
+        <p className="price">{price}</p>
+        <p>{text}</p>
+
+        <a
+          href={`mailto:kontakt@jmsprint.no?subject=Bestilling%20-%20${encodeURIComponent(
+            title
+          )}&body=Hei%20JMSPrint%2C%0A%0AJeg%20ønsker%20å%20bestille%3A%20${encodeURIComponent(
+            title
+          )}%0A%0AØnsket%20farge%3A%0AAntall%3A%0AAdresse%3A%0A`}
+          className="orderButton"
+        >
+          Kontakt for bestilling
+        </a>
+      </div>
+    </div>
+  );
+}
+
 function ProductCard({ icon, title, text }) {
   return (
     <div className="productCard">
-      <div className="icon">
-        {React.cloneElement(icon, { size: 28 })}
-      </div>
+      <div className="icon">{React.cloneElement(icon, { size: 28 })}</div>
 
       <h3>{title}</h3>
 
