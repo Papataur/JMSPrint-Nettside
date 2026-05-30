@@ -156,14 +156,18 @@ export default function App() {
           <p className="contactTitle">Kontakt</p>
 
           <a
-           href="mailto:kontakt@jmsprint.no?subject=Forespørsel%20om%20custom%203D-print&body=Hei%20JMSPrint%2C%0A%0AJeg%20ønsker%20pris%20på%20custom%203D-print.%0A"
->
-  kontakt@jmsprint.no
-</a>
+            href="mailto:kontakt@jmsprint.no?subject=Forespørsel%20om%20custom%203D-print&body=Hei%20JMSPrint%2C%0A%0AJeg%20ønsker%20pris%20på%20custom%203D-print.%0A"
+            className="mailLink"
+          >
+            kontakt@jmsprint.no
+          </a>
 
-          <p>
-  Facebook / Finn.no / TikTok / Nettbutikk kommer snart
-</p>
+          <p>Facebook / Finn.no / TikTok / Nettbutikk kommer snart</p>
+        </div>
+      </section>
+    </main>
+  );
+}
 
 function ProductCard({ icon, title, text }) {
   return (
