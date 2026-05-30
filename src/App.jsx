@@ -1,7 +1,7 @@
 import logo from "./JMSPrint.png";
 import boksaapner from "./boksaapner.jpg";
 import headsetholder from "./headsetholder.jpg";
-import jojo from "./jojo.jpg";
+import salttrakt from "./salttrakt.jpg";
 import React from "react";
 import {
   ShieldCheck,
@@ -149,11 +149,11 @@ export default function App() {
 
       <section id="butikk" className="shopSection">
         <div className="sectionIntro">
-          <p>Produkter</p>
-          <h2>Klare produkter</h2>
+          <p>Klare produkter</p>
+          <h2>Bestill praktiske 3D-print</h2>
           <span>
-            Praktiske 3D-printede produkter laget i slitesterk PETG. Flere
-            farger kan velges ved bestilling.
+            Produktene printes i slitesterk PETG. Flere farger kan velges ved
+            bestilling.
           </span>
         </div>
 
@@ -168,15 +168,15 @@ export default function App() {
           <ProductItem
             image={headsetholder}
             title="Headset-holder"
-            price="Fra 79 kr"
-            text="Holder til headset for vegg, skrivebord eller gaming-oppsett. Kan lages i flere farger."
+            price="Fra 149 kr"
+            text="Solid holder til headset for skrivebord eller gaming-oppsett. Kan lages i flere farger."
           />
 
           <ProductItem
-            image={jojo}
-            title="PETG Jojo"
-            price="Fra 79 kr"
-            text="Solid jojo printet i PETG. Flere farger tilgjengelig."
+            image={salttrakt}
+            title="Salttrakt til oppvaskmaskin"
+            price="69 kr + frakt"
+            text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
           />
         </div>
       </section>
