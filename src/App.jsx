@@ -161,7 +161,7 @@ export default function App() {
   kontakt@jmsprint.no
 </a>
 
-          <p>Facebook / Finn.no / nettbutikk kommer snart</p>
+          <p>Facebook / Finn.no / Tiktok nettbutikk kommer snart</p>
         </div>
       </section>
     </main>
