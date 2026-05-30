@@ -1,3 +1,6 @@
+import boksaapner from "./boksaapner.jpg";
+import headsetholder from "./headsetholder.jpg";
+import tomatstotte from "./tomatstotte.jpg";
 import logo from "./JMSPrint.png";
 import React from "react";
 import {
