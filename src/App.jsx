@@ -1,22 +1,34 @@
-import holderpink from "./holderpink.jpg";
-import deskholder from "./deskholder.jpg";
-import React, { useState } from "react";
-import JMSPrint from "./logo.png";
-import salttrakt from "./salttrakt.jpg";
-
-import {
-  ShieldCheck,
-  Box,
-  Wrench,
-  MapPin,
-  ShoppingBag,
-  Sparkles,
-  Cuboid,
-  CheckCircle2,
-} from "lucide-react";
-
-import { motion } from "framer-motion";
 import "./style.css";
+import JMSPrint from "./logo.png";
+
+import salttrakt from "./salttrakt.jpg";
+import deskholder from "./deskholder.jpg";
+import holderpink from "./holderpink.jpg";
+
+import { useState } from "react";
+
+function ProductItem({ image, title, price, text, onImageClick }) {
+  return (
+    <div className="shopCard">
+      <img
+        src={image}
+        alt={title}
+        className="shopImage"
+        onClick={() => onImageClick(image)}
+      />
+
+      <div className="shopContent">
+        <h3>{title}</h3>
+
+        <div className="price">{price}</div>
+
+        <p>{text}</p>
+
+        <a href="#kontakt">Kontakt for bestilling</a>
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -25,25 +37,21 @@ export default function App() {
     <main className="page">
       <section className="hero">
         <div className="heroGrid">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <img src={logo} alt="JMSPrint logo" className="logo" />
+          <div>
+            <img src={JMSPrint} alt="JMSPrint" className="logo" />
 
-            <p className="pill">
-              Praktiske produkter laget med 3D-print
-            </p>
+            <div className="pill">Produkter</div>
 
             <h1>
-              Smarte ting du faktisk kan bruke.
+              Produkter laget
+              <br />
+              for <span>ekte behov</span>
             </h1>
 
             <p className="lead">
-              JMSPrint lager praktiske produkter, holdere, smådeler og
-              spesialløsninger på bestilling. Alt produseres i Norge med fokus
-              på kvalitet og brukervennlighet.
+              Vi lager praktiske og kreative 3D-printede produkter —
+              fra hobbytilbehør til smarte løsninger for hjem,
+              garasje, båt og teknologi.
             </p>
 
             <div className="buttons">
@@ -52,114 +60,105 @@ export default function App() {
               </a>
 
               <a href="#kontakt" className="btn secondary">
-                Få laget noe eget
+                Kontakt oss
               </a>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="showcase"
-          >
-            <div className="card inner">
-              <div className="cardHeader">
-                <div>
-                  <p>Mulige produkter</p>
-                  <h2>JMSPrint Studio</h2>
-                </div>
-
-                <Box size={44} />
-              </div>
-
-              <div className="checklist">
-                {[
-                  "Holdere og smarte løsninger",
-                  "Reservedeler og smådeler",
-                  "Produkter til hjem og hobby",
-                  "Laget på bestilling i Norge",
-                ].map((item) => (
-                  <div key={item} className="check">
-                    <CheckCircle2 size={20} />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+          <div className="showcase">
+            <img
+              src={salttrakt}
+              alt="Produkt"
+              style={{
+                width: "100%",
+                borderRadius: "24px",
+                display: "block",
+              }}
+            />
+          </div>
         </div>
       </section>
 
-      <section id="produkter" className="section">
+      <section className="features">
+        <div className="feature">
+          <h3>3D-printet i Norge</h3>
+          <p>Lokalt produsert på bestilling.</p>
+        </div>
+
+        <div className="feature">
+          <h3>Høy kvalitet</h3>
+          <p>Printet i slitesterk PETG.</p>
+        </div>
+
+        <div className="feature">
+          <h3>Flere farger</h3>
+          <p>Velg fargen du liker best.</p>
+        </div>
+
+        <div className="feature">
+          <h3>Praktiske løsninger</h3>
+          <p>Laget for ekte behov i hverdagen.</p>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="sectionIntro">
           <p>Produkter</p>
 
           <h2>Produkter laget for ekte behov</h2>
 
           <span>
-            Vi lager praktiske og kreative 3D-printede produkter — fra
-            hobbytilbehør til smarte løsninger for hjem, garasje, båt og
-            teknologi.
+            Vi lager praktiske og kreative 3D-printede produkter —
+            fra hobbytilbehør til smarte løsninger for hjem,
+            garasje, båt og teknologi.
           </span>
         </div>
 
         <div className="products">
-          <ProductCard
-            icon={<Sparkles />}
-            title="Custom Design"
-            text="Vi kan lage spesialtilpassede løsninger og modeller etter behov."
-          />
+          <div className="productCard">
+            <div className="icon">⚡</div>
 
-          <ProductCard
-            icon={<Wrench />}
-            title="Smarte Smådeler"
-            text="Reservedeler, braketter, holdere og praktiske produkter laget med 3D-print."
-          />
+            <h3>Custom Design</h3>
 
-          <ProductCard
-            icon={<Cuboid />}
-            title="Prototype & Hobby"
-            text="Perfekt for hobbyprosjekter, garasje, RC, akvarium og kreative idéer."
-          />
+            <p>
+              Vi kan lage spesialtilpassede løsninger og modeller
+              etter behov.
+            </p>
+          </div>
+
+          <div className="productCard">
+            <div className="icon">🔧</div>
+
+            <h3>Smarte Smådeler</h3>
+
+            <p>
+              Reservedeler, braketter, holdere og praktiske produkter
+              laget med 3D-print.
+            </p>
+          </div>
+
+          <div className="productCard">
+            <div className="icon">📦</div>
+
+            <h3>Prototype & Hobby</h3>
+
+            <p>
+              Perfekt for hobbyprosjekter, garage, RC, akvarium og
+              kreative idéer.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="features">
-        <Feature
-          icon={<MapPin />}
-          title="3D-printet lokalt"
-          text="Designet og produsert med fokus på kvalitet og praktisk bruk."
-        />
-
-        <Feature
-          icon={<ShieldCheck />}
-          title="Custom løsninger"
-          text="Har du en idé? Vi kan ofte lage en løsning som passer."
-        />
-
-        <Feature
-          icon={<ShoppingBag />}
-          title="Høy kvalitet"
-          text="Printet med moderne utstyr for pene og sterke resultater."
-        />
-
-        <Feature
-          icon={<Box />}
-          title="Laget på bestilling"
-          text="Produkter produseres etter behov og kan tilpasses kunden."
-        />
-      </section>
-
-      <section id="butikk" className="shopSection">
+      <section className="shopSection" id="butikk">
         <div className="sectionIntro">
           <p>Klare produkter</p>
 
           <h2>Bestill praktiske 3D-print</h2>
 
           <span>
-            Produktene printes i slitesterk PETG. Flere farger kan velges ved
-            bestilling.
+            Produktene printes i slitesterk PETG. Flere farger kan
+            velges ved bestilling.
           </span>
         </div>
 
@@ -169,7 +168,7 @@ export default function App() {
             title="Salttrakt til oppvaskmaskin"
             price="69 kr + frakt"
             text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
-            onImageClick={() => setSelectedImage(salttrakt)}
+            onImageClick={setSelectedImage}
           />
 
           <ProductItem
@@ -177,7 +176,7 @@ export default function App() {
             title="Justerbar bordholder"
             price="149 kr + frakt"
             text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
-            onImageClick={() => setSelectedImage(deskholder)}
+            onImageClick={setSelectedImage}
           />
 
           <ProductItem
@@ -185,30 +184,36 @@ export default function App() {
             title="Praktisk veggholder"
             price="89 kr + frakt"
             text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
-            onImageClick={() => setSelectedImage(holderpink)}
+            onImageClick={setSelectedImage}
           />
         </div>
       </section>
 
-      <section id="kontakt" className="contact">
-        <h2>Har du en idé du ønsker printet?</h2>
+      <section className="contact" id="kontakt">
+        <h2>Har du en idé?</h2>
 
         <p>
-          Send oss en skisse, et bilde eller en forklaring — så ser vi om vi
-          kan lage det med 3D-print.
+          Vi kan ofte lage en løsning som passer perfekt til ditt
+          behov.
         </p>
 
         <div className="contactBox">
-          <p className="contactTitle">Kontakt</p>
+          <p className="contactTitle">Kontakt oss</p>
 
-          <a
-            href="mailto:kontakt@jmsprint.no?subject=Forespørsel%20om%20custom%203D-print&body=Hei%20JMSPrint%2C%0A%0AJeg%20ønsker%20pris%20på%20custom%203D-print.%0A"
-            className="mailLink"
-          >
-            kontakt@jmsprint.no
-          </a>
+          <p>
+            Send gjerne bilde, mål eller forklaring på hva du ønsker
+            laget.
+          </p>
 
-          <p>Facebook / Finn.no / TikTok / Nettbutikk kommer snart</p>
+          <p>
+            E-post:{" "}
+            <a
+              className="mailLink"
+              href="mailto:kontakt@jmsprint.no"
+            >
+              kontakt@jmsprint.no
+            </a>
+          </p>
         </div>
       </section>
 
@@ -232,69 +237,5 @@ export default function App() {
         </div>
       )}
     </main>
-  );
-}
-
-function ProductItem({
-  image,
-  title,
-  price,
-  text,
-  onImageClick,
-}) {
-  return (
-    <div className="shopCard">
-      <img
-        src={image}
-        alt={title}
-        className="shopImage"
-        onClick={onImageClick}
-      />
-
-      <div className="shopContent">
-        <h3>{title}</h3>
-
-        <p className="price">{price}</p>
-
-        <p>{text}</p>
-
-        <a
-          href={`mailto:kontakt@jmsprint.no?subject=Bestilling%20-%20${encodeURIComponent(
-            title
-          )}&body=Hei%20JMSPrint%2C%0A%0AJeg%20ønsker%20å%20bestille%3A%20${encodeURIComponent(
-            title
-          )}%0A%0AØnsket%20farge%3A%0AAntall%3A%0AAdresse%3A%0A`}
-          className="orderButton"
-        >
-          Kontakt for bestilling
-        </a>
-      </div>
-    </div>
-  );
-}
-
-function ProductCard({ icon, title, text }) {
-  return (
-    <div className="productCard">
-      <div className="icon">
-        {React.cloneElement(icon, { size: 28 })}
-      </div>
-
-      <h3>{title}</h3>
-
-      <p>{text}</p>
-    </div>
-  );
-}
-
-function Feature({ icon, title, text }) {
-  return (
-    <div className="feature">
-      <div>{React.cloneElement(icon, { size: 28 })}</div>
-
-      <h3>{title}</h3>
-
-      <p>{text}</p>
-    </div>
   );
 }
