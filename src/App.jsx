@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import logo from "./JMSPrint.png";
 import salttrakt from "./salttrakt.jpg";
-import React from "react";
 import {
   ShieldCheck,
   Box,
@@ -15,6 +15,8 @@ import { motion } from "framer-motion";
 import "./style.css";
 
 export default function App() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   return (
     <main className="page">
       <section className="hero">
@@ -106,6 +108,7 @@ export default function App() {
             title="Salttrakt til oppvaskmaskin"
             price="69 kr + frakt"
             text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
+            onImageClick={() => setSelectedImage(salttrakt)}
           />
         </div>
       </section>
@@ -131,14 +134,32 @@ export default function App() {
           <p>Facebook / Finn.no / TikTok / Nettbutikk kommer snart</p>
         </div>
       </section>
+
+      {selectedImage && (
+        <div className="imageModal" onClick={() => setSelectedImage(null)}>
+          <button
+            className="closeButton"
+            onClick={() => setSelectedImage(null)}
+          >
+            ✕
+          </button>
+
+          <img src={selectedImage} alt="Produkt" className="modalImage" />
+        </div>
+      )}
     </main>
   );
 }
 
-function ProductItem({ image, title, price, text }) {
+function ProductItem({ image, title, price, text, onImageClick }) {
   return (
     <div className="shopCard">
-      <img src={image} alt={title} className="shopImage" />
+      <img
+        src={image}
+        alt={title}
+        className="shopImage"
+        onClick={onImageClick}
+      />
 
       <div className="shopContent">
         <h3>{title}</h3>
