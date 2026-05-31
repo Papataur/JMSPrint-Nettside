@@ -230,6 +230,9 @@ h1 {
 .shopGrid {
   display: grid;
   gap: 18px;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
 
 @media (min-width: 900px) {
   .shopGrid {
