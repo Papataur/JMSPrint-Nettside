@@ -254,7 +254,6 @@ h1 {
   height: 320px;
   object-fit: cover;
   background: #f3f4f6;
-  padding: 0;
   display: block;
   cursor: pointer;
 }
@@ -284,6 +283,21 @@ h1 {
 
 .shopContent a:hover {
   text-decoration: underline;
+}
+
+.shopContent {
+  padding: 24px;
+  color: #f3f4f6;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+}
+
+.shopContent a {
+  margin-top: auto;
+  color: #60a5fa;
+  font-weight: 600;
+  text-decoration: none;
 }
 
 .price {
