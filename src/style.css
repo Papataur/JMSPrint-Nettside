@@ -232,6 +232,67 @@ h1 {
   padding: 24px;
 }
 
+.shopSection {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 70px 24px;
+}
+
+.shopGrid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
+  justify-content: center;
+}
+
+.shopCard {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  max-width: 360px;
+}
+
+.shopImage {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  background: #f3f4f6;
+  padding: 12px;
+  display: block;
+  cursor: pointer;
+}
+
+.shopContent {
+  padding: 24px;
+  color: #f3f4f6;
+}
+
+.shopContent h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.shopContent p {
+  line-height: 1.6;
+}
+
+.shopContent a {
+  color: #60a5fa;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.shopContent a:hover {
+  text-decoration: underline;
+}
+
+.price {
+  color: #60a5fa !important;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
 .contact {
   max-width: 860px;
   margin: 0 auto;
@@ -258,42 +319,6 @@ h1 {
   font-size: 20px !important;
 }
 
-.shopCard {
-  background: #111827;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 24px;
-  overflow: hidden;
-  max-width: 360px;
-}
-
-.shopImage {
-  width: 100%;
-  height: 260px;
-  object-fit: contain;
-  background: #f3f4f6;
-  padding: 12px;
-  display: block;
-}
-
-.shopContent {
-  padding: 24px;
-}
-
-.shopContent h3 {
-  margin-top: 0;
-  margin-bottom: 12px;
-}
-
-.shopContent p {
-  line-height: 1.6;
-}
-
-.price {
-  color: #60a5fa;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
 @media (max-width: 768px) {
   .shopGrid {
     padding: 0 16px;
@@ -303,7 +328,7 @@ h1 {
 .imageModal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
