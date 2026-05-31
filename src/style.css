@@ -277,6 +277,15 @@ h1 {
   padding: 24px;
 }
 
+.shopContent h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.shopContent p {
+  line-height: 1.6;
+}
+
 .price {
   color: #60a5fa;
   font-weight: 700;
