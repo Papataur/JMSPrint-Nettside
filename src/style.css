@@ -229,17 +229,16 @@ h1 {
 
 .shopGrid {
   width: 100%;
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
-  justify-content: center;
-  align-items: start;
+  display: grid !important;
+  grid-template-columns: repeat(3, 340px) !important;
+  gap: 24px !important;
+  justify-content: center !important;
+  align-items: start !important;
 }
 
 @media (max-width: 900px) {
   .shopGrid {
-    grid-template-columns: 1fr;
-    justify-items: center;
+    grid-template-columns: 340px !important;
   }
 }
 
