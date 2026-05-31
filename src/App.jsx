@@ -33,26 +33,26 @@ export default function App() {
             <img src={logo} alt="JMSPrint logo" className="logo" />
 
             <p className="pill">
-              Praktiske 3D-printede løsninger laget i Norge
+              Praktiske produkter laget med 3D-print
             </p>
 
             <h1>
-              Smarte 3D-printede løsninger for hobby, hjem og garasje.
+              Smarte ting du faktisk kan bruke.
             </h1>
 
             <p className="lead">
-              Vi designer og 3D-printer praktiske produkter, smådeler og
-              spesialløsninger for folk som liker smarte idéer,
-              hobbyprosjekter og ting som faktisk fungerer.
+              JMSPrint lager praktiske produkter, holdere, smådeler og
+              spesialløsninger på bestilling. Alt produseres i Norge med fokus
+              på kvalitet og brukervennlighet.
             </p>
 
             <div className="buttons">
-              <a href="#produkter" className="btn primary">
-                Utforsk produkter
+              <a href="#butikk" className="btn primary">
+                Se produkter
               </a>
 
               <a href="#kontakt" className="btn secondary">
-                Bestill custom print
+                Få laget noe eget
               </a>
             </div>
           </motion.div>
@@ -67,7 +67,7 @@ export default function App() {
               <div className="cardHeader">
                 <div>
                   <p>Mulige produkter</p>
-                  <h2>3D Print Studio</h2>
+                  <h2>JMSPrint Studio</h2>
                 </div>
 
                 <Box size={44} />
@@ -75,10 +75,10 @@ export default function App() {
 
               <div className="checklist">
                 {[
-                  "Custom braketter og holdere",
-                  "Smådeler som er vanskelige å få tak i",
-                  "Praktiske løsninger til hobby og hjem",
-                  "Produkter printet på bestilling",
+                  "Holdere og smarte løsninger",
+                  "Reservedeler og smådeler",
+                  "Produkter til hjem og hobby",
+                  "Laget på bestilling i Norge",
                 ].map((item) => (
                   <div key={item} className="check">
                     <CheckCircle2 size={20} />
