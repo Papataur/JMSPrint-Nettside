@@ -1,3 +1,4 @@
+import deskholder from "./deskholder.jpg";
 import React, { useState } from "react";
 import logo from "./JMSPrint.png";
 import salttrakt from "./salttrakt.jpg";
@@ -113,6 +114,13 @@ export default function App() {
         </div>
       </section>
 
+          <ProductItem
+           image={deskholder}
+           title="Justerbar bordholder"
+           price="149 kr + frakt"
+           text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
+         />
+     
       <section id="kontakt" className="contact">
         <h2>Har du en idé du ønsker printet?</h2>
 
