@@ -229,17 +229,11 @@ h1 {
 
 .shopGrid {
   width: 100%;
-  display: grid !important;
-  grid-template-columns: repeat(3, 340px) !important;
-  gap: 24px !important;
-  justify-content: center !important;
-  align-items: start !important;
-}
-
-@media (max-width: 900px) {
-  .shopGrid {
-    grid-template-columns: 340px !important;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 340px));
+  gap: 24px;
+  justify-content: center;
+  align-items: start;
 }
 
 .shopCard {
@@ -249,11 +243,13 @@ h1 {
   overflow: hidden;
   width: 100%;
   max-width: 340px;
+  display: flex;
+  flex-direction: column;
 }
 
 .shopImage {
   width: 100%;
-  height: 320px;
+  height: 340px;
   object-fit: cover;
   background: #f3f4f6;
   display: block;
@@ -263,27 +259,27 @@ h1 {
 .shopContent {
   padding: 24px;
   color: #f3f4f6;
-  min-height: 230px;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .shopContent h3 {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   font-size: 20px;
   line-height: 1.2;
 }
 
 .shopContent p {
-  line-height: 1.5;
+  line-height: 1.6;
   font-size: 16px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .shopContent a {
   margin-top: auto;
   color: #60a5fa;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -324,30 +320,18 @@ h1 {
   font-size: 20px !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .shopGrid {
-    padding: 0 16px;
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 
   .shopCard {
-    max-width: 100%;
+    max-width: 340px;
   }
 
   .shopImage {
-    height: 320px;
-  }
-
-  .shopContent {
-    padding: 24px;
-    min-height: 230px;
-  }
-
-  .shopContent h3 {
-    font-size: 20px;
-  }
-
-  .shopContent p {
-    font-size: 16px;
+    height: 340px;
   }
 }
 
