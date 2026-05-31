@@ -120,8 +120,10 @@ export default function App() {
            price="149 kr + frakt"
            text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
          />
-     
-      <section id="kontakt" className="contact">
+       </div>
+      </section>
+      
+         <section id="kontakt" className="contact">
         <h2>Har du en idé du ønsker printet?</h2>
 
         <p>
