@@ -1,3 +1,4 @@
+import holderpink from "./holderpink.jpg";
 import deskholder from "./deskholder.jpg";
 import React, { useState } from "react";
 import logo from "./JMSPrint.png";
@@ -122,8 +123,17 @@ export default function App() {
          />
        </div>
       </section>
-      
-         <section id="kontakt" className="contact">
+
+          <ProductItem
+           image={holderpink}
+           title="Praktisk veggholder"
+           price="89 kr + frakt"
+           text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
+         />
+        </div>
+      </section>
+             
+             <section id="kontakt" className="contact">
         <h2>Har du en idé du ønsker printet?</h2>
 
         <p>
