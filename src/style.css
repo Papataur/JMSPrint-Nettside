@@ -238,8 +238,8 @@ h1 {
 
 @media (max-width: 900px) {
   .shopGrid {
-    grid-template-columns: 340px;
-    justify-content: center;
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 }
 
