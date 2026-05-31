@@ -247,7 +247,7 @@ h1 {
 
 .shopCard {
   background: #0b1736;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(15, 23, 42, 0.35);
   border-radius: 24px;
   overflow: hidden;
   width: 100%;
@@ -261,6 +261,7 @@ h1 {
   background: #f3f4f6;
   padding: 12px;
   display: block;
+  cursor: pointer;
 }
 
 .shopContent {
