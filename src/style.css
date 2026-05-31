@@ -291,3 +291,9 @@ h1 {
   font-weight: 700;
   margin-bottom: 10px;
 }
+
+@media (max-width: 768px) {
+  .shopGrid {
+    padding: 0 16px;
+  }
+}
