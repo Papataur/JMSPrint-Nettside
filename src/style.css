@@ -261,6 +261,9 @@ h1 {
 .shopContent {
   padding: 24px;
   color: #f3f4f6;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
 }
 
 .shopContent h3 {
@@ -276,6 +279,7 @@ h1 {
 }
 
 .shopContent a {
+  margin-top: auto;
   color: #60a5fa;
   font-weight: 600;
   text-decoration: none;
@@ -283,21 +287,6 @@ h1 {
 
 .shopContent a:hover {
   text-decoration: underline;
-}
-
-.shopContent {
-  padding: 24px;
-  color: #f3f4f6;
-  min-height: 230px;
-  display: flex;
-  flex-direction: column;
-}
-
-.shopContent a {
-  margin-top: auto;
-  color: #60a5fa;
-  font-weight: 600;
-  text-decoration: none;
 }
 
 .price {
@@ -342,16 +331,21 @@ h1 {
     max-width: 100%;
   }
 
+  .shopImage {
+    height: 320px;
+  }
+
   .shopContent {
-    padding: 20px;
+    padding: 24px;
+    min-height: 230px;
   }
 
   .shopContent h3 {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .shopContent p {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
