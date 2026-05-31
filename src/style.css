@@ -228,15 +228,18 @@ h1 {
 }
 
 .shopGrid {
+  width: 100%;
   display: grid;
-  gap: 18px;
-  grid-template-columns: 1fr;
-  justify-items: center;
+  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 340px));
+  justify-content: center;
+  align-items: stretch;
 }
 
-@media (min-width: 900px) {
+@media (max-width: 900px) {
   .shopGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 }
 
