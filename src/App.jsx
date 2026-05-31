@@ -121,8 +121,6 @@ export default function App() {
            price="149 kr + frakt"
            text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
          />
-       </div>
-      </section>
 
           <ProductItem
            image={holderpink}
@@ -130,8 +128,6 @@ export default function App() {
            price="89 kr + frakt"
            text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
          />
-        </div>
-      </section>
              
              <section id="kontakt" className="contact">
         <h2>Har du en idé du ønsker printet?</h2>
