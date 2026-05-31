@@ -269,7 +269,9 @@ h1 {
 .shopImage {
   width: 100%;
   height: 260px;
-  object-fit: cover;
+  object-fit: contain;
+  background: #f3f4f6;
+  padding: 12px;
   display: block;
 }
 
