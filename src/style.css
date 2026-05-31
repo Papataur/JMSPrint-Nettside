@@ -354,3 +354,16 @@ h1 {
   font-size: 22px;
   cursor: pointer;
 }
+
+.shopGrid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+@media (min-width: 900px) {
+  .shopGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
