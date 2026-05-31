@@ -247,10 +247,11 @@ h1 {
 
 .shopCard {
   background: #111827;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 24px;
   overflow: hidden;
-  max-width: 360px;
+  width: 100%;
+  max-width: 340px;
 }
 
 .shopImage {
@@ -365,5 +366,23 @@ h1 {
 @media (min-width: 900px) {
   .shopGrid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .shopCard {
+    max-width: 100%;
+  }
+
+  .shopContent {
+    padding: 20px;
+  }
+
+  .shopContent h3 {
+    font-size: 18px;
+  }
+
+  .shopContent p {
+    font-size: 15px;
   }
 }
