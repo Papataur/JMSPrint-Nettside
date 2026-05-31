@@ -270,13 +270,15 @@ h1 {
 }
 
 .shopContent h3 {
-  margin-top: 0;
-  margin-bottom: 12px;
+  margin: 0 0 10px;
+  font-size: 20px;
+  line-height: 1.2;
 }
 
 .shopContent p {
-  line-height: 1.6;
-}
+  line-height: 1.5;
+  font-size: 16px;
+  margin-bottom: 14px;
 
 .shopContent a {
   color: #60a5fa;
@@ -289,9 +291,10 @@ h1 {
 }
 
 .price {
-  color: #60a5fa !important;
+  color: #60a5fa;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+  font-size: 16px;
 }
 
 .contact {
