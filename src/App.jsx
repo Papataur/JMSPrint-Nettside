@@ -120,6 +120,7 @@ export default function App() {
            title="Justerbar bordholder"
            price="149 kr + frakt"
            text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
+           onImageClick={() => setSelectedImage(deskholder)}
          />
 
           <ProductItem
@@ -127,6 +128,7 @@ export default function App() {
            title="Praktisk veggholder"
            price="89 kr + frakt"
            text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
+           onImageClick={() => setSelectedImage(holderpink)}
          />
              
              <section id="kontakt" className="contact">
