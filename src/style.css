@@ -256,12 +256,11 @@ h1 {
 
 .shopImage {
   width: 100%;
-  height: 260px;
-  object-fit: contain;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   background: #f3f4f6;
   padding: 12px;
   display: block;
-  cursor: pointer;
 }
 
 .shopContent {
