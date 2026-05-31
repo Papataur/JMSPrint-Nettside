@@ -1,7 +1,7 @@
 import holderpink from "./holderpink.jpg";
 import deskholder from "./deskholder.jpg";
 import React, { useState } from "react";
-import logo from "./JMSPrint.png";
+import JMSPrint from "./logo.png";
 import salttrakt from "./salttrakt.jpg";
 
 import {
