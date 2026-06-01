@@ -1,13 +1,11 @@
 import { useState } from "react";
-import heroimage from "./heroimage.png";
+import heroImage from "./heroimage.png";
 import "./style.css";
 import JMSPrint from "./logo.png";
 
 import salttrakt from "./salttrakt.jpg";
 import deskholder from "./deskholder.jpg";
 import holderpink from "./holderpink.jpg";
-
-import { useState } from "react";
 
 function ProductItem({ image, title, price, text, onImageClick }) {
   return (
