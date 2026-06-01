@@ -436,3 +436,37 @@ h1 span {
   font-size: 22px;
   cursor: pointer;
 }
+
+.colorOptions {
+  display: flex;
+  gap: 10px;
+  margin: 4px 0 16px;
+}
+
+.colorDot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 12px rgba(96, 165, 250, 0.18);
+}
+
+.colorDot.black {
+  background: #111827;
+}
+
+.colorDot.white {
+  background: #f8fafc;
+}
+
+.colorDot.gray {
+  background: #6b7280;
+}
+
+.colorDot.blue {
+  background: #2563eb;
+}
+
+.colorDot.pink {
+  background: #ec4899;
+}
