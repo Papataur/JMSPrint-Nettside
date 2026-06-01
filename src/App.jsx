@@ -77,8 +77,7 @@ export default function App() {
             />
           </div>
         </div>
-      </section>
-
+     
       <section className="features">
         <div className="feature">
           <h3>3D-printet i Norge</h3>
