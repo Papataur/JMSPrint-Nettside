@@ -109,10 +109,9 @@ h1 span {
 .showcase {
   width: 100%;
   max-width: 860px;
-.showcase {
-  transform: translateY(12px);
-}
-  
+
+  transform: translateY(85px);
+
   background: rgba(15, 23, 42, 0.55);
   border: 1px solid rgba(96, 165, 250, 0.2);
   border-radius: 32px;
