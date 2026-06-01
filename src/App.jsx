@@ -66,17 +66,19 @@ export default function App() {
             </div>
           </div>
 
-          <div className="showcase">
-         <img
-          src={heroimage}
-          alt="JMSPrint produkter"
-          style={{
-          width: "100%",
-          borderRadius: "24px",
-          display: "block",
-         }}
-       />
-  </div>
+            <div className="showcase">
+          <img
+               src={heroimage}
+               alt="JMSPrint produkter"
+               style={{
+               width: "100%",
+               borderRadius: "24px",
+               display: "block",
+            }}
+           />
+       </div>
+
+       </div>
      
       <section className="features">
         <div className="feature">
