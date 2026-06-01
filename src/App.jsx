@@ -101,19 +101,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="sectionIntro">
-          <p>Produkter</p>
-
-          <h2>Produkter laget for ekte behov</h2>
-
-          <span>
-            Vi lager praktiske og kreative 3D-printede produkter —
-            fra hobbytilbehør til smarte løsninger for hjem,
-            garasje, båt og teknologi.
-          </span>
-        </div>
-
+      
         <div className="products">
           <div className="productCard">
             <div className="icon">⚡</div>
