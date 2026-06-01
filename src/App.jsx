@@ -10,6 +10,7 @@ import holderpink from "./holderpink.jpg";
 function ProductItem({ image, title, price, text, onImageClick }) {
   return (
     <div className="shopCard">
+       <div className="badge">På lager</div>
       <img
         src={image}
         alt={title}
@@ -19,9 +20,11 @@ function ProductItem({ image, title, price, text, onImageClick }) {
 
      <div className="shopContent">
   <h3>{title}</h3>
-
+  <div className="stars">★★★★★</div>
+       
   <div className="price">{price}</div>
-
+  <p className="madeIn">🇳🇴 Produsert i Norge</p>
+  
   <p className="colorLabel">Tilgjengelige farger</p>
 
   <div className="colorOptions">
@@ -33,6 +36,7 @@ function ProductItem({ image, title, price, text, onImageClick }) {
   </div>
 
   <p>{text}</p>
+  <p className="delivery">Levering: 2–5 dager</p>
 
   <a href="#kontakt">Kontakt for bestilling</a>
 </div>
