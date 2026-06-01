@@ -1,3 +1,4 @@
+import heroimage from "./heroimage.png";
 import "./style.css";
 import JMSPrint from "./logo.png";
 
@@ -66,17 +67,16 @@ export default function App() {
           </div>
 
           <div className="showcase">
-            <img
-              src={salttrakt}
-              alt="Produkt"
-              style={{
-                width: "100%",
-                borderRadius: "24px",
-                display: "block",
-              }}
-            />
-          </div>
-        </div>
+         <img
+          src={heroimage}
+          alt="JMSPrint produkter"
+          style={{
+          width: "100%",
+          borderRadius: "24px",
+          display: "block",
+         }}
+       />
+  </div>
      
       <section className="features">
         <div className="feature">
