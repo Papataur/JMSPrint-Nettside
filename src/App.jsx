@@ -23,7 +23,7 @@ function ProductItem({ image, title, price, text, onImageClick }) {
   <div className="stars">★★★★★</div>
        
   <div className="price">{price}</div>
-  <p className="madeIn">🇳🇴 Produsert i Norge</p>
+ <p className="madeIn">Produsert i Norge 🇳🇴</p>
   
   <p className="colorLabel">Tilgjengelige farger</p>
 
