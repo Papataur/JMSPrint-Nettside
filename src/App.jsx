@@ -213,26 +213,6 @@ export default function App() {
             className="closeButton"
             onClick={() => setSelectedImage(null)}
           >
-            ✕
-          </button>
-
-          <img
-            src={selectedImage}
-            alt="Produkt"
-            className="modalImage"
-          />
-        </div>
-      )}
-
-      {selectedImage && (
-        <div
-          className="imageModal"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button
-            className="closeButton"
-            onClick={() => setSelectedImage(null)}
-          >
             X
           </button>
 
