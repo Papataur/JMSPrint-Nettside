@@ -21,7 +21,13 @@ function ProductItem({ image, title, price, text, onImageClick }) {
         <h3>{title}</h3>
 
         <div className="price">{price}</div>
-
+        <div className="colorOptions">
+        <span className="colorDot black" title="Sort"></span>
+        <span className="colorDot white" title="Hvit"></span>
+        <span className="colorDot gray" title="Grå"></span>
+        <span className="colorDot blue" title="Blå"></span>
+        <span className="colorDot pink" title="Rosa"></span>
+        </div>
         <p>{text}</p>
 
         <a href="#kontakt">Kontakt for bestilling</a>
