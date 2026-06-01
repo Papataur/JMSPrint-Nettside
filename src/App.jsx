@@ -1,3 +1,4 @@
+import { useState } from "react";
 import heroimage from "./heroimage.png";
 import "./style.css";
 import JMSPrint from "./logo.png";
@@ -66,18 +67,15 @@ export default function App() {
             </div>
           </div>
 
-            <div className="showcase">
-          <img
-               src={heroimage}
-               alt="JMSPrint produkter"
-               style={{
-               width: "100%",
-               borderRadius: "24px",
-               display: "block",
-            }}
-           />
-       </div>
-
+           <div className="showcase">
+           <img
+                src={heroImage}
+                alt="Produkter"
+                onClick={() => setSelectedImage(heroImage)}
+                style={{ cursor: "pointer" }}
+            />
+        </div>
+          
        </div>
      
       <section className="features">
@@ -216,6 +214,26 @@ export default function App() {
             onClick={() => setSelectedImage(null)}
           >
             ✕
+          </button>
+
+          <img
+            src={selectedImage}
+            alt="Produkt"
+            className="modalImage"
+          />
+        </div>
+      )}
+
+      {selectedImage && (
+        <div
+          className="imageModal"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="closeButton"
+            onClick={() => setSelectedImage(null)}
+          >
+            X
           </button>
 
           <img
