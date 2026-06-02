@@ -323,23 +323,19 @@ const totalPrice = cart.reduce((total, item) => {
   <button
   className="cartCheckout"
   onClick={() => {
-    if (
-      !customer.name ||
-      !customer.address ||
-      !customer.phone
-    ) {
-      setCheckoutError("Fyll inn alle feltene");
-      return;
-    }
+  if (!customer.name || !customer.address || !customer.phone) {
+    setCheckoutError("Fyll inn alle feltene");
+    return;
+  }
 
-    setCheckoutError("");
+  setCheckoutError("");
+  setPaymentSuccess(true);
 
-    alert("Bestilling sendt 😄");
-  }}
->
-  Send bestilling →
-</button>
-
+  setTimeout(() => {
+    setCart([]);
+    setPaymentSuccess(false);
+  }, 3000);
+}}
   {checkoutError && (
   <p className="checkoutError">
     {checkoutError}
