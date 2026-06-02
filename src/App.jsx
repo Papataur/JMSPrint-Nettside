@@ -217,6 +217,7 @@ export default function App() {
         <div className="shopGrid">
           <ProductItem
             image={salttrakt}
+            blueImage={salttraktBlue}
             title="Salttrakt til oppvaskmaskin"
             price="69 kr + frakt"
             text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
