@@ -4,6 +4,7 @@ import "./style.css";
 import JMSPrint from "./logo.png";
 
 import salttrakt from "./salttrakt.jpg";
+import salttraktBlue from "./salttrakt-blue.jpg"
 import deskholder from "./deskholder.jpg";
 import holderpink from "./holderpink.jpg";
 
@@ -216,6 +217,8 @@ export default function App() {
         <div className="shopGrid">
           <ProductItem
             image={salttrakt}
+            image={salttrakt}
+            blueImage={salttraktBlue}
             title="Salttrakt til oppvaskmaskin"
             price="69 kr + frakt"
             text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
