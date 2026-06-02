@@ -341,6 +341,14 @@ const totalPrice = cart.reduce((total, item) => {
 </button>
 
 {checkoutError && (
+  {checkoutError && (
+  <p className="checkoutError">
+    {checkoutError}
+  </p>
+)}
+
+<button
+  className="vippsButton"
   
   <button
   className="vippsButton"
