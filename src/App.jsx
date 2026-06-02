@@ -61,7 +61,8 @@ export default function App() {
   const [showToast, setShowToast] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
   const [isPaying, setIsPaying] = useState(false);
-  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [orderSuccess, setOrderSuccess] = useState(false);
+  const [vippsSuccess, setVippsSuccess] = useState(false);
 
 const addToCart = (product) => {
   setCart([...cart, product]);
@@ -69,7 +70,7 @@ const addToCart = (product) => {
   setShowToast(true);
 
   setTimeout(() => {
-    setShowToast(false);
+  setShowToast(false);
   }, 2200);
 };
 
@@ -360,11 +361,11 @@ const totalPrice = cart.reduce((total, item) => {
 
     setTimeout(() => {
       setIsPaying(false);
-      setPaymentSuccess(true);
+     setOrderSuccess(false);
 
       setTimeout(() => {
         setCart([]);
-        setPaymentSuccess(false);
+        setOrderSuccess(true);
       }, 3500);
     }, 2200);
   }}
