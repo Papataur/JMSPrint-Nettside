@@ -838,3 +838,15 @@ h1 span {
   opacity: 0.7;
   cursor: wait;
 }
+
+.cartCheckout:disabled,
+.vippsButton:disabled {
+  opacity: 0.85;
+  cursor: wait;
+  filter: brightness(1.15);
+}
+
+.cartCheckout:disabled::after,
+.vippsButton:disabled::after {
+  content: " ⏳";
+}
