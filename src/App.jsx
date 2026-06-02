@@ -53,6 +53,11 @@ function ProductItem({ image, title, price, text, onImageClick, onAddToCart }) {
 export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [cart, setCart] = useState([]);
+  const [customer, setCustomer] = useState({
+  name: "",
+  address: "",
+  phone: "",
+});
   const [showToast, setShowToast] = useState(false);
 
 const addToCart = (product) => {
@@ -284,11 +289,46 @@ const totalPrice = cart.reduce((total, item) => {
   Total: {totalPrice} kr
 </div>
 
-        <a href="#kontakt" className="cartCheckout">
-        Send bestilling →
-         </a>
-        </div>
-      )} 
+        <div className="checkoutForm">
+  <input
+    type="text"
+    placeholder="Navn"
+    value={customer.name}
+    onChange={(e) =>
+      setCustomer({ ...customer, name: e.target.value })
+    }
+  />
+
+  <input
+    type="text"
+    placeholder="Adresse"
+    value={customer.address}
+    onChange={(e) =>
+      setCustomer({ ...customer, address: e.target.value })
+    }
+  />
+
+  <input
+    type="tel"
+    placeholder="Telefon"
+    value={customer.phone}
+    onChange={(e) =>
+      setCustomer({ ...customer, phone: e.target.value })
+    }
+  />
+
+  <button className="cartCheckout">
+    Send bestilling →
+  </button>
+
+  <button className="vippsButton">
+    Betal med Vipps
+  </button>
+
+  <p className="checkoutNote">
+    Bestillingen bekreftes manuelt før betaling.
+  </p>
+</div>
      
       {selectedImage && (
         <div
