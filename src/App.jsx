@@ -298,28 +298,28 @@ export default function App() {
             />
 
             <button
-  className="cartCheckout"
-  disabled={isSendingOrder}
-  onClick={() => {
-    if (!validateCustomer()) return;
+              className="cartCheckout"
+              disabled={isSendingOrder || isPaying || orderSuccess || vippsSuccess}
+              onClick={() => {
+                if (!validateCustomer()) return;
 
-    setIsSendingOrder(true);
+                setOrderSuccess(false);
+                setVippsSuccess(false);
+                setIsSendingOrder(true);
 
-    setTimeout(() => {
-      setIsSendingOrder(false);
-      setOrderSuccess(true);
+                setTimeout(() => {
+                  setIsSendingOrder(false);
+                  setOrderSuccess(true);
 
-      setTimeout(() => {
-        setCart([]);
-        setOrderSuccess(false);
-      }, 3000);
-    }, 1800);
-  }}
->
-  {isSendingOrder
-    ? "Sender bestilling..."
-    : "Send bestilling →"}
-</button>
+                  setTimeout(() => {
+                    setCart([]);
+                    setOrderSuccess(false);
+                  }, 3000);
+                }, 1800);
+              }}
+            >
+              {isSendingOrder ? "Sender bestilling..." : "Send bestilling →"}
+            </button>
 
             {checkoutError && (
               <p className="checkoutError">{checkoutError}</p>
@@ -327,7 +327,7 @@ export default function App() {
 
             <button
               className="vippsButton"
-              disabled={isPaying}
+              disabled={isPaying || isSendingOrder || orderSuccess || vippsSuccess}
               onClick={() => {
                 if (!validateCustomer()) return;
 
