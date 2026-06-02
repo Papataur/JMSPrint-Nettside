@@ -361,12 +361,13 @@ const totalPrice = cart.reduce((total, item) => {
     setTimeout(() => {
       setIsPaying(false);
       setPaymentSuccess(true);
-      setCart([]);
 
       setTimeout(() => {
-        setPaymentSuccess(false);
+      setCart([]);
+      setPaymentSuccess(false);
       }, 3500);
-    }, 2200);
+
+     }, 2200);
   }}
 >
   {isPaying ? "Behandler betaling..." : "Betal med Vipps"}
