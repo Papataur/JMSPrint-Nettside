@@ -346,7 +346,7 @@ export default function App() {
             )}
 
             {vippsSuccess && (
-              <div className="paymentSuccess">✅ Vipps-forespørsel sendt</div>
+              <div className="paymentSuccess">✅ Betaling fullført</div>
             )}
 
             <p className="checkoutNote">
