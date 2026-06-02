@@ -53,9 +53,16 @@ function ProductItem({ image, title, price, text, onImageClick, onAddToCart }) {
 export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [cart, setCart] = useState([]);
+  const [showToast, setShowToast] = useState(false);
 
 const addToCart = (product) => {
   setCart([...cart, product]);
+
+  setShowToast(true);
+
+  setTimeout(() => {
+    setShowToast(false);
+  }, 2200);
 };
 
   const removeFromCart = (indexToRemove) => {
@@ -237,7 +244,12 @@ const totalPrice = cart.reduce((total, item) => {
           </p>
         </div>
       </section>
-
+         
+      {showToast && (
+  <div className="toast">
+    ✔ Produkt lagt til i handlekurv
+  </div>
+)}
          {cart.length > 0 && (
          <div className="cartBox">
          <div className="cartHeader">
