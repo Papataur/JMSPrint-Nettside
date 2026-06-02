@@ -329,6 +329,9 @@ const totalPrice = cart.reduce((total, item) => {
     Bestillingen bekreftes manuelt før betaling.
   </p>
 </div>
+
+</div>
+)}
      
       {selectedImage && (
         <div
