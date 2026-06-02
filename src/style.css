@@ -559,3 +559,42 @@ h1 span {
   font-size: 13px;
   margin-top: 14px;
 }
+
+.cartButton {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px 18px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #3b82f6
+  );
+
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 10px 25px rgba(37, 99, 235, 0.22);
+}
+
+.cartButton:hover {
+  transform: translateY(-2px);
+
+  background: linear-gradient(
+    135deg,
+    #3b82f6,
+    #60a5fa
+  );
+
+  box-shadow:
+    0 14px 35px rgba(37, 99, 235, 0.35);
+}
