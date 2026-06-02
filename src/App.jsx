@@ -58,6 +58,14 @@ const addToCart = (product) => {
   setCart([...cart, product]);
 };
 
+  const removeFromCart = (indexToRemove) => {
+  setCart(cart.filter((_, index) => index !== indexToRemove));
+};
+
+const totalPrice = cart.reduce((total, item) => {
+  return total + parseInt(item.price);
+}, 0);
+  
   return (
     <main className="page">
       <section className="hero">
@@ -235,11 +243,25 @@ const addToCart = (product) => {
          <h3>Handlekurv ({cart.length})</h3>
 
          {cart.map((item, index) => (
-         <div className="cartItem" key={index}>
-         <span>{item.title}</span>
-         <strong>{item.price}</strong>
-        </div>
-      ))}
+  <div className="cartItem" key={index}>
+
+    <div className="cartInfo">
+      <span>{item.title}</span>
+      <strong>{item.price}</strong>
+    </div>
+
+    <button
+      className="removeButton"
+      onClick={() => removeFromCart(index)}
+    >
+      ❌
+    </button>
+
+  </div>
+))}
+           <div className="cartTotal">
+  Total: {totalPrice} kr
+</div>
 
         <a href="#kontakt" className="cartCheckout">
         Send bestilling →
