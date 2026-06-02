@@ -59,6 +59,7 @@ export default function App() {
   phone: "",
 });
   const [showToast, setShowToast] = useState(false);
+  const [checkoutError, setCheckoutError] = useState("");
 
 const addToCart = (product) => {
   setCart([...cart, product]);
@@ -317,10 +318,31 @@ const totalPrice = cart.reduce((total, item) => {
     }
   />
 
-  <button className="cartCheckout">
-    Send bestilling →
-  </button>
+  <button
+  className="cartCheckout"
+  onClick={() => {
+    if (
+      !customer.name ||
+      !customer.address ||
+      !customer.phone
+    ) {
+      setCheckoutError("Fyll inn alle feltene");
+      return;
+    }
 
+    setCheckoutError("");
+
+    alert("Bestilling sendt 😄");
+  }}
+>
+  Send bestilling →
+</button>
+
+  {checkoutError && (
+  <p className="checkoutError">
+    {checkoutError}
+  </p>
+)}        
   <button className="vippsButton">
     Betal med Vipps
   </button>
