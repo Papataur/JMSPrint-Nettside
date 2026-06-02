@@ -38,7 +38,10 @@ function ProductItem({ image, title, price, text, onImageClick }) {
   <p>{text}</p>
   <p className="delivery">Levering: 2–5 dager</p>
 
-  <a href="#kontakt">Bestill produkt →</a>
+  <button className="cartButton">
+  🛒 Legg i handlekurv
+</button>
+       
 </div>
     </div>
   );
