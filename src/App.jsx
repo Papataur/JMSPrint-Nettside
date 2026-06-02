@@ -60,6 +60,8 @@ export default function App() {
 });
   const [showToast, setShowToast] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
+  const [isPaying, setIsPaying] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
 
 const addToCart = (product) => {
   setCart([...cart, product]);
@@ -343,11 +345,40 @@ const totalPrice = cart.reduce((total, item) => {
     {checkoutError}
   </p>
 )}        
-  <button className="vippsButton">
-    Betal med Vipps
-  </button>
+  
+  <button
+  className="vippsButton"
+  disabled={isPaying}
+  onClick={() => {
+    if (!customer.name || !customer.address || !customer.phone) {
+      setCheckoutError("Fyll inn alle feltene");
+      return;
+    }
 
-  <p className="checkoutNote">
+    setCheckoutError("");
+    setIsPaying(true);
+
+    setTimeout(() => {
+      setIsPaying(false);
+      setPaymentSuccess(true);
+      setCart([]);
+
+      setTimeout(() => {
+        setPaymentSuccess(false);
+      }, 3500);
+    }, 2200);
+  }}
+>
+  {isPaying ? "Behandler betaling..." : "Betal med Vipps"}
+</button>
+
+  {paymentSuccess && (
+  <div className="paymentSuccess">
+    ✅ Betaling fullført
+  </div>
+)}
+  
+          <p className="checkoutNote">
     Bestillingen bekreftes manuelt før betaling.
   </p>
 </div>
