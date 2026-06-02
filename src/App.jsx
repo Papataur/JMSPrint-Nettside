@@ -7,7 +7,7 @@ import salttrakt from "./salttrakt.jpg";
 import deskholder from "./deskholder.jpg";
 import holderpink from "./holderpink.jpg";
 
-function ProductItem({ image, title, price, text, onImageClick }) {
+function ProductItem({ image, title, price, text, onImageClick, onAddToCart }) {
   return (
     <div className="shopCard">
        <div className="badge">På lager</div>
@@ -38,7 +38,10 @@ function ProductItem({ image, title, price, text, onImageClick }) {
   <p>{text}</p>
   <p className="delivery">Levering: 2–5 dager</p>
 
-  <button className="cartButton">
+ <button
+  className="cartButton"
+  onClick={() => onAddToCart({ title, price })}
+>
   🛒 Legg i handlekurv
 </button>
        
@@ -49,6 +52,11 @@ function ProductItem({ image, title, price, text, onImageClick }) {
 
 export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [cart, setCart] = useState([]);
+
+const addToCart = (product) => {
+  setCart([...cart, product]);
+};
 
   return (
     <main className="page">
@@ -171,6 +179,7 @@ export default function App() {
             price="69 kr + frakt"
             text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
+            onAddToCart={addToCart}
           />
 
           <ProductItem
@@ -179,6 +188,7 @@ export default function App() {
             price="149 kr + frakt"
             text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
+            onAddToCart={addToCart}
           />
 
           <ProductItem
@@ -187,6 +197,7 @@ export default function App() {
             price="89 kr + frakt"
             text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
+            onAddToCart={addToCart}
           />
         </div>
       </section>
@@ -219,6 +230,23 @@ export default function App() {
         </div>
       </section>
 
+         {cart.length > 0 && (
+         <div className="cartBox">
+         <h3>Handlekurv</h3>
+
+         {cart.map((item, index) => (
+         <div className="cartItem" key={index}>
+         <span>{item.title}</span>
+         <strong>{item.price}</strong>
+        </div>
+      ))}
+
+        <a href="#kontakt" className="cartCheckout">
+        Send bestilling →
+         </a>
+        </div>
+      )} 
+     
       {selectedImage && (
         <div
           className="imageModal"
