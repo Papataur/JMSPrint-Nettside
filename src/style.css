@@ -815,3 +815,10 @@ h1 span {
   font-size: 12px;
   line-height: 1.4;
 }
+
+.checkoutError {
+  margin: -2px 0 4px;
+  color: #ff6b81;
+  font-size: 13px;
+  font-weight: 700;
+}
