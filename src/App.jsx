@@ -4,12 +4,13 @@ import "./style.css";
 import JMSPrint from "./logo.png";
 
 import salttrakt from "./salttrakt.jpg";
-import salttraktBlue from "./salttrakt-blue.jpg"
+import salttraktBlue from "./salttrakt-blue.jpg";
 import deskholder from "./deskholder.jpg";
 import holderpink from "./holderpink.jpg";
 
 function ProductItem({
   image,
+  blueImage,
   title,
   price,
   text,
@@ -18,22 +19,30 @@ function ProductItem({
   isFavorite,
   onToggleFavorite,
 }) {
-  
+  const [selectedImage, setSelectedImage] = useState(image);
+  const [selectedColor, setSelectedColor] = useState("standard");
+
+  const chooseColor = (color, img) => {
+    setSelectedColor(color);
+    setSelectedImage(img);
+  };
+
   return (
     <div className="shopCard">
       <div className="badge">På lager</div>
+
       <button
-  className={`favoriteButton ${isFavorite ? "active" : ""}`}
-  onClick={() => onToggleFavorite(title)}
->
-  ❤️
-</button>
+        className={`favoriteButton ${isFavorite ? "active" : ""}`}
+        onClick={() => onToggleFavorite(title)}
+      >
+        ❤️
+      </button>
 
       <img
-        src={image}
+        src={selectedImage}
         alt={title}
         className="shopImage"
-        onClick={() => onImageClick(image)}
+        onClick={() => onImageClick(selectedImage)}
       />
 
       <div className="shopContent">
@@ -47,9 +56,25 @@ function ProductItem({
 
         <div className="colorOptions">
           <span className="colorDot black" title="Sort"></span>
-          <span className="colorDot white" title="Hvit"></span>
+
+          <span
+            className={`colorDot white ${selectedColor === "Hvit" ? "selected" : ""}`}
+            title="Hvit"
+            onClick={() => chooseColor("Hvit", image)}
+          ></span>
+
           <span className="colorDot gray" title="Grå"></span>
-          <span className="colorDot blue" title="Blå"></span>
+
+          {blueImage ? (
+            <span
+              className={`colorDot blue ${selectedColor === "Blå" ? "selected" : ""}`}
+              title="Blå"
+              onClick={() => chooseColor("Blå", blueImage)}
+            ></span>
+          ) : (
+            <span className="colorDot blue" title="Blå"></span>
+          )}
+
           <span className="colorDot pink" title="Rosa"></span>
         </div>
 
@@ -58,7 +83,13 @@ function ProductItem({
 
         <button
           className="cartButton"
-          onClick={() => onAddToCart({ title, price })}
+          onClick={() =>
+            onAddToCart({
+              title,
+              price,
+              color: selectedColor === "standard" ? "Standard" : selectedColor,
+            })
+          }
         >
           🛒 Legg i handlekurv
         </button>
@@ -102,14 +133,14 @@ export default function App() {
   }, 0);
 
   const toggleFavorite = (title) => {
-  if (favorites.includes(title)) {
-    setFavorites(favorites.filter((fav) => fav !== title));
-  } else {
-    setFavorites([...favorites, title]);
-  }
-};
-  
-    const validateCustomer = () => {
+    if (favorites.includes(title)) {
+      setFavorites(favorites.filter((fav) => fav !== title));
+    } else {
+      setFavorites([...favorites, title]);
+    }
+  };
+
+  const validateCustomer = () => {
     if (!customer.name || !customer.address || !customer.phone) {
       setCheckoutError("Fyll inn alle feltene");
       return false;
@@ -234,7 +265,7 @@ export default function App() {
             text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
-            isFavorite={favorites.includes("Salttrakt til oppvaskmaskin")}
+            isFavorite={favorites.includes("Justerbar bordholder")}
             onToggleFavorite={toggleFavorite}
           />
 
@@ -245,9 +276,9 @@ export default function App() {
             text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
-            isFavorite={favorites.includes("Salttrakt til oppvaskmaskin")}
+            isFavorite={favorites.includes("Praktisk veggholder")}
             onToggleFavorite={toggleFavorite}
-           />
+          />
         </div>
       </section>
 
@@ -288,6 +319,7 @@ export default function App() {
             <div className="cartItem" key={index}>
               <div className="cartInfo">
                 <span>{item.title}</span>
+                <small>Farge: {item.color}</small>
                 <strong>{item.price}</strong>
               </div>
 
