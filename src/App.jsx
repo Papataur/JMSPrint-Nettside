@@ -4,7 +4,7 @@ import "./style.css";
 import JMSPrint from "./logo.png";
 
 import salttrakt from "./salttrakt.jpg";
-import salttraktBlue from "./salttrakt-blue.jpg";
+import salttraktBlue from "./salttrakt-blue.png";
 import deskholder from "./deskholder.jpg";
 import holderpink from "./holderpink.jpg";
 
