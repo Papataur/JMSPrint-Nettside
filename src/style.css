@@ -765,3 +765,53 @@ h1 span {
     transform: translateY(0);
   }
 }
+
+.checkoutForm {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.checkoutForm input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  background: rgba(15, 23, 42, 0.72);
+  color: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.checkoutForm input::placeholder {
+  color: #94a3b8;
+}
+
+.checkoutForm input:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.16);
+}
+
+.vippsButton {
+  width: 100%;
+  padding: 13px 16px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff5b24, #ff7a00);
+  color: white;
+  font-weight: 900;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 12px 32px rgba(255, 91, 36, 0.25);
+}
+
+.vippsButton:hover {
+  transform: translateY(-2px);
+}
+
+.checkoutNote {
+  margin: 4px 0 0;
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.4;
+}
