@@ -349,15 +349,6 @@ const totalPrice = cart.reduce((total, item) => {
 <button
   className="vippsButton"
   disabled={isPaying}
-  </p>
-)}
-
-<button
-  className="vippsButton"
-  
-  <button
-  className="vippsButton"
-  disabled={isPaying}
   onClick={() => {
     if (!customer.name || !customer.address || !customer.phone) {
       setCheckoutError("Fyll inn alle feltene");
@@ -372,11 +363,10 @@ const totalPrice = cart.reduce((total, item) => {
       setPaymentSuccess(true);
 
       setTimeout(() => {
-      setCart([]);
-      setPaymentSuccess(false);
+        setCart([]);
+        setPaymentSuccess(false);
       }, 3500);
-
-     }, 2200);
+    }, 2200);
   }}
 >
   {isPaying ? "Behandler betaling..." : "Betal med Vipps"}
