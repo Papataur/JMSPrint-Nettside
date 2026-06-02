@@ -336,11 +336,11 @@ const totalPrice = cart.reduce((total, item) => {
     setPaymentSuccess(false);
   }, 3000);
 }}
-  {checkoutError && (
-  <p className="checkoutError">
-    {checkoutError}
-  </p>
-)}        
+>
+  Send bestilling →
+</button>
+
+{checkoutError && (
   
   <button
   className="vippsButton"
