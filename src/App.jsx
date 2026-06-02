@@ -240,7 +240,16 @@ const totalPrice = cart.reduce((total, item) => {
 
          {cart.length > 0 && (
          <div className="cartBox">
-         <h3>Handlekurv ({cart.length})</h3>
+         <div className="cartHeader">
+  <h3>Handlekurv ({cart.length})</h3>
+
+  <button
+    className="clearCartButton"
+    onClick={() => setCart([])}
+  >
+    Tøm
+  </button>
+</div>
 
          {cart.map((item, index) => (
   <div className="cartItem" key={index}>
