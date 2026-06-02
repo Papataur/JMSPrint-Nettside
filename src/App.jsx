@@ -62,6 +62,7 @@ export default function App() {
   const [showToast, setShowToast] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
   const [isPaying, setIsPaying] = useState(false);
+  const [isSendingOrder, setIsSendingOrder] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [vippsSuccess, setVippsSuccess] = useState(false);
 
@@ -297,21 +298,28 @@ export default function App() {
             />
 
             <button
-              className="cartCheckout"
-              onClick={() => {
-                if (!validateCustomer()) return;
+  className="cartCheckout"
+  disabled={isSendingOrder}
+  onClick={() => {
+    if (!validateCustomer()) return;
 
-                setOrderSuccess(true);
-                setVippsSuccess(false);
+    setIsSendingOrder(true);
 
-                setTimeout(() => {
-                  setCart([]);
-                  setOrderSuccess(false);
-                }, 3000);
-              }}
-            >
-              Send bestilling →
-            </button>
+    setTimeout(() => {
+      setIsSendingOrder(false);
+      setOrderSuccess(true);
+
+      setTimeout(() => {
+        setCart([]);
+        setOrderSuccess(false);
+      }, 3000);
+    }, 1800);
+  }}
+>
+  {isSendingOrder
+    ? "Sender bestilling..."
+    : "Send bestilling →"}
+</button>
 
             {checkoutError && (
               <p className="checkoutError">{checkoutError}</p>
