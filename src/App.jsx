@@ -10,7 +10,8 @@ import holderpink from "./holderpink.jpg";
 function ProductItem({ image, title, price, text, onImageClick, onAddToCart }) {
   return (
     <div className="shopCard">
-       <div className="badge">På lager</div>
+      <div className="badge">På lager</div>
+
       <img
         src={image}
         alt={title}
@@ -18,34 +19,33 @@ function ProductItem({ image, title, price, text, onImageClick, onAddToCart }) {
         onClick={() => onImageClick(image)}
       />
 
-     <div className="shopContent">
-  <h3>{title}</h3>
-  <div className="stars">★★★★★</div>
-       
-  <div className="price">{price}</div>
- <p className="madeIn">Produsert i Norge</p>
-  
-  <p className="colorLabel">Tilgjengelige farger</p>
+      <div className="shopContent">
+        <h3>{title}</h3>
+        <div className="stars">★★★★★</div>
 
-  <div className="colorOptions">
-    <span className="colorDot black" title="Sort"></span>
-    <span className="colorDot white" title="Hvit"></span>
-    <span className="colorDot gray" title="Grå"></span>
-    <span className="colorDot blue" title="Blå"></span>
-    <span className="colorDot pink" title="Rosa"></span>
-  </div>
+        <div className="price">{price}</div>
+        <p className="madeIn">Produsert i Norge</p>
 
-  <p>{text}</p>
-  <p className="delivery">Levering: 2–5 dager</p>
+        <p className="colorLabel">Tilgjengelige farger</p>
 
- <button
-  className="cartButton"
-  onClick={() => onAddToCart({ title, price })}
->
-  🛒 Legg i handlekurv
-</button>
-       
-</div>
+        <div className="colorOptions">
+          <span className="colorDot black" title="Sort"></span>
+          <span className="colorDot white" title="Hvit"></span>
+          <span className="colorDot gray" title="Grå"></span>
+          <span className="colorDot blue" title="Blå"></span>
+          <span className="colorDot pink" title="Rosa"></span>
+        </div>
+
+        <p>{text}</p>
+        <p className="delivery">Levering: 2–5 dager</p>
+
+        <button
+          className="cartButton"
+          onClick={() => onAddToCart({ title, price })}
+        >
+          🛒 Legg i handlekurv
+        </button>
+      </div>
     </div>
   );
 }
@@ -54,34 +54,44 @@ export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [cart, setCart] = useState([]);
   const [customer, setCustomer] = useState({
-  name: "",
-  address: "",
-  phone: "",
-});
+    name: "",
+    address: "",
+    phone: "",
+  });
+
   const [showToast, setShowToast] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
   const [isPaying, setIsPaying] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [vippsSuccess, setVippsSuccess] = useState(false);
 
-const addToCart = (product) => {
-  setCart([...cart, product]);
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+    setShowToast(true);
 
-  setShowToast(true);
-
-  setTimeout(() => {
-  setShowToast(false);
-  }, 2200);
-};
+    setTimeout(() => {
+      setShowToast(false);
+    }, 2200);
+  };
 
   const removeFromCart = (indexToRemove) => {
-  setCart(cart.filter((_, index) => index !== indexToRemove));
-};
+    setCart(cart.filter((_, index) => index !== indexToRemove));
+  };
 
-const totalPrice = cart.reduce((total, item) => {
-  return total + parseInt(item.price);
-}, 0);
-  
+  const totalPrice = cart.reduce((total, item) => {
+    return total + parseInt(item.price);
+  }, 0);
+
+  const validateCustomer = () => {
+    if (!customer.name || !customer.address || !customer.phone) {
+      setCheckoutError("Fyll inn alle feltene");
+      return false;
+    }
+
+    setCheckoutError("");
+    return true;
+  };
+
   return (
     <main className="page">
       <section className="hero">
@@ -98,9 +108,9 @@ const totalPrice = cart.reduce((total, item) => {
             </h1>
 
             <p className="lead">
-              Vi lager praktiske og kreative 3D-printede produkter —
-              fra hobbytilbehør til smarte løsninger for hjem,
-              garasje, båt og teknologi.
+              Vi lager praktiske og kreative 3D-printede produkter — fra
+              hobbytilbehør til smarte løsninger for hjem, garasje, båt og
+              teknologi.
             </p>
 
             <div className="buttons">
@@ -114,72 +124,55 @@ const totalPrice = cart.reduce((total, item) => {
             </div>
           </div>
 
-           <div className="showcase">
-           <img
-                src={heroImage}
-                alt="Produkter"
-                onClick={() => setSelectedImage(heroImage)}
-                style={{ cursor: "pointer" }}
+          <div className="showcase">
+            <img
+              src={heroImage}
+              alt="Produkter"
+              onClick={() => setSelectedImage(heroImage)}
+              style={{ cursor: "pointer" }}
             />
-        </div>
-          
-       </div>
-     
-      <section className="features">
-        <div className="feature">
-          <h3>3D-printet i Norge</h3>
-          <p>Lokalt produsert på bestilling.</p>
+          </div>
         </div>
 
-        <div className="feature">
-          <h3>Høy kvalitet</h3>
-          <p>Printet i slitesterk PETG.</p>
-        </div>
+        <section className="features">
+          <div className="feature">
+            <h3>3D-printet i Norge</h3>
+            <p>Lokalt produsert på bestilling.</p>
+          </div>
 
-        <div className="feature">
-          <h3>Flere farger</h3>
-          <p>Velg fargen du liker best.</p>
-        </div>
+          <div className="feature">
+            <h3>Høy kvalitet</h3>
+            <p>Printet i slitesterk PETG.</p>
+          </div>
 
-        <div className="feature">
-          <h3>Praktiske løsninger</h3>
-          <p>Laget for ekte behov i hverdagen.</p>
-        </div>
-      </section>
+          <div className="feature">
+            <h3>Flere farger</h3>
+            <p>Velg fargen du liker best.</p>
+          </div>
 
-      
+          <div className="feature">
+            <h3>Praktiske løsninger</h3>
+            <p>Laget for ekte behov i hverdagen.</p>
+          </div>
+        </section>
+
         <div className="products">
           <div className="productCard">
             <div className="icon">⚡</div>
-
             <h3>Custom Design</h3>
-
-            <p>
-              Vi kan lage spesialtilpassede løsninger og modeller
-              etter behov.
-            </p>
+            <p>Vi kan lage spesialtilpassede løsninger og modeller etter behov.</p>
           </div>
 
           <div className="productCard">
             <div className="icon">🔧</div>
-
             <h3>Smarte Smådeler</h3>
-
-            <p>
-              Reservedeler, braketter, holdere og praktiske produkter
-              laget med 3D-print.
-            </p>
+            <p>Reservedeler, braketter, holdere og praktiske produkter laget med 3D-print.</p>
           </div>
 
           <div className="productCard">
             <div className="icon">📦</div>
-
             <h3>Prototype & Hobby</h3>
-
-            <p>
-              Perfekt for hobbyprosjekter, garage, RC, akvarium og
-              kreative idéer.
-            </p>
+            <p>Perfekt for hobbyprosjekter, garage, RC, akvarium og kreative idéer.</p>
           </div>
         </div>
       </section>
@@ -187,12 +180,10 @@ const totalPrice = cart.reduce((total, item) => {
       <section className="shopSection" id="butikk">
         <div className="sectionIntro">
           <p>Klare produkter</p>
-
           <h2>Bestill praktiske 3D-print</h2>
-
           <span>
-            Produktene printes i slitesterk PETG. Flere farger kan
-            velges ved bestilling.
+            Produktene printes i slitesterk PETG. Flere farger kan velges ved
+            bestilling.
           </span>
         </div>
 
@@ -229,169 +220,144 @@ const totalPrice = cart.reduce((total, item) => {
       <section className="contact" id="kontakt">
         <h2>Har du en idé?</h2>
 
-        <p>
-          Vi kan ofte lage en løsning som passer perfekt til ditt
-          behov.
-        </p>
+        <p>Vi kan ofte lage en løsning som passer perfekt til ditt behov.</p>
 
         <div className="contactBox">
           <p className="contactTitle">Kontakt oss</p>
 
-          <p>
-            Send gjerne bilde, mål eller forklaring på hva du ønsker
-            laget.
-          </p>
+          <p>Send gjerne bilde, mål eller forklaring på hva du ønsker laget.</p>
 
           <p>
             E-post:{" "}
-            <a
-              className="mailLink"
-              href="mailto:kontakt@jmsprint.no"
-            >
+            <a className="mailLink" href="mailto:kontakt@jmsprint.no">
               kontakt@jmsprint.no
             </a>
           </p>
         </div>
       </section>
-         
+
       {showToast && (
-  <div className="toast">
-    ✔ Produkt lagt til i handlekurv
-  </div>
-)}
-         {cart.length > 0 && (
-         <div className="cartBox">
-         <div className="cartHeader">
-  <h3>Handlekurv ({cart.length})</h3>
+        <div className="toast">✔ Produkt lagt til i handlekurv</div>
+      )}
 
-  <button
-    className="clearCartButton"
-    onClick={() => setCart([])}
-  >
-    Tøm
-  </button>
-</div>
+      {cart.length > 0 && (
+        <div className="cartBox">
+          <div className="cartHeader">
+            <h3>Handlekurv ({cart.length})</h3>
 
-         {cart.map((item, index) => (
-  <div className="cartItem" key={index}>
+            <button className="clearCartButton" onClick={() => setCart([])}>
+              Tøm
+            </button>
+          </div>
 
-    <div className="cartInfo">
-      <span>{item.title}</span>
-      <strong>{item.price}</strong>
-    </div>
+          {cart.map((item, index) => (
+            <div className="cartItem" key={index}>
+              <div className="cartInfo">
+                <span>{item.title}</span>
+                <strong>{item.price}</strong>
+              </div>
 
-    <button
-      className="removeButton"
-      onClick={() => removeFromCart(index)}
-    >
-      ❌
-    </button>
+              <button
+                className="removeButton"
+                onClick={() => removeFromCart(index)}
+              >
+                ❌
+              </button>
+            </div>
+          ))}
 
-  </div>
-))}
-           <div className="cartTotal">
-  Total: {totalPrice} kr
-</div>
+          <div className="cartTotal">Total: {totalPrice} kr</div>
 
-        <div className="checkoutForm">
-  <input
-    type="text"
-    placeholder="Navn"
-    value={customer.name}
-    onChange={(e) =>
-      setCustomer({ ...customer, name: e.target.value })
-    }
-  />
+          <div className="checkoutForm">
+            <input
+              type="text"
+              placeholder="Navn"
+              value={customer.name}
+              onChange={(e) =>
+                setCustomer({ ...customer, name: e.target.value })
+              }
+            />
 
-  <input
-    type="text"
-    placeholder="Adresse"
-    value={customer.address}
-    onChange={(e) =>
-      setCustomer({ ...customer, address: e.target.value })
-    }
-  />
+            <input
+              type="text"
+              placeholder="Adresse"
+              value={customer.address}
+              onChange={(e) =>
+                setCustomer({ ...customer, address: e.target.value })
+              }
+            />
 
-  <input
-    type="tel"
-    placeholder="Telefon"
-    value={customer.phone}
-    onChange={(e) =>
-      setCustomer({ ...customer, phone: e.target.value })
-    }
-  />
+            <input
+              type="tel"
+              placeholder="Telefon"
+              value={customer.phone}
+              onChange={(e) =>
+                setCustomer({ ...customer, phone: e.target.value })
+              }
+            />
 
-  <button
-  className="cartCheckout"
-  onClick={() => {
-  if (!customer.name || !customer.address || !customer.phone) {
-    setCheckoutError("Fyll inn alle feltene");
-    return;
-  }
+            <button
+              className="cartCheckout"
+              onClick={() => {
+                if (!validateCustomer()) return;
 
-  setCheckoutError("");
-  setPaymentSuccess(true);
+                setOrderSuccess(true);
+                setVippsSuccess(false);
 
-  setTimeout(() => {
-    setCart([]);
-    setPaymentSuccess(false);
-  }, 3000);
-}}
->
-  Send bestilling →
-</button>
+                setTimeout(() => {
+                  setCart([]);
+                  setOrderSuccess(false);
+                }, 3000);
+              }}
+            >
+              Send bestilling →
+            </button>
 
-{checkoutError && (
-  <p className="checkoutError">
-    {checkoutError}
-  </p>
-)}
+            {checkoutError && (
+              <p className="checkoutError">{checkoutError}</p>
+            )}
 
-<button
-  className="vippsButton"
-  disabled={isPaying}
-  onClick={() => {
-    if (!customer.name || !customer.address || !customer.phone) {
-      setCheckoutError("Fyll inn alle feltene");
-      return;
-    }
+            <button
+              className="vippsButton"
+              disabled={isPaying}
+              onClick={() => {
+                if (!validateCustomer()) return;
 
-    setCheckoutError("");
-    setIsPaying(true);
+                setVippsSuccess(false);
+                setOrderSuccess(false);
+                setIsPaying(true);
 
-    setTimeout(() => {
-      setIsPaying(false);
-     setOrderSuccess(false);
+                setTimeout(() => {
+                  setIsPaying(false);
+                  setVippsSuccess(true);
 
-      setTimeout(() => {
-        setCart([]);
-        setOrderSuccess(true);
-      }, 3500);
-    }, 2200);
-  }}
->
-  {isPaying ? "Behandler betaling..." : "Betal med Vipps"}
-</button>
+                  setTimeout(() => {
+                    setCart([]);
+                    setVippsSuccess(false);
+                  }, 3500);
+                }, 2200);
+              }}
+            >
+              {isPaying ? "Behandler Vipps..." : "Betal med Vipps"}
+            </button>
 
-  {paymentSuccess && (
-  <div className="paymentSuccess">
-    ✅ Betaling fullført
-  </div>
-)}
-  
-          <p className="checkoutNote">
-    Bestillingen bekreftes manuelt før betaling.
-  </p>
-</div>
+            {orderSuccess && (
+              <div className="paymentSuccess">✅ Bestilling sendt</div>
+            )}
 
-</div>
-)}
-     
+            {vippsSuccess && (
+              <div className="paymentSuccess">✅ Vipps-forespørsel sendt</div>
+            )}
+
+            <p className="checkoutNote">
+              Bestillingen bekreftes manuelt før betaling.
+            </p>
+          </div>
+        </div>
+      )}
+
       {selectedImage && (
-        <div
-          className="imageModal"
-          onClick={() => setSelectedImage(null)}
-        >
+        <div className="imageModal" onClick={() => setSelectedImage(null)}>
           <button
             className="closeButton"
             onClick={() => setSelectedImage(null)}
@@ -399,11 +365,7 @@ const totalPrice = cart.reduce((total, item) => {
             X
           </button>
 
-          <img
-            src={selectedImage}
-            alt="Produkt"
-            className="modalImage"
-          />
+          <img src={selectedImage} alt="Produkt" className="modalImage" />
         </div>
       )}
     </main>
