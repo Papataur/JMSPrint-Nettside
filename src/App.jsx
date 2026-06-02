@@ -7,7 +7,17 @@ import salttrakt from "./salttrakt.jpg";
 import deskholder from "./deskholder.jpg";
 import holderpink from "./holderpink.jpg";
 
-function ProductItem({ image, title, price, text, onImageClick, onAddToCart }) {
+function ProductItem({
+  image,
+  title,
+  price,
+  text,
+  onImageClick,
+  onAddToCart,
+  isFavorite,
+  onToggleFavorite,
+}) {
+  
   return (
     <div className="shopCard">
       <div className="badge">På lager</div>
@@ -65,6 +75,7 @@ export default function App() {
   const [isSendingOrder, setIsSendingOrder] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [vippsSuccess, setVippsSuccess] = useState(false);
+  const [favorites, setFavorites] = useState([]);
 
   const addToCart = (product) => {
     setCart([...cart, product]);
@@ -83,7 +94,15 @@ export default function App() {
     return total + parseInt(item.price);
   }, 0);
 
-  const validateCustomer = () => {
+  const toggleFavorite = (title) => {
+  if (favorites.includes(title)) {
+    setFavorites(favorites.filter((fav) => fav !== title));
+  } else {
+    setFavorites([...favorites, title]);
+  }
+};
+  
+    const validateCustomer = () => {
     if (!customer.name || !customer.address || !customer.phone) {
       setCheckoutError("Fyll inn alle feltene");
       return false;
@@ -196,6 +215,8 @@ export default function App() {
             text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
+            isFavorite={favorites.includes("Salttrakt til oppvaskmaskin")}
+            onToggleFavorite={toggleFavorite}
           />
 
           <ProductItem
@@ -205,6 +226,8 @@ export default function App() {
             text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
+            isFavorite={favorites.includes("Salttrakt til oppvaskmaskin")}
+            onToggleFavorite={toggleFavorite}
           />
 
           <ProductItem
@@ -214,7 +237,9 @@ export default function App() {
             text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
-          />
+            isFavorite={favorites.includes("Salttrakt til oppvaskmaskin")}
+            onToggleFavorite={toggleFavorite}
+           />
         </div>
       </section>
 
