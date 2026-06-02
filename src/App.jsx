@@ -21,6 +21,12 @@ function ProductItem({
   return (
     <div className="shopCard">
       <div className="badge">På lager</div>
+      <button
+  className={`favoriteButton ${isFavorite ? "active" : ""}`}
+  onClick={() => onToggleFavorite(title)}
+>
+  ❤️
+</button>
 
       <img
         src={image}
