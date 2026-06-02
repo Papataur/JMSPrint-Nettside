@@ -217,7 +217,6 @@ export default function App() {
         <div className="shopGrid">
           <ProductItem
             image={salttrakt}
-            image={salttrakt}
             blueImage={salttraktBlue}
             title="Salttrakt til oppvaskmaskin"
             price="69 kr + frakt"
