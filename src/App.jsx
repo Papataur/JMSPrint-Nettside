@@ -232,7 +232,7 @@ const addToCart = (product) => {
 
          {cart.length > 0 && (
          <div className="cartBox">
-         <h3>Handlekurv</h3>
+         <h3>Handlekurv ({cart.length})</h3>
 
          {cart.map((item, index) => (
          <div className="cartItem" key={index}>
