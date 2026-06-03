@@ -406,7 +406,12 @@ export default function App() {
                       `${index + 1}. ${item.title} - ${item.color} - ${item.price}`
                   )
                   .join("\n");
-
+                 const orderNumber =
+                 "JMS-" +
+                 new Date().toISOString().slice(0, 10).replace(/-/g, "") +
+                  "-" +
+                 Math.floor(1000 + Math.random() * 9000);
+         
                 try {
                   const response = await fetch("https://formspree.io/f/xlgkegbv", {
                     method: "POST",
@@ -415,12 +420,13 @@ export default function App() {
                       Accept: "application/json",
                     },
                     body: JSON.stringify({
-                      navn: customer.name,
-                      adresse: customer.address,
-                      telefon: customer.phone,
-                      email: customer.email,
-                      varer: orderText,
-                      total: `${totalPrice} kr`,
+                    ordrenummer: orderNumber,
+                    navn: customer.name,
+                    adresse: customer.address,
+                    telefon: customer.phone,
+                    email: customer.email,
+                    varer: orderText,
+                    total: totalPrice,
                     }),
                   });
 
