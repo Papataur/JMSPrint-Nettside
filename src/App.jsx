@@ -310,8 +310,7 @@ export default function App() {
           Blå: deskholderBlue,
           Rosa: deskholderPink
      }}
-   />
-          
+   
           <ProductItem
             image={holderpink}
             colorImages={{
