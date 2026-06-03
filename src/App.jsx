@@ -4,10 +4,10 @@ import "./style.css";
 import JMSPrint from "./logo.jpg";
 
 import deskholder from "./deskholder.jpg";
-import deskholderBlack from "./deskholder-black.jpg"
-import deskholderBlue from "./deskholder-blue.jpg"
-import deskholderPink from "./deskholder-pink.jpg"
-import deskholderWhite from "./deskholder-white.jpg"
+import deskholderBlack from "./deskholder-black.jpg";
+import deskholderBlue from "./deskholder-blue.jpg";
+import deskholderPink from "./deskholder-pink.jpg";
+import deskholderWhite from "./deskholder-white.jpg";
 
 import holderpink from "./holderpink.jpg";
 import holderpinkBlack from "./holderpink-black.jpg";
@@ -69,35 +69,11 @@ function ProductItem({
         <p className="colorLabel">Tilgjengelige farger</p>
 
         <div className="colorOptions">
-          <span
-            className={`colorDot black ${selectedColor === "Sort" ? "selected" : ""}`}
-            title="Sort"
-            onClick={() => chooseColor("Sort", colorImages.black)}
-          />
-
-          <span
-            className={`colorDot white ${selectedColor === "Hvit" ? "selected" : ""}`}
-            title="Hvit"
-            onClick={() => chooseColor("Hvit", colorImages.white || image)}
-          />
-
-          <span
-            className={`colorDot grey ${selectedColor === "Grå" ? "selected" : ""}`}
-            title="Grå"
-            onClick={() => chooseColor("Grå", colorImages.grey)}
-          />
-
-          <span
-            className={`colorDot blue ${selectedColor === "Blå" ? "selected" : ""}`}
-            title="Blå"
-            onClick={() => chooseColor("Blå", colorImages.blue)}
-          />
-
-          <span
-            className={`colorDot pink ${selectedColor === "Rosa" ? "selected" : ""}`}
-            title="Rosa"
-            onClick={() => chooseColor("Rosa", colorImages.pink)}
-          />
+          <span className={`colorDot black ${selectedColor === "Sort" ? "selected" : ""}`} title="Sort" onClick={() => chooseColor("Sort", colorImages.black)} />
+          <span className={`colorDot white ${selectedColor === "Hvit" ? "selected" : ""}`} title="Hvit" onClick={() => chooseColor("Hvit", colorImages.white || image)} />
+          <span className={`colorDot grey ${selectedColor === "Grå" ? "selected" : ""}`} title="Grå" onClick={() => chooseColor("Grå", colorImages.grey)} />
+          <span className={`colorDot blue ${selectedColor === "Blå" ? "selected" : ""}`} title="Blå" onClick={() => chooseColor("Blå", colorImages.blue)} />
+          <span className={`colorDot pink ${selectedColor === "Rosa" ? "selected" : ""}`} title="Rosa" onClick={() => chooseColor("Rosa", colorImages.pink)} />
         </div>
 
         <p>{text}</p>
@@ -105,13 +81,18 @@ function ProductItem({
 
         <button
           className="cartButton"
-          onClick={() =>
+          onClick={() => {
+            if (selectedColor === "Ikke valgt") {
+              alert("Velg farge før du legger produktet i handlekurven");
+              return;
+            }
+
             onAddToCart({
               title,
               price,
               color: selectedColor,
-            })
-          }
+            });
+          }}
         >
           🛒 Legg i handlekurv
         </button>
@@ -124,11 +105,11 @@ export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [cart, setCart] = useState([]);
   const [customer, setCustomer] = useState({
-  name: "",
-  address: "",
-  phone: "",
-  email: "",
-});
+    name: "",
+    address: "",
+    phone: "",
+    email: "",
+  });
 
   const [showToast, setShowToast] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
@@ -139,8 +120,8 @@ export default function App() {
   const [favorites, setFavorites] = useState([]);
 
   const addToCart = (product) => {
-  setCart([...cart, product]);
-  };
+    setCart([...cart, product]);
+    setShowToast(true);
 
     setTimeout(() => {
       setShowToast(false);
@@ -164,7 +145,7 @@ export default function App() {
   };
 
   const validateCustomer = () => {
-    if (!customer.name || !customer.address || !customer.phone) {
+    if (!customer.name || !customer.address || !customer.phone || !customer.email) {
       setCheckoutError("Fyll inn alle feltene");
       return false;
     }
@@ -195,13 +176,8 @@ export default function App() {
             </p>
 
             <div className="buttons">
-              <a href="#butikk" className="btn primary">
-                Se produkter
-              </a>
-
-              <a href="#kontakt" className="btn secondary">
-                Kontakt oss
-              </a>
+              <a href="#butikk" className="btn primary">Se produkter</a>
+              <a href="#kontakt" className="btn secondary">Kontakt oss</a>
             </div>
           </div>
 
@@ -247,19 +223,13 @@ export default function App() {
           <div className="productCard">
             <div className="icon">🔧</div>
             <h3>Smarte Smådeler</h3>
-            <p>
-              Reservedeler, braketter, holdere og praktiske produkter laget med
-              3D-print.
-            </p>
+            <p>Reservedeler, braketter, holdere og praktiske produkter laget med 3D-print.</p>
           </div>
 
           <div className="productCard">
             <div className="icon">📦</div>
             <h3>Prototype & Hobby</h3>
-            <p>
-              Perfekt for hobbyprosjekter, garage, RC, akvarium og kreative
-              idéer.
-            </p>
+            <p>Perfekt for hobbyprosjekter, garage, RC, akvarium og kreative idéer.</p>
           </div>
         </div>
       </section>
@@ -269,8 +239,7 @@ export default function App() {
           <p>Klare produkter</p>
           <h2>Bestill praktiske 3D-print</h2>
           <span>
-            Produktene printes i slitesterk PETG. Flere farger kan velges ved
-            bestilling.
+            Produktene printes i slitesterk PETG. Flere farger kan velges ved bestilling.
           </span>
         </div>
 
@@ -294,23 +263,23 @@ export default function App() {
           />
 
           <ProductItem
-  image={deskholder}
-  colorImages={{
-    black: deskholderBlack,
-    white: deskholderWhite,
-    blue: deskholderBlue,
-    pink: deskholderPink,
-    grey: deskholder,
-  }}
-  title="Justerbar bordholder"
-  price="149 kr + frakt"
-  text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
-  onImageClick={setSelectedImage}
-  onAddToCart={addToCart}
-  isFavorite={favorites.includes("Justerbar bordholder")}
-  onToggleFavorite={toggleFavorite}
-/>
-   
+            image={deskholder}
+            colorImages={{
+              black: deskholderBlack,
+              white: deskholderWhite,
+              blue: deskholderBlue,
+              pink: deskholderPink,
+              grey: deskholder,
+            }}
+            title="Justerbar bordholder"
+            price="149 kr + frakt"
+            text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
+            onImageClick={setSelectedImage}
+            onAddToCart={addToCart}
+            isFavorite={favorites.includes("Justerbar bordholder")}
+            onToggleFavorite={toggleFavorite}
+          />
+
           <ProductItem
             image={holderpink}
             colorImages={{
@@ -412,73 +381,72 @@ export default function App() {
             />
 
             <input
-             type="email"
-             placeholder="E-post"
-             value={customer.email}
-             onChange={(e) =>
-             setCustomer({ ...customer, email: e.target.value })
-            }
-         />
+              type="email"
+              placeholder="E-post"
+              value={customer.email}
+              onChange={(e) =>
+                setCustomer({ ...customer, email: e.target.value })
+              }
+            />
 
-              <button
+            <button
               className="cartCheckout"
               disabled={isSendingOrder || isPaying || orderSuccess || vippsSuccess}
               onClick={async () => {
-  if (!validateCustomer()) return;
+                if (!validateCustomer()) return;
 
-  setCheckoutError("");
-  setOrderSuccess(false);
-  setVippsSuccess(false);
-  setIsSendingOrder(true);
+                setCheckoutError("");
+                setOrderSuccess(false);
+                setVippsSuccess(false);
+                setIsSendingOrder(true);
 
-  const orderText = cart
-    .map(
-      (item, index) =>
-        `${index + 1}. ${item.title} - ${item.color} - ${item.price}`
-    )
-    .join("\n");
+                const orderText = cart
+                  .map(
+                    (item, index) =>
+                      `${index + 1}. ${item.title} - ${item.color} - ${item.price}`
+                  )
+                  .join("\n");
 
-  try {
-    const response = await fetch("https://formspree.io/f/xlgkegbv", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-body: JSON.stringify({
-  navn: customer.name,
-  adresse: customer.address,
-  telefon: customer.phone,
-  email: customer.email,
-  varer: orderText,
-  total: totalPrice,
-})
-});
-  
-    if (!response.ok) {
-      throw new Error("Kunne ikke sende bestilling");
-    }
+                try {
+                  const response = await fetch("https://formspree.io/f/xlgkegbv", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Accept: "application/json",
+                    },
+                    body: JSON.stringify({
+                      navn: customer.name,
+                      adresse: customer.address,
+                      telefon: customer.phone,
+                      email: customer.email,
+                      varer: orderText,
+                      total: `${totalPrice} kr`,
+                    }),
+                  });
 
-    setIsSendingOrder(false);
-    setOrderSuccess(true);
+                  if (!response.ok) {
+                    throw new Error("Kunne ikke sende bestilling");
+                  }
 
-    setTimeout(() => {
-      setCart([]);
-      setOrderSuccess(false);
-      setCustomer({
-     name: "",
-     address: "",
-     phone: "",
-     email: "",
-   });
-  
-    }, 3000);
-  } catch (error) {
-    setIsSendingOrder(false);
-    setCheckoutError("Noe gikk galt. Prøv igjen eller kontakt oss direkte.");
-     }
-    }}
-    >
+                  setIsSendingOrder(false);
+                  setOrderSuccess(true);
+
+                  setTimeout(() => {
+                    setCart([]);
+                    setOrderSuccess(false);
+                    setCustomer({
+                      name: "",
+                      address: "",
+                      phone: "",
+                      email: "",
+                    });
+                  }, 3000);
+                } catch (error) {
+                  setIsSendingOrder(false);
+                  setCheckoutError("Noe gikk galt. Prøv igjen eller kontakt oss direkte.");
+                }
+              }}
+            >
               {isSendingOrder ? "Sender bestilling..." : "Send bestilling →"}
             </button>
 
