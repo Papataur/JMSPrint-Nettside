@@ -78,9 +78,9 @@ function ProductItem({
           ></span>
 
           <span
-            className={`colorDot gray ${selectedColor === "Grå" ? "selected" : ""}`}
+            className={`colorDot grey ${selectedColor === "Grå" ? "selected" : ""}`}
             title="Grå"
-            onClick={() => chooseColor("Grå", colorImages.gray)}
+            onClick={() => chooseColor("Grå", colorImages.grey)}
           ></span>
 
           <span
