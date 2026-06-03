@@ -124,10 +124,11 @@ export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [cart, setCart] = useState([]);
   const [customer, setCustomer] = useState({
-    name: "",
-    address: "",
-    phone: "",
-  });
+  name: "",
+  address: "",
+  phone: "",
+  email: "",
+});
 
   const [showToast, setShowToast] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
@@ -410,7 +411,16 @@ export default function App() {
               }
             />
 
-            <button
+            <input
+             type="email"
+             placeholder="E-post"
+             value={customer.email}
+             onChange={(e) =>
+             setCustomer({ ...customer, email: e.target.value })
+            }
+         />
+
+              <button
               className="cartCheckout"
               disabled={isSendingOrder || isPaying || orderSuccess || vippsSuccess}
               onClick={async () => {
@@ -435,15 +445,14 @@ export default function App() {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify({
-        _subject: "Ny bestilling fra JMSPrint",
-        navn: customer.name,
-        adresse: customer.address,
-        telefon: customer.phone,
-        varer: orderText,
-        total: `${totalPrice} kr`,
-      }),
-    });
+body: JSON.stringify({
+  navn: customer.name,
+  adresse: customer.address,
+  telefon: customer.phone,
+  email: customer.email,
+  varer: orderText,
+  total: totalPrice,
+})
 
     if (!response.ok) {
       throw new Error("Kunne ikke sende bestilling");
