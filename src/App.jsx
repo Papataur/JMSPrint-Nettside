@@ -301,9 +301,12 @@ export default function App() {
       </section>
 
       <section className="contact" id="kontakt">
-        <h2>Har du en idé?</h2>
+        <h2>Ønsker du et spesialdesignet 3D-print?</h2>
 
-        <p>Vi kan ofte lage en løsning som passer perfekt til ditt behov.</p>
+        <p>
+        Har du en egen idé eller trenger en spesialtilpasset løsning?
+        Ta kontakt, så ser vi på mulighetene for å designe og 3D-printe produktet for deg.
+        </p>>
 
         <div className="contactBox">
           <p className="contactTitle">Kontakt oss</p>
