@@ -299,7 +299,7 @@ export default function App() {
     white: deskholderWhite,
     blue: deskholderBlue,
     pink: deskholderPink,
-    grey: deskholderGrey,
+    grey: deskholder,
   }}
   title="Justerbar bordholder"
   price="149 kr + frakt"
