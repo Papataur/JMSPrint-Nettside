@@ -886,7 +886,14 @@ h1 span {
 .colorDot.selected {
   outline: 3px solid #60a5fa;
   outline-offset: 3px;
-  box-shadow: 0 0 18px rgba(96, 165, 250, 0.75);
+}
+
+.colorDot.white.selected {
+  background: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  box-shadow:
+    0 0 0 2px #60a5fa,
+    0 0 14px rgba(96, 165, 250, 0.65);
 }
 
 .cartInfo small {
