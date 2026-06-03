@@ -3,7 +3,7 @@ import heroImage from "./heroimage.jpg";
 import "./style.css";
 import JMSPrint from "./logo.jpg";
 
-import deskholderGrey from "./deskholder-grey.jpg";
+import deskholder from "./deskholder.jpg";
 import deskholderBlack from "./deskholder-black.jpg"
 import deskholderBlue from "./deskholder-blue.jpg"
 import deskholderPink from "./deskholder-pink.jpg"
