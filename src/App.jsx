@@ -15,7 +15,7 @@ import holderpinkWhite from "./holderpink-white.jpg";
 import holderpinkGrey from "./holderpink-grey.jpg";
 import holderpinkBlue from "./holderpink-blue.jpg";
 
-import salttraktWhite from "./salttrakt-white.jpg";
+import salttraktWhite from "./salttrakt.jpg";
 import salttraktBlack from "./salttrakt-black.jpg";
 import salttraktGrey from "./salttrakt-grey.jpg";
 import salttraktBlue from "./salttrakt-blue.jpg";
