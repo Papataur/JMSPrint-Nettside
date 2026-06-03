@@ -5,7 +5,7 @@ import JMSPrint from "./logo.png";
 
 import holderpinkBlack from "./holderpink-black.jpg";
 import holderpinkWhite from "./holderpink-white.jpg";
-import holderpinkGray from "./holderpink-grey.jpg";
+import holderpinkGrey from "./holderpink-grey.jpg";
 import holderpinkBlue from "./holderpink-blue.jpg";
 
 import salttraktWhite from "./salttrakt-white.jpg";
