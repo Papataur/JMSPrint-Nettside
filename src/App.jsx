@@ -9,6 +9,7 @@ import deskholderBlue from "./deskholder-blue.jpg"
 import deskholderPink from "./deskholder-pink.jpg"
 import deskholderWhite from "./deskholder-white.jpg"
 
+import holderpink from "./holderpink.jpg";
 import holderpinkBlack from "./holderpink-black.jpg";
 import holderpinkWhite from "./holderpink-white.jpg";
 import holderpinkGrey from "./holderpink-grey.jpg";
@@ -19,9 +20,6 @@ import salttraktBlack from "./salttrakt-black.jpg";
 import salttraktGrey from "./salttrakt-grey.jpg";
 import salttraktBlue from "./salttrakt-blue.jpg";
 import salttraktPink from "./salttrakt-pink.jpg";
-
-import deskholder from "./deskholder.jpg";
-import holderpink from "./holderpink.jpg";
 
 function ProductItem({
   image,
