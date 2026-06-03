@@ -1,7 +1,7 @@
 import { useState } from "react";
-import heroImage from "./heroimage.png";
+import heroImage from "./heroimage.jpg";
 import "./style.css";
-import JMSPrint from "./logo.png";
+import JMSPrint from "./logo.jpg";
 
 import holderpinkBlack from "./holderpink-black.jpg";
 import holderpinkWhite from "./holderpink-white.jpg";
