@@ -466,10 +466,12 @@ body: JSON.stringify({
       setCart([]);
       setOrderSuccess(false);
       setCustomer({
-        name: "",
-        address: "",
-        phone: "",
-      });
+     name: "",
+     address: "",
+     phone: "",
+     email: "",
+   });
+  
     }, 3000);
   } catch (error) {
     setIsSendingOrder(false);
