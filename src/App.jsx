@@ -479,8 +479,10 @@ export default function App() {
             </button>
 
             {orderSuccess && (
-              <div className="paymentSuccess">✅ Bestilling sendt</div>
-            )}
+            <div className="paymentSuccess">
+            ✅ Bestilling sendt! Vi tar kontakt så snart som mulig.
+            </div>
+          )}
 
             {vippsSuccess && (
               <div className="paymentSuccess">✅ Betaling fullført</div>
