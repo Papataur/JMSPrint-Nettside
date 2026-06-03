@@ -426,7 +426,7 @@ export default function App() {
                     telefon: customer.phone,
                     email: customer.email,
                     varer: orderText,
-                    total: totalPrice,
+                    total: `${totalPrice} kr`,
                     }),
                   });
 
