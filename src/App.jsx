@@ -293,21 +293,21 @@ export default function App() {
           />
 
           <ProductItem
-          image={deskholder}
-          title="Justerbar bordholder"
-          price="149 kr + frakt"
-          text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
-          onImageClick={setSelectedImage}
-          onAddToCart={addToCart}
-          isFavorite={favorites.includes("Justerbar bordholder")}
-          onToggleFavorite={toggleFavorite}
-
-          colorImages={{
-          Sort: deskholderBlack,
-          Hvit: deskholderWhite,
-          Blå: deskholderBlue,
-          Rosa: deskholderPink
-     }}
+  image={deskholder}
+  colorImages={{
+    black: deskholderBlack,
+    white: deskholderWhite,
+    blue: deskholderBlue,
+    pink: deskholderPink,
+  }}
+  title="Justerbar bordholder"
+  price="149 kr + frakt"
+  text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
+  onImageClick={setSelectedImage}
+  onAddToCart={addToCart}
+  isFavorite={favorites.includes("Justerbar bordholder")}
+  onToggleFavorite={toggleFavorite}
+/>
    
           <ProductItem
             image={holderpink}
