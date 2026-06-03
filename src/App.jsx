@@ -279,7 +279,7 @@ export default function App() {
             colorImages={{
               white: salttraktWhite,
               black: salttraktBlack,
-              gray: salttraktGrey,
+              grey: salttraktGrey,
               blue: salttraktBlue,
               pink: salttraktPink,
             }}
@@ -299,6 +299,7 @@ export default function App() {
     white: deskholderWhite,
     blue: deskholderBlue,
     pink: deskholderPink,
+    grey: deskholderGrey,
   }}
   title="Justerbar bordholder"
   price="149 kr + frakt"
