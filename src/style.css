@@ -456,8 +456,9 @@ h1 span {
 }
 
 .colorDot.white {
-  background: #ffffff !important;
-  border: 2px solid #d1d5db !important;
+  background: #ffffff;
+  border: 2px solid #94a3b8;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.9);
 }
 
 .colorDot.gray {
@@ -893,19 +894,4 @@ h1 span {
   font-size: 12px;
 }
 
-.colorOptions .colorDot.white {
-  background: #ffffff !important;
-  border: 2px solid #ffffff !important;
-  box-shadow:
-    0 0 0 1px rgba(15, 23, 42, 0.8),
-    0 0 12px rgba(255,255,255,0.45) !important;
-}
 
-.colorDot.white,
-.colorOptions .colorDot.white,
-span.colorDot.white {
-  background: white !important;
-  background-color: white !important;
-  border: 2px solid #cbd5e1 !important;
-  box-shadow: none !important;
-}
