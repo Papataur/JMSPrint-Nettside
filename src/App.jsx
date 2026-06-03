@@ -3,6 +3,10 @@ import heroImage from "./heroimage.png";
 import "./style.css";
 import JMSPrint from "./logo.png";
 
+import holderpinkBlack from "./holderpink-black.jpg";
+import holderpinkWhite from "./holderpink-white.jpg";
+import holderpinkGray from "./holderpink-gray.jpg";
+import holderpinkBlue from "./holderpink-blue.jpg";
 import salttraktWhite from "./salttrakt-white.png";
 import salttraktBlack from "./salttrakt-black.png";
 import salttraktGrey from "./salttrakt-grey.png";
@@ -289,17 +293,22 @@ export default function App() {
           />
 
           <ProductItem
-            image={holderpink}
-            title="Praktisk veggholder"
-            price="89 kr + frakt"
-            text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
-            onImageClick={setSelectedImage}
-            onAddToCart={addToCart}
-            isFavorite={favorites.includes("Praktisk veggholder")}
-            onToggleFavorite={toggleFavorite}
-          />
-        </div>
-      </section>
+  image={holderpink}
+  colorImages={{
+    pink: holderpink,
+    black: holderpinkBlack,
+    white: holderpinkWhite,
+    gray: holderpinkGray,
+    blue: holderpinkBlue,
+  }}
+  title="Praktisk veggholder"
+  price="89 kr + frakt"
+  text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
+  onImageClick={setSelectedImage}
+  onAddToCart={addToCart}
+  isFavorite={favorites.includes("Praktisk veggholder")}
+  onToggleFavorite={toggleFavorite}
+/>
 
       <section className="contact" id="kontakt">
         <h2>Har du en idé?</h2>
