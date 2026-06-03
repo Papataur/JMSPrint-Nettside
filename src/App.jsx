@@ -464,8 +464,9 @@ export default function App() {
   } catch (error) {
     setIsSendingOrder(false);
     setCheckoutError("Noe gikk galt. Prøv igjen eller kontakt oss direkte.");
-  }
-}}
+     }
+    }}
+    >
               {isSendingOrder ? "Sender bestilling..." : "Send bestilling →"}
             </button>
 
