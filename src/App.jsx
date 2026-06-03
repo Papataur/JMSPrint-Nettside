@@ -453,7 +453,8 @@ body: JSON.stringify({
   varer: orderText,
   total: totalPrice,
 })
-
+});
+  
     if (!response.ok) {
       throw new Error("Kunne ikke sende bestilling");
     }
