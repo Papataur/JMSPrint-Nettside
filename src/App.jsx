@@ -8,11 +8,11 @@ import holderpinkWhite from "./holderpink-white.jpg";
 import holderpinkGray from "./holderpink-gray.jpg";
 import holderpinkBlue from "./holderpink-blue.jpg";
 
-import salttraktWhite from "./salttrakt-white.png";
-import salttraktBlack from "./salttrakt-black.png";
-import salttraktGrey from "./salttrakt-grey.png";
-import salttraktBlue from "./salttrakt-blue.png";
-import salttraktPink from "./salttrakt-pink.png";
+import salttraktWhite from "./salttrakt-white.jpg";
+import salttraktBlack from "./salttrakt-black.jpg";
+import salttraktGrey from "./salttrakt-grey.jpg";
+import salttraktBlue from "./salttrakt-blue.jpg";
+import salttraktPink from "./salttrakt-pink.jpg";
 
 import deskholder from "./deskholder.jpg";
 import holderpink from "./holderpink.jpg";
