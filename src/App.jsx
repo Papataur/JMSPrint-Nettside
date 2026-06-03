@@ -7,6 +7,7 @@ import holderpinkBlack from "./holderpink-black.jpg";
 import holderpinkWhite from "./holderpink-white.jpg";
 import holderpinkGray from "./holderpink-gray.jpg";
 import holderpinkBlue from "./holderpink-blue.jpg";
+
 import salttraktWhite from "./salttrakt-white.png";
 import salttraktBlack from "./salttrakt-black.png";
 import salttraktGrey from "./salttrakt-grey.png";
@@ -241,13 +242,19 @@ export default function App() {
           <div className="productCard">
             <div className="icon">🔧</div>
             <h3>Smarte Smådeler</h3>
-            <p>Reservedeler, braketter, holdere og praktiske produkter laget med 3D-print.</p>
+            <p>
+              Reservedeler, braketter, holdere og praktiske produkter laget med
+              3D-print.
+            </p>
           </div>
 
           <div className="productCard">
             <div className="icon">📦</div>
             <h3>Prototype & Hobby</h3>
-            <p>Perfekt for hobbyprosjekter, garage, RC, akvarium og kreative idéer.</p>
+            <p>
+              Perfekt for hobbyprosjekter, garage, RC, akvarium og kreative
+              idéer.
+            </p>
           </div>
         </div>
       </section>
@@ -293,26 +300,25 @@ export default function App() {
           />
 
           <ProductItem
-  image={holderpink}
-  colorImages={{
-    pink: holderpink,
-    black: holderpinkBlack,
-    white: holderpinkWhite,
-    gray: holderpinkGray,
-    blue: holderpinkBlue,
-  }}
-  title="Praktisk veggholder"
-  price="89 kr + frakt"
-  text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
-  onImageClick={setSelectedImage}
-  onAddToCart={addToCart}
-  isFavorite={favorites.includes("Praktisk veggholder")}
-  onToggleFavorite={toggleFavorite}
-/>
-
+            image={holderpink}
+            colorImages={{
+              pink: holderpink,
+              black: holderpinkBlack,
+              white: holderpinkWhite,
+              gray: holderpinkGray,
+              blue: holderpinkBlue,
+            }}
+            title="Praktisk veggholder"
+            price="89 kr + frakt"
+            text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
+            onImageClick={setSelectedImage}
+            onAddToCart={addToCart}
+            isFavorite={favorites.includes("Praktisk veggholder")}
+            onToggleFavorite={toggleFavorite}
+          />
         </div>
-       </section>
-          
+      </section>
+
       <section className="contact" id="kontakt">
         <h2>Har du en idé?</h2>
 
