@@ -413,24 +413,59 @@ export default function App() {
             <button
               className="cartCheckout"
               disabled={isSendingOrder || isPaying || orderSuccess || vippsSuccess}
-              onClick={() => {
-                if (!validateCustomer()) return;
+              onClick={async () => {
+  if (!validateCustomer()) return;
 
-                setOrderSuccess(false);
-                setVippsSuccess(false);
-                setIsSendingOrder(true);
+  setCheckoutError("");
+  setOrderSuccess(false);
+  setVippsSuccess(false);
+  setIsSendingOrder(true);
 
-                setTimeout(() => {
-                  setIsSendingOrder(false);
-                  setOrderSuccess(true);
+  const orderText = cart
+    .map(
+      (item, index) =>
+        `${index + 1}. ${item.title} - ${item.color} - ${item.price}`
+    )
+    .join("\n");
 
-                  setTimeout(() => {
-                    setCart([]);
-                    setOrderSuccess(false);
-                  }, 3000);
-                }, 1800);
-              }}
-            >
+  try {
+    const response = await fetch("https://formspree.io/f/xlgkegbv", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        _subject: "Ny bestilling fra JMSPrint",
+        navn: customer.name,
+        adresse: customer.address,
+        telefon: customer.phone,
+        varer: orderText,
+        total: `${totalPrice} kr`,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Kunne ikke sende bestilling");
+    }
+
+    setIsSendingOrder(false);
+    setOrderSuccess(true);
+
+    setTimeout(() => {
+      setCart([]);
+      setOrderSuccess(false);
+      setCustomer({
+        name: "",
+        address: "",
+        phone: "",
+      });
+    }, 3000);
+  } catch (error) {
+    setIsSendingOrder(false);
+    setCheckoutError("Noe gikk galt. Prøv igjen eller kontakt oss direkte.");
+  }
+}}
               {isSendingOrder ? "Sender bestilling..." : "Send bestilling →"}
             </button>
 
