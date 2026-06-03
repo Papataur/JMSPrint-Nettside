@@ -3,14 +3,18 @@ import heroImage from "./heroimage.png";
 import "./style.css";
 import JMSPrint from "./logo.png";
 
-import salttrakt from "./salttrakt.jpg";
+import salttraktWhite from "./salttrakt-white.png";
+import salttraktBlack from "./salttrakt-black.png";
+import salttraktGrey from "./salttrakt-grey.png";
 import salttraktBlue from "./salttrakt-blue.png";
+import salttraktPink from "./salttrakt-pink.png";
+
 import deskholder from "./deskholder.jpg";
 import holderpink from "./holderpink.jpg";
 
 function ProductItem({
   image,
-  blueImage,
+  colorImages = {},
   title,
   price,
   text,
@@ -20,9 +24,10 @@ function ProductItem({
   onToggleFavorite,
 }) {
   const [selectedImage, setSelectedImage] = useState(image);
-  const [selectedColor, setSelectedColor] = useState("standard");
+  const [selectedColor, setSelectedColor] = useState("Standard");
 
   const chooseColor = (color, img) => {
+    if (!img) return;
     setSelectedColor(color);
     setSelectedImage(img);
   };
@@ -55,27 +60,35 @@ function ProductItem({
         <p className="colorLabel">Tilgjengelige farger</p>
 
         <div className="colorOptions">
-          <span className="colorDot black" title="Sort"></span>
+          <span
+            className={`colorDot black ${selectedColor === "Sort" ? "selected" : ""}`}
+            title="Sort"
+            onClick={() => chooseColor("Sort", colorImages.black)}
+          ></span>
 
           <span
             className={`colorDot white ${selectedColor === "Hvit" ? "selected" : ""}`}
             title="Hvit"
-            onClick={() => chooseColor("Hvit", image)}
+            onClick={() => chooseColor("Hvit", colorImages.white || image)}
           ></span>
 
-          <span className="colorDot gray" title="Grå"></span>
+          <span
+            className={`colorDot gray ${selectedColor === "Grå" ? "selected" : ""}`}
+            title="Grå"
+            onClick={() => chooseColor("Grå", colorImages.gray)}
+          ></span>
 
-          {blueImage ? (
-            <span
-              className={`colorDot blue ${selectedColor === "Blå" ? "selected" : ""}`}
-              title="Blå"
-              onClick={() => chooseColor("Blå", blueImage)}
-            ></span>
-          ) : (
-            <span className="colorDot blue" title="Blå"></span>
-          )}
+          <span
+            className={`colorDot blue ${selectedColor === "Blå" ? "selected" : ""}`}
+            title="Blå"
+            onClick={() => chooseColor("Blå", colorImages.blue)}
+          ></span>
 
-          <span className="colorDot pink" title="Rosa"></span>
+          <span
+            className={`colorDot pink ${selectedColor === "Rosa" ? "selected" : ""}`}
+            title="Rosa"
+            onClick={() => chooseColor("Rosa", colorImages.pink)}
+          ></span>
         </div>
 
         <p>{text}</p>
@@ -87,7 +100,7 @@ function ProductItem({
             onAddToCart({
               title,
               price,
-              color: selectedColor === "standard" ? "Standard" : selectedColor,
+              color: selectedColor,
             })
           }
         >
@@ -247,8 +260,14 @@ export default function App() {
 
         <div className="shopGrid">
           <ProductItem
-            image={salttrakt}
-            blueImage={salttraktBlue}
+            image={salttraktWhite}
+            colorImages={{
+              white: salttraktWhite,
+              black: salttraktBlack,
+              gray: salttraktGrey,
+              blue: salttraktBlue,
+              pink: salttraktPink,
+            }}
             title="Salttrakt til oppvaskmaskin"
             price="69 kr + frakt"
             text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
