@@ -16,7 +16,7 @@ import salttraktPink from "./salttrakt-pink.jpg";
 
 import deskholder from "./deskholder.jpg";
 import holderpink from "./holderpink.jpg";
-
+F
 function ProductItem({
   image,
   colorImages = {},
@@ -275,7 +275,7 @@ export default function App() {
             colorImages={{
               white: salttraktWhite,
               black: salttraktBlack,
-              gray: salttraktGrey,
+              grey: salttraktGrey,
               blue: salttraktBlue,
               pink: salttraktPink,
             }}
@@ -305,7 +305,7 @@ export default function App() {
               pink: holderpink,
               black: holderpinkBlack,
               white: holderpinkWhite,
-              gray: holderpinkGray,
+              grey: holderpinkGray,
               blue: holderpinkBlue,
             }}
             title="Praktisk veggholder"
