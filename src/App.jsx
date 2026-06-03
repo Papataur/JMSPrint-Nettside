@@ -82,9 +82,9 @@ function ProductItem({
           />
 
           <span
-            className={`colorDot gray ${selectedColor === "Grå" ? "selected" : ""}`}
+            className={`colorDot grey ${selectedColor === "Grå" ? "selected" : ""}`}
             title="Grå"
-            onClick={() => chooseColor("Grå", colorImages.gray)}
+            onClick={() => chooseColor("Grå", colorImages.grey)}
           />
 
           <span
@@ -316,7 +316,7 @@ export default function App() {
               pink: holderpink,
               black: holderpinkBlack,
               white: holderpinkWhite,
-              gray: holderpinkGrey,
+              grey: holderpinkGrey,
               blue: holderpinkBlue,
             }}
             title="Praktisk veggholder"
