@@ -33,7 +33,7 @@ function ProductItem({
   onToggleFavorite,
 }) {
   const [selectedImage, setSelectedImage] = useState(image);
-  const [selectedColor, setSelectedColor] = useState("Standard");
+  const [selectedColor, setSelectedColor] = useState("Ikke valgt");
 
   const chooseColor = (color, img) => {
     if (!img) return;
@@ -139,8 +139,8 @@ export default function App() {
   const [favorites, setFavorites] = useState([]);
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
-    setShowToast(true);
+  setCart([...cart, product]);
+  };
 
     setTimeout(() => {
       setShowToast(false);
