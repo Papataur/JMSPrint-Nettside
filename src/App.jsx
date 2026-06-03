@@ -3,6 +3,12 @@ import heroImage from "./heroimage.jpg";
 import "./style.css";
 import JMSPrint from "./logo.jpg";
 
+import deskholder from "./deskholder.jpg"
+import deskholderBlack from "./deskholder-black.jpg"
+import deskholderBlue from "./deskholder-blue.jpg"
+import deskholderPink from "./deskholder-pink.jpg"
+import deskholderWhite from "./deskholder-white.jpg"
+
 import holderpinkBlack from "./holderpink-black.jpg";
 import holderpinkWhite from "./holderpink-white.jpg";
 import holderpinkGrey from "./holderpink-grey.jpg";
@@ -289,16 +295,23 @@ export default function App() {
           />
 
           <ProductItem
-            image={deskholder}
-            title="Justerbar bordholder"
-            price="149 kr + frakt"
-            text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
-            onImageClick={setSelectedImage}
-            onAddToCart={addToCart}
-            isFavorite={favorites.includes("Justerbar bordholder")}
-            onToggleFavorite={toggleFavorite}
-          />
+          image={deskholder}
+          title="Justerbar bordholder"
+          price="149 kr + frakt"
+          text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
+          onImageClick={setSelectedImage}
+          onAddToCart={addToCart}
+          isFavorite={favorites.includes("Justerbar bordholder")}
+          onToggleFavorite={toggleFavorite}
 
+          colorImages={{
+          Sort: deskholderBlack,
+          Hvit: deskholderWhite,
+          Blå: deskholderBlue,
+          Rosa: deskholderPink
+     }}
+   />
+          
           <ProductItem
             image={holderpink}
             colorImages={{
