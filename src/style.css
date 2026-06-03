@@ -900,3 +900,12 @@ h1 span {
     0 0 0 1px rgba(15, 23, 42, 0.8),
     0 0 12px rgba(255,255,255,0.45) !important;
 }
+
+.colorDot.white,
+.colorOptions .colorDot.white,
+span.colorDot.white {
+  background: white !important;
+  background-color: white !important;
+  border: 2px solid #cbd5e1 !important;
+  box-shadow: none !important;
+}
