@@ -309,7 +309,9 @@ export default function App() {
   isFavorite={favorites.includes("Praktisk veggholder")}
   onToggleFavorite={toggleFavorite}
 />
-
+</div>
+</section>
+          
       <section className="contact" id="kontakt">
         <h2>Har du en idé?</h2>
 
