@@ -16,7 +16,7 @@ import salttraktPink from "./salttrakt-pink.jpg";
 
 import deskholder from "./deskholder.jpg";
 import holderpink from "./holderpink.jpg";
-F
+
 function ProductItem({
   image,
   colorImages = {},
@@ -69,31 +69,31 @@ function ProductItem({
             className={`colorDot black ${selectedColor === "Sort" ? "selected" : ""}`}
             title="Sort"
             onClick={() => chooseColor("Sort", colorImages.black)}
-          ></span>
+          />
 
           <span
             className={`colorDot white ${selectedColor === "Hvit" ? "selected" : ""}`}
             title="Hvit"
             onClick={() => chooseColor("Hvit", colorImages.white || image)}
-          ></span>
+          />
 
           <span
-            className={`colorDot grey ${selectedColor === "Grå" ? "selected" : ""}`}
+            className={`colorDot gray ${selectedColor === "Grå" ? "selected" : ""}`}
             title="Grå"
-            onClick={() => chooseColor("Grå", colorImages.grey)}
-          ></span>
+            onClick={() => chooseColor("Grå", colorImages.gray)}
+          />
 
           <span
             className={`colorDot blue ${selectedColor === "Blå" ? "selected" : ""}`}
             title="Blå"
             onClick={() => chooseColor("Blå", colorImages.blue)}
-          ></span>
+          />
 
           <span
             className={`colorDot pink ${selectedColor === "Rosa" ? "selected" : ""}`}
             title="Rosa"
             onClick={() => chooseColor("Rosa", colorImages.pink)}
-          ></span>
+          />
         </div>
 
         <p>{text}</p>
@@ -275,7 +275,7 @@ export default function App() {
             colorImages={{
               white: salttraktWhite,
               black: salttraktBlack,
-              grey: salttraktGrey,
+              gray: salttraktGrey,
               blue: salttraktBlue,
               pink: salttraktPink,
             }}
@@ -305,7 +305,7 @@ export default function App() {
               pink: holderpink,
               black: holderpinkBlack,
               white: holderpinkWhite,
-              grey: holderpinkGray,
+              gray: holderpinkGrey,
               blue: holderpinkBlue,
             }}
             title="Praktisk veggholder"
