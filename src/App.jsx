@@ -21,10 +21,6 @@ import salttraktGrey from "./salttrakt-grey.jpg";
 import salttraktBlue from "./salttrakt-blue.jpg";
 import salttraktPink from "./salttrakt-pink.jpg";
 
-import boksaapner from "./boksaapner.jpg";
-import snusboks from "./snusboks.jpg";
-import justerbarStraaledyse from "./justerbar-straaledyse.jpg";
-
 function ProductItem({
   image,
   colorImages = {},
@@ -137,13 +133,9 @@ export default function App() {
     setCart(cart.filter((_, index) => index !== indexToRemove));
   };
 
-  const shippingPrice = cart.length > 0 ? 69 : 0;
-
-const productTotal = cart.reduce((total, item) => {
-  return total + parseInt(item.price);
-}, 0);
-
-const totalPrice = productTotal + shippingPrice;
+  const totalPrice = cart.reduce((total, item) => {
+    return total + parseInt(item.price);
+  }, 0);
 
   const toggleFavorite = (title) => {
     if (favorites.includes(title)) {
@@ -263,7 +255,7 @@ const totalPrice = productTotal + shippingPrice;
               pink: salttraktPink,
             }}
             title="Salttrakt til oppvaskmaskin"
-            price="69 kr"
+            price="69 kr + frakt"
             text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
@@ -281,7 +273,7 @@ const totalPrice = productTotal + shippingPrice;
               grey: deskholder,
             }}
             title="Justerbar bordholder"
-            price="149 kr"
+            price="149 kr + frakt"
             text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
@@ -289,39 +281,6 @@ const totalPrice = productTotal + shippingPrice;
             onToggleFavorite={toggleFavorite}
           />
 
-          <ProductItem
-            image={boksaapner}
-            title="Boksåpner"
-            price="49 kr"
-            text="Praktisk boksåpner som gjør det enklere å åpne brusbokser uten å skade negler eller fingre."
-            onImageClick={setSelectedImage}
-            onAddToCart={addToCart}
-            isFavorite={favorites.includes("Boksåpner")}
-            onToggleFavorite={toggleFavorite}
-          />
-
-           <ProductItem
-           image={snusboks}
-           title="Snusboks"
-           price="99 kr"
-           text="Solid 3D-printet snusboks med skrulokk. Produsert i slitesterk PETG."
-           onImageClick={setSelectedImage}
-           onAddToCart={addToCart}
-           isFavorite={favorites.includes("Snusboks")}
-           onToggleFavorite={toggleFavorite}
-          />
-
-           <ProductItem
-           image={justerbarStraaledyse}
-           title="Justerbar stråledyse"
-           price="129 kr"
-           text="Justerbar stråledyse som gir bedre kontroll på vannstrålen ved vask og hagearbeid."
-           onImageClick={setSelectedImage}
-           onAddToCart={addToCart}
-           isFavorite={favorites.includes("Justerbar stråledyse")}
-           onToggleFavorite={toggleFavorite}
-          />
-     
           <ProductItem
             image={holderpink}
             colorImages={{
@@ -332,7 +291,7 @@ const totalPrice = productTotal + shippingPrice;
               blue: holderpinkBlue,
             }}
             title="Praktisk veggholder"
-            price="89 kr"
+            price="89 kr + frakt"
             text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
@@ -392,16 +351,8 @@ const totalPrice = productTotal + shippingPrice;
             </div>
           ))}
 
-          <div className="cartTotal">
-  Varer: {productTotal} kr
-  <br />
-  Frakt: {shippingPrice} kr
-  <hr />
-  <strong>Total: {totalPrice} kr</strong>
-</div>
-<p className="shippingInfo">
-  📦 Fast frakt: 69 kr i hele Norge
-</p>
+          <div className="cartTotal">Total: {totalPrice} kr</div>
+
           <div className="checkoutForm">
             <input
               type="text"
