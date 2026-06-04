@@ -542,6 +542,10 @@ h1 span {
   z-index: 5;
 }
 
+.orderBadge {
+  background: #ff9800;
+}
+
 .stars {
   color: #fbbf24;
   font-size: 14px;
