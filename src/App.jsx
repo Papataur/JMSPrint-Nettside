@@ -31,6 +31,7 @@ function ProductItem({
   title,
   price,
   text,
+  stockStatus = "På lager",
   onImageClick,
   onAddToCart,
   isFavorite,
@@ -47,7 +48,9 @@ function ProductItem({
 
   return (
     <div className="shopCard">
-      <div className="badge">På lager</div>
+      <div className={`badge ${stockStatus === "Bestillingsvare" ? "orderBadge" : ""}`}>
+  {stockStatus}
+</div>
 
       <button
         className={`favoriteButton ${isFavorite ? "active" : ""}`}
