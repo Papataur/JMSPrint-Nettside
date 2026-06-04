@@ -31,7 +31,7 @@ function ProductItem({
   title,
   price,
   text,
-  stockStatus = "På lager",
+  stockStatus = "Bestillingsvare",
   onImageClick,
   onAddToCart,
   isFavorite,
