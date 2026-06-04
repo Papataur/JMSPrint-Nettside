@@ -305,7 +305,8 @@ const totalPrice = productTotal + shippingPrice;
             onAddToCart={addToCart}
             isFavorite={favorites.includes("Praktisk veggholder")}
             onToggleFavorite={toggleFavorite}
-
+           />
+          
           <ProductItem
   image={boksaapner}
   colorImages={{
