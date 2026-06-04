@@ -116,6 +116,7 @@ export default function App() {
   const [isPaying, setIsPaying] = useState(false);
   const [isSendingOrder, setIsSendingOrder] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
+  const [lastOrderNumber, setLastOrderNumber] = useState("");
   const [vippsSuccess, setVippsSuccess] = useState(false);
   const [favorites, setFavorites] = useState([]);
 
@@ -411,7 +412,7 @@ export default function App() {
                  new Date().toISOString().slice(0, 10).replace(/-/g, "") +
                   "-" +
                  Math.floor(1000 + Math.random() * 9000);
-                 setOrderNumber(orderNumber);
+                 setLastOrderNumber(orderNumber);
          
                 try {
                   const response = await fetch("https://formspree.io/f/xlgkegbv", {
@@ -441,13 +442,14 @@ export default function App() {
                   setTimeout(() => {
                     setCart([]);
                     setOrderSuccess(false);
+                    setLastOrderNumber("");
                     setCustomer({
                       name: "",
                       address: "",
                       phone: "",
                       email: "",
                     });
-                  }, 3000);
+                  }, 6000);
                 } catch (error) {
                   setIsSendingOrder(false);
                   setCheckoutError("Noe gikk galt. Prøv igjen eller kontakt oss direkte.");
@@ -489,7 +491,7 @@ export default function App() {
             <div className="paymentSuccess">
             <strong>✅ Bestilling sendt!</strong>
             <br />
-            Ordrenummer: {orderNumber}
+            Ordrenummer: {lastOrderNumber}
             <br />
             Vi tar kontakt så snart som mulig.
             </div>
