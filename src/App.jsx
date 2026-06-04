@@ -346,8 +346,7 @@ const totalPrice = productTotal + shippingPrice;
   onAddToCart={addToCart}
   isFavorite={favorites.includes("Snusboks")}
   onToggleFavorite={toggleFavorite}
-/>       
-          />
+       />
         </div>
       </section>
 
