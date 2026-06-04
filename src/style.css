@@ -901,4 +901,9 @@ h1 span {
   font-size: 12px;
 }
 
-
+.shippingInfo {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.8;
+  margin: 10px 0 15px;
+}
