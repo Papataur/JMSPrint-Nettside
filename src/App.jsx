@@ -489,11 +489,9 @@ export default function App() {
 
             {orderSuccess && (
             <div className="paymentSuccess">
-            <strong>✅ Bestilling sendt!</strong>
-            <br />
-            Ordrenummer: {lastOrderNumber}
-            <br />
-            Vi tar kontakt så snart som mulig.
+            <div>✅ Bestilling sendt!</div>
+            <div>📦 {lastOrderNumber}</div>
+            <div>Vi tar kontakt så snart som mulig.</div>
             </div>
             )}
 
