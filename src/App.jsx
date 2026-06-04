@@ -411,6 +411,7 @@ export default function App() {
                  new Date().toISOString().slice(0, 10).replace(/-/g, "") +
                   "-" +
                  Math.floor(1000 + Math.random() * 9000);
+                 setOrderNumber(orderNumber);
          
                 try {
                   const response = await fetch("https://formspree.io/f/xlgkegbv", {
@@ -486,9 +487,13 @@ export default function App() {
 
             {orderSuccess && (
             <div className="paymentSuccess">
-            ✅ Bestilling sendt! Vi tar kontakt så snart som mulig.
+            <strong>✅ Bestilling sendt!</strong>
+            <br />
+            Ordrenummer: {orderNumber}
+            <br />
+            Vi tar kontakt så snart som mulig.
             </div>
-          )}
+            )}
 
             {vippsSuccess && (
               <div className="paymentSuccess">✅ Betaling fullført</div>
