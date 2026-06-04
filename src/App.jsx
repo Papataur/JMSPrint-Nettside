@@ -133,13 +133,9 @@ export default function App() {
     setCart(cart.filter((_, index) => index !== indexToRemove));
   };
 
-  const shippingPrice = cart.length > 0 ? 69 : 0;
-
-  const productTotal = cart.reduce((total, item) => {
-  return total + parseInt(item.price);
+  const totalPrice = cart.reduce((total, item) => {
+    return total + parseInt(item.price);
   }, 0);
-
-  const totalPrice = productTotal + shippingPrice;
 
   const toggleFavorite = (title) => {
     if (favorites.includes(title)) {
@@ -355,19 +351,7 @@ export default function App() {
             </div>
           ))}
 
-          <div className="cartTotal">
-          Varer: {productTotal} kr
-         <br />
-         Frakt: {shippingPrice} kr
-         <hr />
-         <strong>Total: {totalPrice} kr</strong>
-         </div>
-
-         <p className="shippingInfo">
-         Fast frakt: 69 kr per ordre.
-         </p>
-
-         <div className="checkoutForm">
+          <div className="cartTotal">Total: {totalPrice} kr</div>
 
           <div className="checkoutForm">
             <input
@@ -444,7 +428,6 @@ export default function App() {
                     telefon: customer.phone,
                     email: customer.email,
                     varer: orderText,
-                    frakt: `${shippingPrice} kr`,
                     total: `${totalPrice} kr`,
                     }),
                   });
@@ -506,9 +489,11 @@ export default function App() {
 
             {orderSuccess && (
             <div className="paymentSuccess">
-            <div>✅ Bestilling sendt!</div>
-            <div>📦 {lastOrderNumber}</div>
-            <div>Vi tar kontakt så snart som mulig.</div>
+            <strong>✅ Bestilling sendt!</strong>
+            <br />
+            Ordrenummer: {lastOrderNumber}
+            <br />
+            Vi tar kontakt så snart som mulig.
             </div>
             )}
 
