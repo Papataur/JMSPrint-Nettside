@@ -290,6 +290,39 @@ const totalPrice = productTotal + shippingPrice;
           />
 
           <ProductItem
+            image={boksaapner}
+            title="Boksåpner"
+            price="49 kr"
+            text="Praktisk boksåpner som gjør det enklere å åpne brusbokser uten å skade negler eller fingre."
+            onImageClick={setSelectedImage}
+            onAddToCart={addToCart}
+            isFavorite={favorites.includes("Boksåpner")}
+            onToggleFavorite={toggleFavorite}
+          />
+
+           <ProductItem
+           image={snusboks}
+           title="Snusboks"
+           price="99 kr"
+           text="Solid 3D-printet snusboks med skrulokk. Produsert i slitesterk PETG."
+           onImageClick={setSelectedImage}
+           onAddToCart={addToCart}
+           isFavorite={favorites.includes("Snusboks")}
+           onToggleFavorite={toggleFavorite}
+          />
+
+           <ProductItem
+           image={justerbarStraaledyse}
+           title="Justerbar stråledyse"
+           price="129 kr"
+           text="Justerbar stråledyse som gir bedre kontroll på vannstrålen ved vask og hagearbeid."
+           onImageClick={setSelectedImage}
+           onAddToCart={addToCart}
+           isFavorite={favorites.includes("Justerbar stråledyse")}
+           onToggleFavorite={toggleFavorite}
+          />
+     
+          <ProductItem
             image={holderpink}
             colorImages={{
               pink: holderpink,
