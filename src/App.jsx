@@ -133,8 +133,13 @@ export default function App() {
     setCart(cart.filter((_, index) => index !== indexToRemove));
   };
 
-  const totalPrice = cart.reduce((total, item) => {
-    return total + parseInt(item.price);
+  const shippingPrice = cart.length > 0 ? 69 : 0;
+
+  const productTotal = cart.reduce((total, item) => {
+  return total + parseInt(item.price);
+  }, 0);
+
+  const totalPrice = productTotal + shippingPrice;
   }, 0);
 
   const toggleFavorite = (title) => {
@@ -351,7 +356,13 @@ export default function App() {
             </div>
           ))}
 
-          <div className="cartTotal">Total: {totalPrice} kr</div>
+          <div className="cartTotal">
+          Varer: {productTotal} kr
+          <br />
+          Frakt: {shippingPrice} kr
+          <br />
+          Total: {totalPrice} kr
+          </div>
 
           <div className="checkoutForm">
             <input
@@ -428,6 +439,7 @@ export default function App() {
                     telefon: customer.phone,
                     email: customer.email,
                     varer: orderText,
+                    frakt: `${shippingPrice} kr`,
                     total: `${totalPrice} kr`,
                     }),
                   });
