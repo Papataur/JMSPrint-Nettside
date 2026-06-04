@@ -259,7 +259,7 @@ const totalPrice = productTotal + shippingPrice;
               pink: salttraktPink,
             }}
             title="Salttrakt til oppvaskmaskin"
-            price="69 kr + frakt"
+            price="69 kr"
             text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
@@ -277,7 +277,7 @@ const totalPrice = productTotal + shippingPrice;
               grey: deskholder,
             }}
             title="Justerbar bordholder"
-            price="149 kr + frakt"
+            price="149 kr"
             text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
@@ -295,7 +295,7 @@ const totalPrice = productTotal + shippingPrice;
               blue: holderpinkBlue,
             }}
             title="Praktisk veggholder"
-            price="89 kr + frakt"
+            price="89 kr"
             text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
