@@ -21,6 +21,10 @@ import salttraktGrey from "./salttrakt-grey.jpg";
 import salttraktBlue from "./salttrakt-blue.jpg";
 import salttraktPink from "./salttrakt-pink.jpg";
 
+import boksaapner from "./boksaapner.jpg";
+import snusboks from "./snusboks.jpg";
+import justerbarStraaledyse from "./justerbar-straaledyse.jpg";
+
 function ProductItem({
   image,
   colorImages = {},
