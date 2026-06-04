@@ -357,11 +357,17 @@ export default function App() {
 
           <div className="cartTotal">
           Varer: {productTotal} kr
-          <br />
-          Frakt: {shippingPrice} kr
-          <hr />
-          <strong>Total: {totalPrice} kr</strong>
-          </div>
+         <br />
+         Frakt: {shippingPrice} kr
+         <hr />
+         <strong>Total: {totalPrice} kr</strong>
+         </div>
+
+         <p className="shippingInfo">
+         Fast frakt: 69 kr per ordre.
+         </p>
+
+         <div className="checkoutForm">
 
           <div className="checkoutForm">
             <input
