@@ -362,7 +362,9 @@ const totalPrice = productTotal + shippingPrice;
   <hr />
   <strong>Total: {totalPrice} kr</strong>
 </div>
-
+<p className="shippingInfo">
+  📦 Fast frakt: 69 kr i hele Norge
+</p>
           <div className="checkoutForm">
             <input
               type="text"
