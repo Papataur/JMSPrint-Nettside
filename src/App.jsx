@@ -360,8 +360,8 @@ export default function App() {
           Varer: {productTotal} kr
           <br />
           Frakt: {shippingPrice} kr
-          <br />
-          Total: {totalPrice} kr
+          <hr />
+          <strong>Total: {totalPrice} kr</strong>
           </div>
 
           <div className="checkoutForm">
