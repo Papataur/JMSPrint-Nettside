@@ -140,7 +140,6 @@ export default function App() {
   }, 0);
 
   const totalPrice = productTotal + shippingPrice;
-  }, 0);
 
   const toggleFavorite = (title) => {
     if (favorites.includes(title)) {
