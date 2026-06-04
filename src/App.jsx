@@ -21,6 +21,10 @@ import salttraktGrey from "./salttrakt-grey.jpg";
 import salttraktBlue from "./salttrakt-blue.jpg";
 import salttraktPink from "./salttrakt-pink.jpg";
 
+import boksaapner from "./boksaapner.jpg";
+import justerbarStraaledyse from "./justerbar-straaledyse.jpg";
+import snusboks from "./snusboks.jpg";
+
 function ProductItem({
   image,
   colorImages = {},
@@ -301,6 +305,48 @@ const totalPrice = productTotal + shippingPrice;
             onAddToCart={addToCart}
             isFavorite={favorites.includes("Praktisk veggholder")}
             onToggleFavorite={toggleFavorite}
+
+          <ProductItem
+  image={boksaapner}
+  colorImages={{
+    grey: boksaapner,
+  }}
+  title="Boksåpner"
+  price="49 kr"
+  text="Praktisk boksåpner som gjør det enklere å åpne bokser. Printet i slitesterk PETG."
+  onImageClick={setSelectedImage}
+  onAddToCart={addToCart}
+  isFavorite={favorites.includes("Boksåpner")}
+  onToggleFavorite={toggleFavorite}
+/>
+
+<ProductItem
+  image={justerbarStraaledyse}
+  colorImages={{
+    grey: justerbarStraaledyse,
+  }}
+  title="Justerbar stråledyse"
+  price="99 kr"
+  text="Justerbar dyse for hageslange. Gir bedre kontroll på vannstrålen. Printet i slitesterk PETG."
+  onImageClick={setSelectedImage}
+  onAddToCart={addToCart}
+  isFavorite={favorites.includes("Justerbar stråledyse")}
+  onToggleFavorite={toggleFavorite}
+/>
+
+<ProductItem
+  image={snusboks}
+  colorImages={{
+    grey: snusboks,
+  }}
+  title="Snusboks"
+  price="79 kr"
+  text="Solid 3D-printet snusboks med lokk. Praktisk oppbevaring til snus eller smådeler."
+  onImageClick={setSelectedImage}
+  onAddToCart={addToCart}
+  isFavorite={favorites.includes("Snusboks")}
+  onToggleFavorite={toggleFavorite}
+/>       
           />
         </div>
       </section>
