@@ -320,6 +320,7 @@ const totalPrice = productTotal + shippingPrice;
   image={boksaapner}
   colorImages={{
     grey: boksaapner,
+    black: boksaapnerBlack,
   }}
   title="Boksåpner"
   price="49 kr"
