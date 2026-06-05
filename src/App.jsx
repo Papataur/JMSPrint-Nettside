@@ -342,7 +342,6 @@ const totalPrice = productTotal + shippingPrice;
             <ProductItem
              image={justerbarStraaledyse}
              colorImages={{
-             colorImages={{
              grey: justerbarStraaledyse,
              pink: justerbarStraaledysePink,
              blue: justerbarStraaledyseBlue,
