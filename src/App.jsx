@@ -34,10 +34,10 @@ import justerbarStraaledyseBlue from "./justerbar-straaledyse-blue.jpg";
 import justerbarStraaledysePink from "./justerbar-straaledyse-pink.jpg";
 
 import snusboks from "./snusboks.jpg";
-import snusboksBlack "./snusboks-black.jpg";
-import snusboksWhite "./snusboks-white.jpg";
-import snusboksBlue "./snusboks-blue.jpg";
-import snusboksPink "./snusboks-pink.jpg";
+import snusboksBlack from "./snusboks-black.jpg";
+import snusboksWhite from "./snusboks-white.jpg";
+import snusboksBlue from "./snusboks-blue.jpg";
+import snusboksPink from "./snusboks-pink.jpg";
 
 function ProductItem({
   image,
