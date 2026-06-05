@@ -6,13 +6,13 @@ import JMSPrint from "./logo.jpg";
 import deskholder from "./deskholder.jpg";
 import deskholderBlack from "./deskholder-black.jpg";
 import deskholderBlue from "./deskholder-blue.jpg";
-import deskholderPink from "./Deskholder-pink.jpg";
+import deskholderPink from "./deskholder-pink.jpg";
 import deskholderWhite from "./deskholder-white.jpg";
 
 import holderpink from "./holderpink.jpg";
 import holderpinkBlack from "./holderpink-black.jpg";
 import holderpinkWhite from "./holderpink-white.jpg";
-import holderpinkGrey from "./holderpink-grey.jpg";
+import holderpinkPink from "./holderpink-pink.jpg";
 import holderpinkBlue from "./holderpink-blue.jpg";
 
 import salttraktWhite from "./salttrakt.jpg";
@@ -307,12 +307,12 @@ const totalPrice = productTotal + shippingPrice;
           />
     
            <ProductItem
-            image={holderpink}
+            image={holderpinkPink}
             colorImages={{
-              pink: holderpink,
+              pink: holderpinkPink,
               black: holderpinkBlack,
               white: holderpinkWhite,
-              grey: holderpinkGrey,
+              grey: holderpink,
               blue: holderpinkBlue,
             }}
             title="Praktisk veggholder"
