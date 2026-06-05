@@ -316,20 +316,20 @@ const totalPrice = productTotal + shippingPrice;
             onToggleFavorite={toggleFavorite}
            />
           
-          <ProductItem
-  image={boksaapner}
-  colorImages={{
-    grey: boksaapner,
-    black: boksaapnerBlack,
-  }}
-  title="Boksåpner"
-  price="49 kr"
-  text="Praktisk boksåpner som gjør det enklere å åpne bokser. Printet i slitesterk PETG."
-  onImageClick={setSelectedImage}
-  onAddToCart={addToCart}
-  isFavorite={favorites.includes("Boksåpner")}
-  onToggleFavorite={toggleFavorite}
-/>
+           <ProductItem
+            image={boksaapner}
+            colorImages={{
+              grey: boksaapner,
+              black: boksaapnerBlack,
+            }}
+            title="Boksåpner"
+            price="39 kr"
+            text="Praktisk boksåpner som gjør det enklere å åpne bokser. Printet i slitesterk PETG."
+            onImageClick={setSelectedImage}
+            onAddToCart={addToCart}
+            isFavorite={favorites.includes("Boksåpner")}
+            onToggleFavorite={toggleFavorite}
+           />
 
 <ProductItem
   image={justerbarStraaledyse}
