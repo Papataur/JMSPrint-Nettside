@@ -28,6 +28,11 @@ import boksaapnerGrey from "./boksaapner-grey.jpg";
 import boksaapnerWhite from "./boksaapner-white.jpg";
 
 import justerbarStraaledyse from "./justerbar-straaledyse.jpg";
+import justerbarStraaledyseBlack from "./justerbar-straaledyse-black.jpg",
+import justerbarStraaledyseWhite from "./justerbar-straaledyse-white.jpg",
+import justerbarStraaledyseBlue from "./justerbar-straaledyse-blue.jpg",
+import justerbarStraaledysepink from "./justerbar-straaledyse-pink.jpg",
+
 import snusboks from "./snusboks.jpg";
 
 
@@ -334,19 +339,24 @@ const totalPrice = productTotal + shippingPrice;
             onToggleFavorite={toggleFavorite}
            />
 
-<ProductItem
-  image={justerbarStraaledyse}
-  colorImages={{
-    grey: justerbarStraaledyse,
-  }}
-  title="Justerbar stråledyse"
-  price="99 kr"
-  text="Justerbar dyse for hageslange. Gir bedre kontroll på vannstrålen. Printet i slitesterk PETG."
-  onImageClick={setSelectedImage}
-  onAddToCart={addToCart}
-  isFavorite={favorites.includes("Justerbar stråledyse")}
-  onToggleFavorite={toggleFavorite}
-/>
+            <ProductItem
+             image={justerbarStraaledyse}
+             colorImages={{
+             grey: justerbarStraaledyse,
+             pink: justerbarStraaledysePink,
+             blue: justerbarStraaledyseBlue,
+             white: justerbarStraaledyseWhite,
+             black: justerbarStraaledyseblack,
+             
+            }}
+            title="Justerbar stråledyse"
+            price="99 kr"
+            text="Justerbar dyse for hageslange. Gir bedre kontroll på vannstrålen. Printet i slitesterk PETG."
+            onImageClick={setSelectedImage}
+            onAddToCart={addToCart}
+            isFavorite={favorites.includes("Justerbar stråledyse")}
+            onToggleFavorite={toggleFavorite}
+           />
 
 <ProductItem
   image={snusboks}
