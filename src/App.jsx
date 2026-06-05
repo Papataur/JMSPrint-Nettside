@@ -34,7 +34,10 @@ import justerbarStraaledyseBlue from "./justerbar-straaledyse-blue.jpg";
 import justerbarStraaledysePink from "./justerbar-straaledyse-pink.jpg";
 
 import snusboks from "./snusboks.jpg";
-
+import snusboksBlack "./snusboks-black.jpg";
+import snusboksWhite "./snusboks-white.jpg";
+import snusboksBlue "./snusboks-blue.jpg";
+import snusboksPink "./snusboks-pink.jpg";
 
 function ProductItem({
   image,
@@ -357,21 +360,25 @@ const totalPrice = productTotal + shippingPrice;
             onToggleFavorite={toggleFavorite}
            />
 
-<ProductItem
-  image={snusboks}
-  colorImages={{
-    grey: snusboks,
-  }}
-  title="Snusboks"
-  price="79 kr"
-  text="Solid 3D-printet snusboks med lokk. Praktisk oppbevaring til snus eller smådeler."
-  onImageClick={setSelectedImage}
-  onAddToCart={addToCart}
-  isFavorite={favorites.includes("Snusboks")}
-  onToggleFavorite={toggleFavorite}
-       />
-        </div>
-      </section>
+             <ProductItem
+              image={snusboks}
+              colorImages={{
+              grey: snusboks,
+              pink: snusboksPink,
+              blue: snusboksBlue,
+              white: snusboksWhite,
+              black: snusboksBlack,
+             }}
+             title="Snusboks"
+             price="79 kr"
+             text="Solid 3D-printet snusboks med lokk. Praktisk oppbevaring til snus eller smådeler."
+             onImageClick={setSelectedImage}
+             onAddToCart={addToCart}
+             isFavorite={favorites.includes("Snusboks")}
+             onToggleFavorite={toggleFavorite}
+            />
+          </div>
+         </section>
 
       <section className="contact" id="kontakt">
         <h2>Ønsker du et spesialdesignet 3D-print?</h2>
