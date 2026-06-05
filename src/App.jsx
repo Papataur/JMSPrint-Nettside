@@ -346,8 +346,7 @@ const totalPrice = productTotal + shippingPrice;
              pink: justerbarStraaledysePink,
              blue: justerbarStraaledyseBlue,
              white: justerbarStraaledyseWhite,
-             black: justerbarStraaledyseblack,
-             
+             black: justerbarStraaledyseblack,        
             }}
             title="Justerbar stråledyse"
             price="99 kr"
