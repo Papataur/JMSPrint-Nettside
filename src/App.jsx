@@ -334,7 +334,7 @@ const totalPrice = productTotal + shippingPrice;
               blue: boksaapnerBlue,
             }}
             title="Boksåpner"
-            price="29 kr"
+            price="49 kr"
             text="Praktisk boksåpner som gjør det enklere å åpne bokser. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
