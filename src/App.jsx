@@ -342,11 +342,12 @@ const totalPrice = productTotal + shippingPrice;
             <ProductItem
              image={justerbarStraaledyse}
              colorImages={{
+             colorImages={{
              grey: justerbarStraaledyse,
              pink: justerbarStraaledysePink,
              blue: justerbarStraaledyseBlue,
              white: justerbarStraaledyseWhite,
-             black: justerbarStraaledyseblack,        
+             black: justerbarStraaledyseBlack,               
             }}
             title="Justerbar stråledyse"
             price="99 kr"
