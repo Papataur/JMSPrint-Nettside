@@ -290,7 +290,7 @@ const totalPrice = productTotal + shippingPrice;
               grey: deskholder,
             }}
             title="Justerbar bordholder"
-            price="149 kr"
+            price="129 kr"
             text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
@@ -308,7 +308,7 @@ const totalPrice = productTotal + shippingPrice;
               blue: holderpinkBlue,
             }}
             title="Praktisk veggholder"
-            price="89 kr"
+            price="69 kr"
             text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
@@ -321,9 +321,12 @@ const totalPrice = productTotal + shippingPrice;
             colorImages={{
               grey: boksaapner,
               black: boksaapnerBlack,
+              white: boksaapnerWhite,
+              pink: boksaapnerPink,
+              blue: boksaapnerBlue,
             }}
             title="Boksåpner"
-            price="39 kr"
+            price="29 kr"
             text="Praktisk boksåpner som gjør det enklere å åpne bokser. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
