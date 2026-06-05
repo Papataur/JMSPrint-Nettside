@@ -307,15 +307,13 @@ const totalPrice = productTotal + shippingPrice;
           />
     
            <ProductItem
-  image={holderpinkPink}
-  colorImages={{
-    pink: holderpinkPink,
-    black: holderpinkBlack,
-    white: holderpinkWhite,
-    grey: holderpink,
-    blue: holderpinkBlue,
-  }}
-  title="Praktisk veggholder"
+            image={holderpinkPink}
+            colorImages={{
+              pink: holderpinkPink,
+              black: holderpinkBlack,
+              white: holderpinkWhite,
+              grey: holderpink,
+              blue: holderpinkBlue,
             }}
             title="Praktisk veggholder"
             price="69 kr"
