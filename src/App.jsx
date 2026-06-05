@@ -28,10 +28,10 @@ import boksaapnerGrey from "./boksaapner-grey.jpg";
 import boksaapnerWhite from "./boksaapner-white.jpg";
 
 import justerbarStraaledyse from "./justerbar-straaledyse.jpg";
-import justerbarStraaledyseBlack from "./justerbar-straaledyse-black.jpg",
-import justerbarStraaledyseWhite from "./justerbar-straaledyse-white.jpg",
-import justerbarStraaledyseBlue from "./justerbar-straaledyse-blue.jpg",
-import justerbarStraaledysePink from "./justerbar-straaledyse-pink.jpg",
+import justerbarStraaledyseBlack from "./justerbar-straaledyse-black.jpg";
+import justerbarStraaledyseWhite from "./justerbar-straaledyse-white.jpg";
+import justerbarStraaledyseBlue from "./justerbar-straaledyse-blue.jpg";
+import justerbarStraaledysePink from "./justerbar-straaledyse-pink.jpg";
 
 import snusboks from "./snusboks.jpg";
 
