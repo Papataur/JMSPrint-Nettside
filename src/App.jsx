@@ -22,8 +22,14 @@ import salttraktBlue from "./salttrakt-blue.jpg";
 import salttraktPink from "./salttrakt-pink.jpg";
 
 import boksaapner from "./boksaapner.jpg";
+import boksaapnerBlack from "./boksaapner-black.jpg";
+import boksaapnerBlue from "./boksaapner-blue.jpg";
+import boksaapnerGrey from "./boksaapner-grey.jpg";
+import boksaapnerWhite from "./boksaapner-white.jpg";
+
 import justerbarStraaledyse from "./justerbar-straaledyse.jpg";
 import snusboks from "./snusboks.jpg";
+
 
 function ProductItem({
   image,
