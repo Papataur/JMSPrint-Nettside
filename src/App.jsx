@@ -6,7 +6,7 @@ import JMSPrint from "./logo.jpg";
 import deskholder from "./deskholder.jpg";
 import deskholderBlack from "./deskholder-black.jpg";
 import deskholderBlue from "./deskholder-blue.jpg";
-import deskholderPink from "./deskholder-pink.jpg";
+import deskholderPink from "./Deskholder-pink.jpg";
 import deskholderWhite from "./deskholder-white.jpg";
 
 import holderpink from "./holderpink.jpg";
@@ -307,9 +307,9 @@ const totalPrice = productTotal + shippingPrice;
           />
     
            <ProductItem
-            image={holderpinkPink}
+            image={holderpink}
             colorImages={{
-              pink: holderpinkPink,
+              pink: holderpink,
               black: holderpinkBlack,
               white: holderpinkWhite,
               grey: holderpinkGrey,
