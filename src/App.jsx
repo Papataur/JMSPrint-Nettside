@@ -319,10 +319,10 @@ const totalPrice = productTotal + shippingPrice;
            <ProductItem
             image={boksaapner}
             colorImages={{
-              grey: boksaapner,
+              pink: boksaapner,
               black: boksaapnerBlack,
               white: boksaapnerWhite,
-              pink: boksaapnerPink,
+              grey: boksaapnerPink,
               blue: boksaapnerBlue,
             }}
             title="Boksåpner"
