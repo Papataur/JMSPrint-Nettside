@@ -12,7 +12,7 @@ import deskholderWhite from "./deskholder-white.jpg";
 import holderpink from "./holderpink.jpg";
 import holderpinkBlack from "./holderpink-black.jpg";
 import holderpinkWhite from "./holderpink-white.jpg";
-import holderpinkGrey from "./holderpink-Grey.jpg";
+import holderpinkGrey from "./holderpink-grey.jpg";
 import holderpinkBlue from "./holderpink-blue.jpg";
 
 import salttraktWhite from "./salttrakt.jpg";
