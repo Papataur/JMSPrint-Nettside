@@ -322,7 +322,7 @@ const totalPrice = productTotal + shippingPrice;
               pink: boksaapner,
               black: boksaapnerBlack,
               white: boksaapnerWhite,
-              grey: boksaapnerPink,
+              grey: boksaapnerGrey,
               blue: boksaapnerBlue,
             }}
             title="Boksåpner"
