@@ -391,12 +391,14 @@ const totalPrice = productTotal + shippingPrice;
           <p>Send gjerne bilde, mål eller forklaring på hva du ønsker laget.</p>
 
           <p>
-            E-post:{" "}
-            <a className="mailLink" href="mailto:kontakt@jmsprint.no?subject=Forespørsel fra JMSPrint"
-            </a>
-          </p>
-        </div>
-      </section>
+          E-post:{" "}
+         <a
+         className="mailLink"
+         href="mailto:kontakt@jmsprint.no?subject=Forespørsel fra JMSPrint"
+         >
+             kontakt@jmsprint.no
+         </a>
+        </p>
 
       {showToast && (
         <div className="toast">✔ Produkt lagt til i handlekurv</div>
