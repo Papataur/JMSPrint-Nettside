@@ -380,22 +380,24 @@ const totalPrice = productTotal + shippingPrice;
           </div>
          </section>
 
-      <section className="contact" id="kontakt">
-        <h2>Ønsker du et spesialdesignet 3D-print?</h2>
+     <section className="contact" id="kontakt">
+  <h2>Ønsker du et spesialdesignet 3D-print?</h2>
 
-        <p> Har du en egen idé eller trenger en spesialtilpasset løsning? Ta kontakt, så ser vi på mulighetene for å designe og 3D-printe en løsning for deg. </p>
+  <p>
+    Har du en egen idé eller trenger en spesialtilpasset løsning? Ta kontakt,
+    så ser vi på mulighetene for å designe og 3D-printe en løsning for deg.
+  </p>
 
-        <div className="contactBox">
-          <p className="contactTitle">Kontakt oss</p>
+  <div className="contactBox">
+    <p className="contactTitle">Kontakt oss</p>
 
-          <p>Send gjerne bilde, mål eller forklaring på hva du ønsker laget.</p>
+    <p>Send gjerne bilde, mål eller forklaring på hva du ønsker laget.</p>
 
-         <p>
-  E-post:{" "}
-  <a className="mailLink" href="mailto:kontakt@jmsprint.no">
-    kontakt@jmsprint.no
-  </a>
-</p>
+    <p>
+      E-post: <a className="mailLink" href="mailto:kontakt@jmsprint.no">kontakt@jmsprint.no</a>
+    </p>
+  </div>
+</section>
 
       {showToast && (
         <div className="toast">✔ Produkt lagt til i handlekurv</div>
