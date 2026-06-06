@@ -390,11 +390,9 @@ const totalPrice = productTotal + shippingPrice;
 
           <p>Send gjerne bilde, mål eller forklaring på hva du ønsker laget.</p>
 
-          <p>
+         <p>
   E-post:{" "}
-  <a
-    className="mailLink"
-   <p>E-post: <a className="mailLink" href="mailto:kontakt@jmsprint.no">kontakt@jmsprint.no</a></p>
+  <a className="mailLink" href="mailto:kontakt@jmsprint.no">
     kontakt@jmsprint.no
   </a>
 </p>
