@@ -394,8 +394,7 @@ const totalPrice = productTotal + shippingPrice;
   E-post:{" "}
   <a
     className="mailLink"
-    href="mailto:kontakt@jmsprint.no?subject=Foresp%C3%B8rsel%20fra%20JMSPrint"
-  >
+   <p>E-post: <a className="mailLink" href="mailto:kontakt@jmsprint.no">kontakt@jmsprint.no</a></p>
     kontakt@jmsprint.no
   </a>
 </p>
