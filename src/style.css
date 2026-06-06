@@ -306,11 +306,9 @@ h1 span {
 
 .shopImage {
   width: 100%;
-  height: 360px;
-  object-fit: contain;
-  background: #f3f4f6;
-  display: block;
-  cursor: pointer;
+  height: 260px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .shopContent {
