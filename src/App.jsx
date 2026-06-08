@@ -502,7 +502,7 @@ const totalPrice = productTotal + shippingPrice;
                  setLastOrderNumber(orderNumber);
          
                 try {
-                  const response = await fetch("https://formspree.io/f/xlgkegbv", {
+                  const response = await fetch("/api/send-order", {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
