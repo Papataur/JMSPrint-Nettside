@@ -98,7 +98,7 @@ function ProductItem({
         </div>
 
         <p>{text}</p>
-        <p className="delivery">Levering: 2–5 dager</p>
+        <p className="delivery">📦 Leveringstid: 2–5 virkedager</p>
 
         <button
           className="cartButton"
