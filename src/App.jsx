@@ -126,11 +126,13 @@ export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [cart, setCart] = useState([]);
   const [customer, setCustomer] = useState({
-    name: "",
-    address: "",
-    phone: "",
-    email: "",
-  });
+  name: "",
+  address: "",
+  postalCode: "",
+  city: "",
+  phone: "",
+  email: "",
+});
 
   const [showToast, setShowToast] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
