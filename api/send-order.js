@@ -22,7 +22,7 @@ export default async function handler(req, res) {
       subject: `Ordrebekreftelse ${ordrenummer}`,
       html: `
         <div style="text-align:center; margin-bottom:20px;">
-        <img src="https://www.jmsprint.no/JMSPrint.jpg" alt="JMSPrint" width="120">
+        <img src="https://www.jmsprint.no/JMSPrint.jpg" alt="JMSPrint" width="180">
         </div>
         <h2>🎉 Takk for bestillingen hos JMSPrint!</h2>
         <p>Hei ${navn},</p>
