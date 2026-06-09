@@ -21,14 +21,29 @@ export default async function handler(req, res) {
       to: email,
       subject: `Ordrebekreftelse ${ordrenummer}`,
       html: `
-        <h2>Takk for bestillingen hos JMSPrint!</h2>
+        <h2>🎉 Takk for bestillingen hos JMSPrint!</h2>
         <p>Hei ${navn},</p>
         <p>Vi har mottatt bestillingen din.</p>
         <p><strong>Ordrenummer:</strong> ${ordrenummer}</p>
         <p><strong>Varer:</strong><br>${varerHtml}</p>
         <p><strong>Total:</strong> ${total}</p>
-        <p>Vi tar kontakt dersom vi trenger mer informasjon.</p>
-        <p>Med vennlig hilsen<br>JMSPrint<br>kontakt@jmsprint.no</p>
+
+        <p>📦 <strong>Forventet leveringstid:</strong> 2–5 virkedager</p>
+       
+        <p>
+        Vi begynner produksjonen så snart bestillingen er behandlet.<br>
+        Har du spørsmål kan du svare direkte på denne e-posten.
+        </p>
+
+        <p>
+        Med vennlig hilsen<br><br>
+
+        <strong>JMSPrint</strong><br>
+        Praktiske 3D-printede løsninger<br><br>
+
+        kontakt@jmsprint.no<br>
+        www.jmsprint.no
+        </p>
       `,
     });
 
