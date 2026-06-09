@@ -462,6 +462,24 @@ const totalPrice = productTotal + shippingPrice;
             />
 
             <input
+              type="text"
+              placeholder="Postnummer"
+              value={customer.postalCode}
+              onChange={(e) =>
+                setCustomer({ ...customer, postalCode: e.target.value })
+              }
+            />
+
+             <input
+               type="text"
+               placeholder="Poststed"
+               value={customer.city}
+               onChange={(e) =>
+                 setCustomer({ ...customer, city: e.target.value })
+               }
+            />
+
+            <input
               type="tel"
               placeholder="Telefon"
               value={customer.phone}
