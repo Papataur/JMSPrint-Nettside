@@ -173,7 +173,13 @@ const totalPrice = productTotal + shippingPrice;
   };
 
   const validateCustomer = () => {
-    if (!customer.name || !customer.address || !customer.phone || !customer.email) {
+    if (
+  !customer.name ||
+  !customer.address ||
+  !customer.postalCode ||
+  !customer.city ||
+  !customer.phone ||
+  !customer.email) {
       setCheckoutError("Fyll inn alle feltene");
       return false;
     }
@@ -534,6 +540,8 @@ const totalPrice = productTotal + shippingPrice;
                     adresse: customer.address,
                     telefon: customer.phone,
                     email: customer.email,
+                    postnummer: customer.postalCode,
+                    poststed: customer.city,
                     varer: orderText,
                     total: `${totalPrice} kr`,
                     }),
