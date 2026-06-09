@@ -26,6 +26,7 @@ export default async function handler(req, res) {
         <p>Vi har mottatt bestillingen din.</p>
         <p><strong>Ordrenummer:</strong> ${ordrenummer}</p>
         <p><strong>Varer:</strong><br>${varerHtml}</p>
+        <p><strong>Frakt:</strong> 69 kr</p>
         <p><strong>Total:</strong> ${total}</p>
 
         <p>📦 <strong>Forventet leveringstid:</strong> 2–5 virkedager</p>
