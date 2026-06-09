@@ -593,7 +593,7 @@ const totalPrice = productTotal + shippingPrice;
             )}
 
             <p className="checkoutNote">
-              Du mottar Vipps-forespørsel etter at bestillingen er behandlet.
+              Vi sender Vipps-forespørsel så snart bestillingen er behandlet.
             </p>
           </div>
         </div>
