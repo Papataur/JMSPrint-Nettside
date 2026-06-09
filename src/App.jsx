@@ -306,7 +306,7 @@ const totalPrice = productTotal + shippingPrice;
               grey: deskholder,
             }}
             title="Justerbar bordholder"
-            price="129 kr"
+            price="79 kr"
             text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
@@ -342,7 +342,7 @@ const totalPrice = productTotal + shippingPrice;
               blue: boksaapnerBlue,
             }}
             title="Boksåpner"
-            price="49 kr"
+            price="19 kr"
             text="Praktisk boksåpner som gjør det enklere å åpne bokser. Printet i slitesterk PETG."
             onImageClick={setSelectedImage}
             onAddToCart={addToCart}
