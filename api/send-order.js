@@ -57,6 +57,8 @@ export default async function handler(req, res) {
         <p><strong>Ordrenummer:</strong> ${ordrenummer}</p>
         <p><strong>Navn:</strong> ${navn}</p>
         <p><strong>Adresse:</strong> ${adresse || "-"}</p>
+        <p><strong>Postnummer:</strong> ${postnummer}</p>
+        <p><strong>Poststed:</strong> ${poststed}</p>
         <p><strong>Telefon:</strong> ${telefon || "-"}</p>
         <p><strong>E-post:</strong> ${email}</p>
         <p><strong>Varer:</strong><br>${varerHtml}</p>
