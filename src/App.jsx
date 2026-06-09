@@ -571,7 +571,7 @@ const totalPrice = productTotal + shippingPrice;
                 }, 2200);
               }}
             >
-              {isPaying ? "Behandler Vipps..." : "Betal med Vipps"}
+              {isPaying ? "Sender bestilling..." : "Bestill med Vipps"}
             </button>
 
             {orderSuccess && (
