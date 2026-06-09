@@ -593,7 +593,7 @@ const totalPrice = productTotal + shippingPrice;
             )}
 
             <p className="checkoutNote">
-              Bestillingen bekreftes manuelt før betaling.
+              Du mottar Vipps-forespørsel etter at bestillingen er behandlet.
             </p>
           </div>
         </div>
