@@ -571,36 +571,12 @@ const totalPrice = productTotal + shippingPrice;
                 }
               }}
             >
-              {isSendingOrder ? "Sender bestilling..." : "Send bestilling →"}
+              {isSendingOrder ? "Sender bestilling..." : "Bestill med Vipps"}
             </button>
 
             {checkoutError && (
               <p className="checkoutError">{checkoutError}</p>
             )}
-
-            <button
-              className="vippsButton"
-              disabled={isPaying || isSendingOrder || orderSuccess || vippsSuccess}
-              onClick={() => {
-                if (!validateCustomer()) return;
-
-                setVippsSuccess(false);
-                setOrderSuccess(false);
-                setIsPaying(true);
-
-                setTimeout(() => {
-                  setIsPaying(false);
-                  setVippsSuccess(true);
-
-                  setTimeout(() => {
-                    setCart([]);
-                    setVippsSuccess(false);
-                  }, 3500);
-                }, 2200);
-              }}
-            >
-              {isPaying ? "Sender bestilling..." : "Bestill med Vipps"}
-            </button>
 
             {orderSuccess && (
             <div className="paymentSuccess">
