@@ -944,3 +944,30 @@ h1 span {
 .imageArrow.right {
   right: 10px;
 }
+
+.imageWrap {
+  position: relative;
+}
+
+.imageArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.imageArrow.left {
+  left: 10px;
+}
+
+.imageArrow.right {
+  right: 10px;
+}
