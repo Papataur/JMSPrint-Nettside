@@ -204,9 +204,7 @@ const totalPrice = productTotal + shippingPrice;
             </h1>
 
             <p className="lead">
-              Vi lager praktiske og kreative 3D-printede produkter — fra
-              hobbytilbehør til smarte løsninger for hjem, garasje, båt og
-              teknologi.
+              Praktiske 3D-printede produkter laget på bestilling – for hjem, hobby, garasje og båt.
             </p>
 
             <div className="buttons">
