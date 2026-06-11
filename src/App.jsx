@@ -34,7 +34,6 @@ import justerbarStraaledyseBlue from "./justerbar-straaledyse-blue.jpg";
 import justerbarStraaledysePink from "./justerbar-straaledyse-pink.jpg";
 
 import snusboks from "./snusboks.jpg";
-import snusboks2 from "./snusboks-grey-2.jpg";
 import snusboksBlack from "./snusboks-black.jpg";
 import snusboksWhite from "./snusboks-white.jpg";
 import snusboksBlue from "./snusboks-blue.jpg";
