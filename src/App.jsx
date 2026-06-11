@@ -54,6 +54,7 @@ function ProductItem({
   onToggleFavorite,
 }) {
   const [selectedImage, setSelectedImage] = useState(image);
+  const [selectedColor, setSelectedColor] = useState("Ikke valgt");
   const [imageIndex, setImageIndex] = useState(0);
   const activeImages = images.length > 0 ? images : [selectedImage];
   const activeImage = activeImages[imageIndex] || selectedImage;
