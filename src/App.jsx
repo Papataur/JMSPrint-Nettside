@@ -374,6 +374,7 @@ const totalPrice = productTotal + shippingPrice;
              snusboks,
              snusboks2,
             ]}
+            colorImages={{
               grey: snusboks,
               pink: snusboksPink,
               blue: snusboksBlue,
