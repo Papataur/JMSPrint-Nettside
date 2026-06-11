@@ -407,7 +407,7 @@ const totalPrice = productTotal + shippingPrice;
 
     <p>JMSPrint</p>
     <p>Org.nr: 937 840 586</p>
-    <a href="/salgsvilkar">Salgsvilkår</a>
+    <a href="/salgsvilkar.html">Salgsvilkår</a>
     </div>
     </section>
 
