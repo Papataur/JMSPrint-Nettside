@@ -405,7 +405,7 @@ const totalPrice = productTotal + shippingPrice;
       E-post: <a className="mailLink" href="mailto:kontakt@jmsprint.no">kontakt@jmsprint.no</a>
     </p>
 
-    <p>JMSPrint John-Marius Svendsen</p>
+    <p>JMSPrint</p>
     <p>Org.nr: 123 456 789</p>
     <p>kontakt@jmsprint.no</p>
     </div>
