@@ -35,6 +35,7 @@ import justerbarStraaledysePink from "./justerbar-straaledyse-pink.jpg";
 
 import snusboks from "./snusboks.jpg";
 import snusboks2 from "./snusboks2.jpg";
+import snusboks3 from "./snusboks3.jpg";
 import snusboksBlack from "./snusboks-black.jpg";
 import snusboksWhite from "./snusboks-white.jpg";
 import snusboksBlue from "./snusboks-blue.jpg";
@@ -408,6 +409,7 @@ const totalPrice = productTotal + shippingPrice;
              images={[
              snusboks,
              snusboks2,
+             snusboks3,
             ]}
             colorImages={{
               grey: snusboks,
