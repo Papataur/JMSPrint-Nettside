@@ -406,7 +406,7 @@ const totalPrice = productTotal + shippingPrice;
     </p>
 
     <p>JMSPrint</p>
-    <p>Org.nr: 123 456 789</p>
+    <p>Org.nr: 937840586</p>
     <p>kontakt@jmsprint.no</p>
     </div>
     </section>
