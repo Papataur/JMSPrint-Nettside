@@ -41,13 +41,10 @@ body {
 }
 
 .logo {
-  width: 440px;
+  width: 380px;
   height: auto;
   display: block;
-  margin-bottom: 30px;
-  filter:
-    drop-shadow(0 0 12px rgba(0, 102, 255, 0.55))
-    drop-shadow(0 0 28px rgba(37, 99, 235, 0.35));
+  margin-bottom: 15px; /* var 30px */
 }
 
 .pill {
