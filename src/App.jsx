@@ -54,7 +54,9 @@ function ProductItem({
   onToggleFavorite,
 }) {
   const [selectedImage, setSelectedImage] = useState(image);
-  const [selectedColor, setSelectedColor] = useState("Ikke valgt");
+  const [imageIndex, setImageIndex] = useState(0);
+  const activeImages = images.length > 0 ? images : [selectedImage];
+  const activeImage = activeImages[imageIndex] || selectedImage;
 
   const chooseColor = (color, img) => {
     if (!img) return;
@@ -75,12 +77,44 @@ function ProductItem({
         ❤️
       </button>
 
-      <img
-        src={selectedImage}
-        alt={title}
-        className="shopImage"
-        onClick={() => onImageClick(selectedImage)}
-      />
+      <div className="imageWrap">
+  {activeImages.length > 1 && (
+    <button
+      className="imageArrow left"
+      onClick={() =>
+        setImageIndex(
+          imageIndex === 0
+            ? activeImages.length - 1
+            : imageIndex - 1
+        )
+      }
+    >
+      ‹
+    </button>
+  )}
+
+  <img
+    src={activeImage}
+    alt={title}
+    className="shopImage"
+    onClick={() => onImageClick(activeImage)}
+  />
+
+  {activeImages.length > 1 && (
+    <button
+      className="imageArrow right"
+      onClick={() =>
+        setImageIndex(
+          imageIndex === activeImages.length - 1
+            ? 0
+            : imageIndex + 1
+        )
+      }
+    >
+      ›
+    </button>
+  )}
+</div>
 
       <div className="shopContent">
         <h3>{title}</h3>
