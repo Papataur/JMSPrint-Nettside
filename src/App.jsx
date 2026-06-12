@@ -565,13 +565,7 @@ const totalPrice = productTotal + shippingPrice;
                       `${index + 1}. ${item.title} - ${item.color} - ${item.price}`
                   )
                   .join("\n");
-                 const orderNumber =
-                 "JMS-" +
-                 new Date().toISOString().slice(0, 10).replace(/-/g, "") +
-                  "-" +
-                 Math.floor(1000 + Math.random() * 9000);
-                 setLastOrderNumber(orderNumber);
-         
+                 
                 try {
                   const response = await fetch("/api/send-order", {
                     method: "POST",
