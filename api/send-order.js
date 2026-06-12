@@ -1,4 +1,10 @@
 import { Resend } from "resend";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.VITE_SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY
+);
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -15,6 +21,17 @@ export default async function handler(req, res) {
     }
 
     const varerHtml = String(varer).replace(/\n/g, "<br>");
+    await supabase.from("orders").insert([
+  {
+    order_number: ordrenummer,
+    customer_name: navn,
+    customer_email: email,
+    customer_phone: telefon,
+    products: { items: varer },
+    total_price: parseFloat(total),
+    status: "Ny ordre",
+  },
+]);
 
     await resend.emails.send({
       from: "JMSPrint <kontakt@jmsprint.no>",
