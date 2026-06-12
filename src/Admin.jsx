@@ -14,9 +14,12 @@ export default function Admin() {
       .select("*")
       .order("order_id", { ascending: false });
 
-    if (!error) {
-      setOrders(data);
-    }
+    console.log("DATA:", data);
+console.log("ERROR:", error);
+
+if (!error) {
+  setOrders(data);
+}
   }
 
   return (
