@@ -1,48 +1,64 @@
 import { useEffect, useState } from "react";
 import { supabase } from "./lib/supabase";
 
+console.log("ADMIN LASTET");
+
 export default function Admin() {
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     loadOrders();
   }, []);
 
   async function loadOrders() {
-  const { data, error } = await supabase
-    .from("orders")
-    .select("*")
-    .order("id", { ascending: false });
+    setLoading(true);
 
-  console.log("DATA:", data);
-  console.log("ERROR:", error);
+    const { data, error } = await supabase
+      .from("orders")
+      .select("*")
+      .order("id", { ascending: false });
 
-  if (!error) {
-    setOrders(data);
+    console.log("DATA:", data);
+    console.log("ERROR:", error);
+
+    if (error) {
+      console.error("Supabase feil:", error);
+    } else {
+      setOrders(data || []);
+    }
+
+    setLoading(false);
   }
-}
-  
+
   return (
-    <div style={{ padding: "30px" }}>
+    <div style={{ padding: "30px", color: "white" }}>
       <h1>JMSPrint Ordreoversikt</h1>
+
+      {loading && <p>Laster ordre...</p>}
+
+      {!loading && orders.length === 0 && (
+        <p>Ingen ordre funnet.</p>
+      )}
 
       {orders.map((order) => (
         <div
           key={order.id}
           style={{
-            border: "1px solid #ccc",
+            border: "1px solid #444",
             padding: "15px",
             marginBottom: "15px",
             borderRadius: "10px",
+            background: "#111827",
           }}
         >
           <h3>{order.order_number}</h3>
 
-          <p>Kunde: {order.customer_name}</p>
-          <p>E-post: {order.customer_email}</p>
-          <p>Telefon: {order.customer_phone}</p>
-          <p>Total: {order.total_price} kr</p>
-          <p>Status: {order.status}</p>
+          <p><strong>Kunde:</strong> {order.customer_name}</p>
+          <p><strong>E-post:</strong> {order.customer_email}</p>
+          <p><strong>Telefon:</strong> {order.customer_phone}</p>
+          <p><strong>Total:</strong> {order.total_price} kr</p>
+          <p><strong>Status:</strong> {order.status}</p>
         </div>
       ))}
     </div>
