@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { supabase } from "./lib/supabase";
 
-console.log("ADMIN LASTET");
-
 export default function Admin() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [errorText, setErrorText] = useState("");
 
   useEffect(() => {
     loadOrders();
@@ -19,11 +18,9 @@ export default function Admin() {
       .select("*")
       .order("id", { ascending: false });
 
-    console.log("DATA:", data);
-    console.log("ERROR:", error);
-
     if (error) {
-      console.error("Supabase feil:", error);
+      setErrorText(error.message);
+      setOrders([]);
     } else {
       setOrders(data || []);
     }
@@ -37,7 +34,9 @@ export default function Admin() {
 
       {loading && <p>Laster ordre...</p>}
 
-      {!loading && orders.length === 0 && (
+      {errorText && <p>Feil: {errorText}</p>}
+
+      {!loading && !errorText && orders.length === 0 && (
         <p>Ingen ordre funnet.</p>
       )}
 
@@ -53,7 +52,6 @@ export default function Admin() {
           }}
         >
           <h3>{order.order_number}</h3>
-
           <p><strong>Kunde:</strong> {order.customer_name}</p>
           <p><strong>E-post:</strong> {order.customer_email}</p>
           <p><strong>Telefon:</strong> {order.customer_phone}</p>
