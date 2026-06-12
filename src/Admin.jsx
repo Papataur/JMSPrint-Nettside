@@ -9,18 +9,19 @@ export default function Admin() {
   }, []);
 
   async function loadOrders() {
-    const { data, error } = await supabase
-      .from("orders")
-      .select("*")
-      .order("id", { ascending: false });
-    console.log("DATA:", data);
-console.log("ERROR:", error);
+  const { data, error } = await supabase
+    .from("orders")
+    .select("*")
+    .order("id", { ascending: false });
 
-if (!error) {
-  setOrders(data);
-}
+  console.log("DATA:", data);
+  console.log("ERROR:", error);
+
+  if (!error) {
+    setOrders(data);
   }
-
+}
+  
   return (
     <div style={{ padding: "30px" }}>
       <h1>JMSPrint Ordreoversikt</h1>
