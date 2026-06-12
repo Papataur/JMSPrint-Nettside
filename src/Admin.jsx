@@ -12,7 +12,7 @@ export default function Admin() {
     const { data, error } = await supabase
       .from("orders")
       .select("*")
-      .order("order_id", { ascending: false });
+      .order("id", { ascending: false });
 
     console.log("DATA:", data);
 console.log("ERROR:", error);
