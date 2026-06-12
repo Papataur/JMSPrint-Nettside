@@ -592,6 +592,9 @@ const totalPrice = productTotal + shippingPrice;
                     }),
                   });
 
+                  const result = await response.json();
+                  setLastOrderNumber(result.ordrenummer);
+
                   if (!response.ok) {
                     throw new Error("Kunne ikke sende bestilling");
                   }
