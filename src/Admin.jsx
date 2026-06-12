@@ -13,7 +13,6 @@ export default function Admin() {
       .from("orders")
       .select("*")
       .order("id", { ascending: false });
-
     console.log("DATA:", data);
 console.log("ERROR:", error);
 
