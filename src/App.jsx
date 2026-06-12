@@ -580,7 +580,7 @@ const totalPrice = productTotal + shippingPrice;
                       Accept: "application/json",
                     },
                     body: JSON.stringify({
-                    ordrenummer: orderNumber,
+                    
                     navn: customer.name,
                     adresse: customer.address,
                     telefon: customer.phone,
