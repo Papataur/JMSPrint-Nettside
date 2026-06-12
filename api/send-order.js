@@ -41,7 +41,7 @@ if (error) {
   throw error;
 }
 
-const ordrenummer = `JMS-${1000 + data.order_id}`;
+const ordrenummer = `JMS-${String(data.order_id).padStart(4, "0")}`;
     await supabase
   .from("orders")
   .update({ order_number: ordrenummer })
