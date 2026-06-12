@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Admin from "./Admin";
 import heroImage from "./heroimage.jpg";
 import "./style.css";
 import JMSPrint from "./logo.jpg";
@@ -227,7 +229,10 @@ const totalPrice = productTotal + shippingPrice;
   };
 
   return (
-    <main className="page">
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={
+        <main className="page">
       <section className="hero">
         <div className="heroGrid">
           <div>
@@ -654,5 +659,10 @@ const totalPrice = productTotal + shippingPrice;
         </div>
       )}
     </main>
-  );
+}
+ />
+<Route path="/admin" element={<Admin />} />
+</Routes>
+</BrowserRouter>
+);
 }
