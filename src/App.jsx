@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Admin from "./Admin";
 import heroImage from "./heroimage.jpg";
 import "./style.css";
 import JMSPrint from "./logo.jpg";
@@ -43,6 +42,8 @@ import snusboksWhite from "./snusboks-white.jpg";
 import snusboksBlue from "./snusboks-blue.jpg";
 import snusboksPink from "./snusboks-pink.jpg";
 
+const Admin = lazy(() => import("./Admin"));
+
 function ProductItem({
   image,
   images = [],
@@ -59,6 +60,7 @@ function ProductItem({
   const [selectedImage, setSelectedImage] = useState(image);
   const [selectedColor, setSelectedColor] = useState("Ikke valgt");
   const [imageIndex, setImageIndex] = useState(0);
+
   const activeImages = images.length > 0 ? images : [selectedImage];
   const activeImage = activeImages[imageIndex] || selectedImage;
 
@@ -71,8 +73,8 @@ function ProductItem({
   return (
     <div className="shopCard">
       <div className={`badge ${stockStatus === "Bestillingsvare" ? "orderBadge" : ""}`}>
-  {stockStatus}
-</div>
+        {stockStatus}
+      </div>
 
       <button
         className={`favoriteButton ${isFavorite ? "active" : ""}`}
@@ -82,43 +84,35 @@ function ProductItem({
       </button>
 
       <div className="imageWrap">
-  {activeImages.length > 1 && (
-    <button
-      className="imageArrow left"
-      onClick={() =>
-        setImageIndex(
-          imageIndex === 0
-            ? activeImages.length - 1
-            : imageIndex - 1
-        )
-      }
-    >
-      ‹
-    </button>
-  )}
+        {activeImages.length > 1 && (
+          <button
+            className="imageArrow left"
+            onClick={() =>
+              setImageIndex(imageIndex === 0 ? activeImages.length - 1 : imageIndex - 1)
+            }
+          >
+            ‹
+          </button>
+        )}
 
-  <img
-    src={activeImage}
-    alt={title}
-    className="shopImage"
-    onClick={() => onImageClick(activeImage)}
-  />
+        <img
+          src={activeImage}
+          alt={title}
+          className="shopImage"
+          onClick={() => onImageClick(activeImage)}
+        />
 
-  {activeImages.length > 1 && (
-    <button
-      className="imageArrow right"
-      onClick={() =>
-        setImageIndex(
-          imageIndex === activeImages.length - 1
-            ? 0
-            : imageIndex + 1
-        )
-      }
-    >
-      ›
-    </button>
-  )}
-</div>
+        {activeImages.length > 1 && (
+          <button
+            className="imageArrow right"
+            onClick={() =>
+              setImageIndex(imageIndex === activeImages.length - 1 ? 0 : imageIndex + 1)
+            }
+          >
+            ›
+          </button>
+        )}
+      </div>
 
       <div className="shopContent">
         <h3>{title}</h3>
@@ -166,13 +160,13 @@ export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [cart, setCart] = useState([]);
   const [customer, setCustomer] = useState({
-  name: "",
-  address: "",
-  postalCode: "",
-  city: "",
-  phone: "",
-  email: "",
-});
+    name: "",
+    address: "",
+    postalCode: "",
+    city: "",
+    phone: "",
+    email: "",
+  });
 
   const [showToast, setShowToast] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
@@ -198,11 +192,11 @@ export default function App() {
 
   const shippingPrice = cart.length > 0 ? 69 : 0;
 
-const productTotal = cart.reduce((total, item) => {
-  return total + parseInt(item.price);
-}, 0);
+  const productTotal = cart.reduce((total, item) => {
+    return total + parseInt(item.price);
+  }, 0);
 
-const totalPrice = productTotal + shippingPrice;
+  const totalPrice = productTotal + shippingPrice;
 
   const toggleFavorite = (title) => {
     if (favorites.includes(title)) {
@@ -214,12 +208,13 @@ const totalPrice = productTotal + shippingPrice;
 
   const validateCustomer = () => {
     if (
-  !customer.name ||
-  !customer.address ||
-  !customer.postalCode ||
-  !customer.city ||
-  !customer.phone ||
-  !customer.email) {
+      !customer.name ||
+      !customer.address ||
+      !customer.postalCode ||
+      !customer.city ||
+      !customer.phone ||
+      !customer.email
+    ) {
       setCheckoutError("Fyll inn alle feltene");
       return false;
     }
@@ -229,440 +224,437 @@ const totalPrice = productTotal + shippingPrice;
   };
 
   return (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={
-        <main className="page">
-      <section className="hero">
-        <div className="heroGrid">
-          <div>
-            <img src={JMSPrint} alt="JMSPrint" className="logo" />
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <main className="page">
+              <section className="hero">
+                <div className="heroGrid">
+                  <div>
+                    <img src={JMSPrint} alt="JMSPrint" className="logo" />
 
-            <div className="pill">Produkter</div>
+                    <div className="pill">Produkter</div>
 
-            <h1>
-              Produkter laget
-              <br />
-              for <span>ekte behov</span>
-            </h1>
+                    <h1>
+                      Produkter laget
+                      <br />
+                      for <span>ekte behov</span>
+                    </h1>
 
-            <p className="lead">
-              Praktiske 3D-printede produkter laget på bestilling – for hjem, hobby, garasje og båt.
-            </p>
+                    <p className="lead">
+                      Praktiske 3D-printede produkter laget på bestilling – for hjem, hobby, garasje og båt.
+                    </p>
 
-            <div className="buttons">
-              <a href="#butikk" className="btn primary">Se produkter</a>
-              <a href="#kontakt" className="btn secondary">Kontakt oss</a>
-            </div>
-          </div>
+                    <div className="buttons">
+                      <a href="#butikk" className="btn primary">Se produkter</a>
+                      <a href="#kontakt" className="btn secondary">Kontakt oss</a>
+                    </div>
+                  </div>
 
-          <div className="showcase">
-            <img
-              src={heroImage}
-              alt="Produkter"
-              onClick={() => setSelectedImage(heroImage)}
-              style={{ cursor: "pointer" }}
-            />
-          </div>
-        </div>
+                  <div className="showcase">
+                    <img
+                      src={heroImage}
+                      alt="Produkter"
+                      onClick={() => setSelectedImage(heroImage)}
+                      style={{ cursor: "pointer" }}
+                    />
+                  </div>
+                </div>
 
-        <section className="features">
-          <div className="feature">
-            <h3>3D-printet i Norge</h3>
-            <p>Lokalt produsert på bestilling.</p>
-          </div>
+                <section className="features">
+                  <div className="feature">
+                    <h3>3D-printet i Norge</h3>
+                    <p>Lokalt produsert på bestilling.</p>
+                  </div>
 
-          <div className="feature">
-            <h3>Høy kvalitet</h3>
-            <p>Printet i slitesterk PETG.</p>
-          </div>
+                  <div className="feature">
+                    <h3>Høy kvalitet</h3>
+                    <p>Printet i slitesterk PETG.</p>
+                  </div>
 
-          <div className="feature">
-            <h3>Flere farger</h3>
-            <p>Velg fargen du liker best.</p>
-          </div>
+                  <div className="feature">
+                    <h3>Flere farger</h3>
+                    <p>Velg fargen du liker best.</p>
+                  </div>
 
-          <div className="feature">
-            <h3>Praktiske løsninger</h3>
-            <p>Laget for ekte behov i hverdagen.</p>
-          </div>
-        </section>
+                  <div className="feature">
+                    <h3>Praktiske løsninger</h3>
+                    <p>Laget for ekte behov i hverdagen.</p>
+                  </div>
+                </section>
 
-        <div className="products">
-          <div className="productCard">
-            <div className="icon">⚡</div>
-            <h3>Custom Design</h3>
-            <p>Vi kan lage spesialtilpassede løsninger og modeller etter behov.</p>
-          </div>
+                <div className="products">
+                  <div className="productCard">
+                    <div className="icon">⚡</div>
+                    <h3>Custom Design</h3>
+                    <p>Vi kan lage spesialtilpassede løsninger og modeller etter behov.</p>
+                  </div>
 
-          <div className="productCard">
-            <div className="icon">🔧</div>
-            <h3>Smarte Smådeler</h3>
-            <p>Reservedeler, braketter, holdere og praktiske produkter laget med 3D-print.</p>
-          </div>
+                  <div className="productCard">
+                    <div className="icon">🔧</div>
+                    <h3>Smarte Smådeler</h3>
+                    <p>Reservedeler, braketter, holdere og praktiske produkter laget med 3D-print.</p>
+                  </div>
 
-          <div className="productCard">
-            <div className="icon">📦</div>
-            <h3>Prototype & Hobby</h3>
-            <p>Perfekt for hobbyprosjekter, garage, RC, akvarium og kreative idéer.</p>
-          </div>
-        </div>
-      </section>
+                  <div className="productCard">
+                    <div className="icon">📦</div>
+                    <h3>Prototype & Hobby</h3>
+                    <p>Perfekt for hobbyprosjekter, garage, RC, akvarium og kreative idéer.</p>
+                  </div>
+                </div>
+              </section>
 
-      <section className="shopSection" id="butikk">
-        <div className="sectionIntro">
-          <p>Klare produkter</p>
-          <h2>Bestill praktiske 3D-print</h2>
-          <span>
-            Produktene printes i slitesterk PETG. Flere farger kan velges ved bestilling.
-          </span>
-        </div>
+              <section className="shopSection" id="butikk">
+                <div className="sectionIntro">
+                  <p>Klare produkter</p>
+                  <h2>Bestill praktiske 3D-print</h2>
+                  <span>
+                    Produktene printes i slitesterk PETG. Flere farger kan velges ved bestilling.
+                  </span>
+                </div>
 
-        <div className="shopGrid">
-          <ProductItem
-            image={salttraktWhite}
-            colorImages={{
-              white: salttraktWhite,
-              black: salttraktBlack,
-              grey: salttraktGrey,
-              blue: salttraktBlue,
-              pink: salttraktPink,
-            }}
-            title="Salttrakt til oppvaskmaskin"
-            price="69 kr"
-            text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
-            onImageClick={setSelectedImage}
-            onAddToCart={addToCart}
-            isFavorite={favorites.includes("Salttrakt til oppvaskmaskin")}
-            onToggleFavorite={toggleFavorite}
-          />
+                <div className="shopGrid">
+                  <ProductItem
+                    image={salttraktWhite}
+                    colorImages={{
+                      white: salttraktWhite,
+                      black: salttraktBlack,
+                      grey: salttraktGrey,
+                      blue: salttraktBlue,
+                      pink: salttraktPink,
+                    }}
+                    title="Salttrakt til oppvaskmaskin"
+                    price="69 kr"
+                    text="Gjør påfylling av oppvasksalt enklere uten søl. Printet i slitesterk PETG."
+                    onImageClick={setSelectedImage}
+                    onAddToCart={addToCart}
+                    isFavorite={favorites.includes("Salttrakt til oppvaskmaskin")}
+                    onToggleFavorite={toggleFavorite}
+                  />
 
-          <ProductItem
-            image={deskholder}
-            colorImages={{
-              black: deskholderBlack,
-              white: deskholderWhite,
-              blue: deskholderBlue,
-              pink: deskholderPink,
-              grey: deskholder,
-            }}
-            title="Justerbar bordholder"
-            price="79 kr"
-            text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
-            onImageClick={setSelectedImage}
-            onAddToCart={addToCart}
-            isFavorite={favorites.includes("Justerbar bordholder")}
-            onToggleFavorite={toggleFavorite}
-          />
-    
-           <ProductItem
-            image={holderpink}
-            colorImages={{
-              pink: holderpink,
-              black: holderpinkBlack,
-              white: holderpinkWhite,
-              grey: holderpinkGrey,
-              blue: holderpinkBlue,
-            }}
-            title="Praktisk veggholder"
-            price="69 kr"
-            text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
-            onImageClick={setSelectedImage}
-            onAddToCart={addToCart}
-            isFavorite={favorites.includes("Praktisk veggholder")}
-            onToggleFavorite={toggleFavorite}
-           />
-          
-           <ProductItem
-            image={boksaapner}
-            colorImages={{
-              pink: boksaapner,
-              black: boksaapnerBlack,
-              white: boksaapnerWhite,
-              grey: boksaapnerGrey,
-              blue: boksaapnerBlue,
-            }}
-            title="Boksåpner"
-            price="19 kr"
-            text="Praktisk boksåpner som gjør det enklere å åpne bokser. Printet i slitesterk PETG."
-            onImageClick={setSelectedImage}
-            onAddToCart={addToCart}
-            isFavorite={favorites.includes("Boksåpner")}
-            onToggleFavorite={toggleFavorite}
-           />
+                  <ProductItem
+                    image={deskholder}
+                    colorImages={{
+                      black: deskholderBlack,
+                      white: deskholderWhite,
+                      blue: deskholderBlue,
+                      pink: deskholderPink,
+                      grey: deskholder,
+                    }}
+                    title="Justerbar bordholder"
+                    price="79 kr"
+                    text="Praktisk holder til headset, kabler eller utstyr. Festes enkelt på skrivebord eller hylle. Printet i slitesterk PETG."
+                    onImageClick={setSelectedImage}
+                    onAddToCart={addToCart}
+                    isFavorite={favorites.includes("Justerbar bordholder")}
+                    onToggleFavorite={toggleFavorite}
+                  />
 
-            <ProductItem
-             image={justerbarStraaledyse}
-             colorImages={{
-             grey: justerbarStraaledyse,
-             pink: justerbarStraaledysePink,
-             blue: justerbarStraaledyseBlue,
-             white: justerbarStraaledyseWhite,
-             black: justerbarStraaledyseBlack,               
-            }}
-            title="Justerbar stråledyse"
-            price="99 kr"
-            text="Justerbar dyse for hageslange. Gir bedre kontroll på vannstrålen. Printet i slitesterk PETG."
-            onImageClick={setSelectedImage}
-            onAddToCart={addToCart}
-            isFavorite={favorites.includes("Justerbar stråledyse")}
-            onToggleFavorite={toggleFavorite}
-           />
+                  <ProductItem
+                    image={holderpink}
+                    colorImages={{
+                      pink: holderpink,
+                      black: holderpinkBlack,
+                      white: holderpinkWhite,
+                      grey: holderpinkGrey,
+                      blue: holderpinkBlue,
+                    }}
+                    title="Praktisk veggholder"
+                    price="69 kr"
+                    text="Solid 3D-printet holder til headset, kabler eller småting. Kan monteres med skruer eller tape. Printet i slitesterk PETG."
+                    onImageClick={setSelectedImage}
+                    onAddToCart={addToCart}
+                    isFavorite={favorites.includes("Praktisk veggholder")}
+                    onToggleFavorite={toggleFavorite}
+                  />
 
-             <ProductItem
-             image={snusboks}
-             images={[
-             snusboks,
-             snusboks2,
-             snusboks3,
-            ]}
-            colorImages={{
-              grey: snusboks,
-              pink: snusboksPink,
-              blue: snusboksBlue,
-              white: snusboksWhite,
-              black: snusboksBlack,
-             }}
-             title="Snusboks"
-             price="79 kr"
-             text="Solid 3D-printet snusboks med lokk. Praktisk oppbevaring til snus eller smådeler."
-             onImageClick={setSelectedImage}
-             onAddToCart={addToCart}
-             isFavorite={favorites.includes("Snusboks")}
-             onToggleFavorite={toggleFavorite}
-            />
-          </div>
-         </section>
+                  <ProductItem
+                    image={boksaapner}
+                    colorImages={{
+                      pink: boksaapner,
+                      black: boksaapnerBlack,
+                      white: boksaapnerWhite,
+                      grey: boksaapnerGrey,
+                      blue: boksaapnerBlue,
+                    }}
+                    title="Boksåpner"
+                    price="19 kr"
+                    text="Praktisk boksåpner som gjør det enklere å åpne bokser. Printet i slitesterk PETG."
+                    onImageClick={setSelectedImage}
+                    onAddToCart={addToCart}
+                    isFavorite={favorites.includes("Boksåpner")}
+                    onToggleFavorite={toggleFavorite}
+                  />
 
-     <section className="contact" id="kontakt">
-  <h2>Ønsker du et spesialdesignet 3D-print?</h2>
+                  <ProductItem
+                    image={justerbarStraaledyse}
+                    colorImages={{
+                      grey: justerbarStraaledyse,
+                      pink: justerbarStraaledysePink,
+                      blue: justerbarStraaledyseBlue,
+                      white: justerbarStraaledyseWhite,
+                      black: justerbarStraaledyseBlack,
+                    }}
+                    title="Justerbar stråledyse"
+                    price="99 kr"
+                    text="Justerbar dyse for hageslange. Gir bedre kontroll på vannstrålen. Printet i slitesterk PETG."
+                    onImageClick={setSelectedImage}
+                    onAddToCart={addToCart}
+                    isFavorite={favorites.includes("Justerbar stråledyse")}
+                    onToggleFavorite={toggleFavorite}
+                  />
 
-  <p>
-    Har du en egen idé eller trenger en spesialtilpasset løsning? Ta kontakt,
-    så ser vi på mulighetene for å designe og 3D-printe en løsning for deg.
-  </p>
+                  <ProductItem
+                    image={snusboks}
+                    images={[snusboks, snusboks2, snusboks3]}
+                    colorImages={{
+                      grey: snusboks,
+                      pink: snusboksPink,
+                      blue: snusboksBlue,
+                      white: snusboksWhite,
+                      black: snusboksBlack,
+                    }}
+                    title="Snusboks"
+                    price="79 kr"
+                    text="Solid 3D-printet snusboks med lokk. Praktisk oppbevaring til snus eller smådeler."
+                    onImageClick={setSelectedImage}
+                    onAddToCart={addToCart}
+                    isFavorite={favorites.includes("Snusboks")}
+                    onToggleFavorite={toggleFavorite}
+                  />
+                </div>
+              </section>
 
-  <div className="contactBox">
-    <p className="contactTitle">Kontakt oss</p>
+              <section className="contact" id="kontakt">
+                <h2>Ønsker du et spesialdesignet 3D-print?</h2>
 
-    <p>Send gjerne bilde, mål eller forklaring på hva du ønsker laget.</p>
+                <p>
+                  Har du en egen idé eller trenger en spesialtilpasset løsning? Ta kontakt,
+                  så ser vi på mulighetene for å designe og 3D-printe en løsning for deg.
+                </p>
 
-    <p>
-      E-post: <a className="mailLink" href="mailto:kontakt@jmsprint.no">kontakt@jmsprint.no</a>
-    </p>
+                <div className="contactBox">
+                  <p className="contactTitle">Kontakt oss</p>
 
-    <p>JMSPrint</p>
-    <p>Org.nr: 937 840 586</p>
-    <a href="/salgsvilkar.html">Salgsvilkår</a>
-    </div>
-    </section>
+                  <p>Send gjerne bilde, mål eller forklaring på hva du ønsker laget.</p>
 
-      {showToast && (
-        <div className="toast">✔ Produkt lagt til i handlekurv</div>
-      )}
+                  <p>
+                    E-post: <a className="mailLink" href="mailto:kontakt@jmsprint.no">kontakt@jmsprint.no</a>
+                  </p>
 
-      {cart.length > 0 && (
-        <div className="cartBox">
-          <div className="cartHeader">
-            <h3>Handlekurv ({cart.length})</h3>
+                  <p>JMSPrint</p>
+                  <p>Org.nr: 937 840 586</p>
+                  <a href="/salgsvilkar.html">Salgsvilkår</a>
+                </div>
+              </section>
 
-            <button className="clearCartButton" onClick={() => setCart([])}>
-              Tøm
-            </button>
-          </div>
+              {showToast && (
+                <div className="toast">✔ Produkt lagt til i handlekurv</div>
+              )}
 
-          {cart.map((item, index) => (
-            <div className="cartItem" key={index}>
-              <div className="cartInfo">
-                <span>{item.title}</span>
-                <small>Farge: {item.color}</small>
-                <strong>{item.price}</strong>
-              </div>
+              {cart.length > 0 && (
+                <div className="cartBox">
+                  <div className="cartHeader">
+                    <h3>Handlekurv ({cart.length})</h3>
 
-              <button
-                className="removeButton"
-                onClick={() => removeFromCart(index)}
-              >
-                ❌
-              </button>
-            </div>
-          ))}
+                    <button className="clearCartButton" onClick={() => setCart([])}>
+                      Tøm
+                    </button>
+                  </div>
 
-          <div className="cartTotal">
-  Varer: {productTotal} kr
-  <br />
-  Frakt: {shippingPrice} kr
-  <hr />
-  <strong>Total: {totalPrice} kr</strong>
-</div>
-<p className="shippingInfo">
-  📦 Fast frakt: 69 kr i hele Norge
-</p>
-          <div className="checkoutForm">
-            <input
-              type="text"
-              placeholder="Navn"
-              value={customer.name}
-              onChange={(e) =>
-                setCustomer({ ...customer, name: e.target.value })
-              }
-            />
+                  {cart.map((item, index) => (
+                    <div className="cartItem" key={index}>
+                      <div className="cartInfo">
+                        <span>{item.title}</span>
+                        <small>Farge: {item.color}</small>
+                        <strong>{item.price}</strong>
+                      </div>
 
-            <input
-              type="text"
-              placeholder="Adresse"
-              value={customer.address}
-              onChange={(e) =>
-                setCustomer({ ...customer, address: e.target.value })
-              }
-            />
+                      <button
+                        className="removeButton"
+                        onClick={() => removeFromCart(index)}
+                      >
+                        ❌
+                      </button>
+                    </div>
+                  ))}
 
-            <input
-              type="text"
-              placeholder="Postnummer"
-              value={customer.postalCode}
-              onChange={(e) =>
-                setCustomer({ ...customer, postalCode: e.target.value })
-              }
-            />
+                  <div className="cartTotal">
+                    Varer: {productTotal} kr
+                    <br />
+                    Frakt: {shippingPrice} kr
+                    <hr />
+                    <strong>Total: {totalPrice} kr</strong>
+                  </div>
 
-             <input
-               type="text"
-               placeholder="Poststed"
-               value={customer.city}
-               onChange={(e) =>
-                 setCustomer({ ...customer, city: e.target.value })
-               }
-            />
+                  <p className="shippingInfo">
+                    📦 Fast frakt: 69 kr i hele Norge
+                  </p>
 
-            <input
-              type="tel"
-              placeholder="Telefon"
-              value={customer.phone}
-              onChange={(e) =>
-                setCustomer({ ...customer, phone: e.target.value })
-              }
-            />
+                  <div className="checkoutForm">
+                    <input
+                      type="text"
+                      placeholder="Navn"
+                      value={customer.name}
+                      onChange={(e) => setCustomer({ ...customer, name: e.target.value })}
+                    />
 
-            <input
-              type="email"
-              placeholder="E-post"
-              value={customer.email}
-              onChange={(e) =>
-                setCustomer({ ...customer, email: e.target.value })
-              }
-            />
+                    <input
+                      type="text"
+                      placeholder="Adresse"
+                      value={customer.address}
+                      onChange={(e) => setCustomer({ ...customer, address: e.target.value })}
+                    />
 
-            <button
-              className="cartCheckout"
-              disabled={isSendingOrder || isPaying || orderSuccess || vippsSuccess}
-              onClick={async () => {
-                if (!validateCustomer()) return;
+                    <input
+                      type="text"
+                      placeholder="Postnummer"
+                      value={customer.postalCode}
+                      onChange={(e) => setCustomer({ ...customer, postalCode: e.target.value })}
+                    />
 
-                setCheckoutError("");
-                setOrderSuccess(false);
-                setVippsSuccess(false);
-                setIsSendingOrder(true);
+                    <input
+                      type="text"
+                      placeholder="Poststed"
+                      value={customer.city}
+                      onChange={(e) => setCustomer({ ...customer, city: e.target.value })}
+                    />
 
-                const orderText = cart
-                  .map(
-                    (item, index) =>
-                      `${index + 1}. ${item.title} - ${item.color} - ${item.price}`
-                  )
-                  .join("\n");
-                 
-                try {
-                  const response = await fetch("/api/send-order", {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                      Accept: "application/json",
-                    },
-                    body: JSON.stringify({
-                    
-                    navn: customer.name,
-                    adresse: customer.address,
-                    telefon: customer.phone,
-                    email: customer.email,
-                    postnummer: customer.postalCode,
-                    poststed: customer.city,
-                    varer: orderText,
-                    total: `${totalPrice} kr`,
-                    }),
-                  });
+                    <input
+                      type="tel"
+                      placeholder="Telefon"
+                      value={customer.phone}
+                      onChange={(e) => setCustomer({ ...customer, phone: e.target.value })}
+                    />
 
-                  const result = await response.json();
-                  setLastOrderNumber(result.ordrenummer);
+                    <input
+                      type="email"
+                      placeholder="E-post"
+                      value={customer.email}
+                      onChange={(e) => setCustomer({ ...customer, email: e.target.value })}
+                    />
 
-                  if (!response.ok) {
-                    throw new Error("Kunne ikke sende bestilling");
-                  }
+                    <button
+                      className="cartCheckout"
+                      disabled={isSendingOrder || isPaying || orderSuccess || vippsSuccess}
+                      onClick={async () => {
+                        if (!validateCustomer()) return;
 
-                  setIsSendingOrder(false);
-                  setOrderSuccess(true);
+                        setCheckoutError("");
+                        setOrderSuccess(false);
+                        setVippsSuccess(false);
+                        setIsSendingOrder(true);
 
-                  setTimeout(() => {
-                    setCart([]);
-                    setOrderSuccess(false);
-                    setLastOrderNumber("");
-                    setCustomer({
-                      name: "",
-                      address: "",
-                      phone: "",
-                      email: "",
-                    });
-                  }, 6000);
-                } catch (error) {
-                  setIsSendingOrder(false);
-                  setCheckoutError("Noe gikk galt. Prøv igjen eller kontakt oss direkte.");
-                }
-              }}
-            >
-              {isSendingOrder ? "Sender bestilling..." : "Bestill med Vipps"}
-            </button>
+                        const orderText = cart
+                          .map(
+                            (item, index) =>
+                              `${index + 1}. ${item.title} - ${item.color} - ${item.price}`
+                          )
+                          .join("\n");
 
-            {checkoutError && (
-              <p className="checkoutError">{checkoutError}</p>
-            )}
+                        try {
+                          const response = await fetch("/api/send-order", {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                              Accept: "application/json",
+                            },
+                            body: JSON.stringify({
+                              navn: customer.name,
+                              adresse: customer.address,
+                              telefon: customer.phone,
+                              email: customer.email,
+                              postnummer: customer.postalCode,
+                              poststed: customer.city,
+                              varer: orderText,
+                              total: `${totalPrice} kr`,
+                            }),
+                          });
 
-            {orderSuccess && (
-            <div className="paymentSuccess">
-            <strong>✅ Bestilling sendt!</strong>
-            <br />
-            Ordrenummer: {lastOrderNumber}
-            <br />
-            Vi tar kontakt så snart som mulig.
-            </div>
-            )}
+                          const result = await response.json();
+                          setLastOrderNumber(result.ordrenummer);
 
-            {vippsSuccess && (
-              <div className="paymentSuccess">✅ Betaling fullført</div>
-            )}
+                          if (!response.ok) {
+                            throw new Error("Kunne ikke sende bestilling");
+                          }
 
-            <p className="checkoutNote">
-              Vi sender Vipps-forespørsel så snart bestillingen er behandlet.
-            </p>
-          </div>
-        </div>
-      )}
+                          setIsSendingOrder(false);
+                          setOrderSuccess(true);
 
-      {selectedImage && (
-        <div className="imageModal" onClick={() => setSelectedImage(null)}>
-          <button
-            className="closeButton"
-            onClick={() => setSelectedImage(null)}
-          >
-            X
-          </button>
+                          setTimeout(() => {
+                            setCart([]);
+                            setOrderSuccess(false);
+                            setLastOrderNumber("");
+                            setCustomer({
+                              name: "",
+                              address: "",
+                              postalCode: "",
+                              city: "",
+                              phone: "",
+                              email: "",
+                            });
+                          }, 6000);
+                        } catch (error) {
+                          setIsSendingOrder(false);
+                          setCheckoutError("Noe gikk galt. Prøv igjen eller kontakt oss direkte.");
+                        }
+                      }}
+                    >
+                      {isSendingOrder ? "Sender bestilling..." : "Bestill med Vipps"}
+                    </button>
 
-          <img src={selectedImage} alt="Produkt" className="modalImage" />
-        </div>
-      )}
-    </main>
-}
- />
-<Route path="/admin" element={<Admin />} />
-</Routes>
-</BrowserRouter>
-);
+                    {checkoutError && (
+                      <p className="checkoutError">{checkoutError}</p>
+                    )}
+
+                    {orderSuccess && (
+                      <div className="paymentSuccess">
+                        <strong>✅ Bestilling sendt!</strong>
+                        <br />
+                        Ordrenummer: {lastOrderNumber}
+                        <br />
+                        Vi tar kontakt så snart som mulig.
+                      </div>
+                    )}
+
+                    {vippsSuccess && (
+                      <div className="paymentSuccess">✅ Betaling fullført</div>
+                    )}
+
+                    <p className="checkoutNote">
+                      Vi sender Vipps-forespørsel så snart bestillingen er behandlet.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {selectedImage && (
+                <div className="imageModal" onClick={() => setSelectedImage(null)}>
+                  <button
+                    className="closeButton"
+                    onClick={() => setSelectedImage(null)}
+                  >
+                    X
+                  </button>
+
+                  <img src={selectedImage} alt="Produkt" className="modalImage" />
+                </div>
+              )}
+            </main>
+          }
+        />
+
+        <Route
+          path="/admin"
+          element={
+            <Suspense fallback={<div style={{ padding: "30px", color: "white" }}>Laster admin...</div>}>
+              <Admin />
+            </Suspense>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
