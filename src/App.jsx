@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import heroImage from "./heroimage.jpg";
 import "./style.css";
 import JMSPrint from "./logo.jpg";
@@ -224,8 +224,7 @@ export default function App() {
   };
 
   return (
-    <BrowserRouter>
-      <Routes>
+    <Routes>
         <Route
           path="/"
           element={
@@ -655,6 +654,5 @@ export default function App() {
           }
         />
       </Routes>
-    </BrowserRouter>
   );
 }
