@@ -100,7 +100,11 @@ const ordrenummer = `JMS-${1000 + data.order_id}`;
       `,
     });
 
-    return res.status(200).json({ success: true });
+    return res.status(200).json({
+    success: true,
+    ordrenummer,
+    });
+    
   } catch (error) {
     console.error("Send order error:", error);
     return res.status(500).json({ error: "Kunne ikke sende e-post" });
