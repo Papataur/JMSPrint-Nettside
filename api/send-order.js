@@ -14,24 +14,38 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { ordrenummer, navn, postnummer, poststed, adresse, telefon, email, varer, total } = req.body;
+    const { navn, postnummer, poststed, adresse, telefon, email, varer, total } = req.body;
 
     if (!ordrenummer || !navn || !email || !varer || !total) {
       return res.status(400).json({ error: "Mangler nødvendig informasjon" });
     }
 
     const varerHtml = String(varer).replace(/\n/g, "<br>");
-    await supabase.from("orders").insert([
-  {
-    order_number: ordrenummer,
-    customer_name: navn,
-    customer_email: email,
-    customer_phone: telefon,
-    products: { items: varer },
-    total_price: parseFloat(total),
-    status: "Ny ordre",
-  },
-]);
+
+const { data, error } = await supabase
+  .from("orders")
+  .insert([
+    {
+      customer_name: navn,
+      customer_email: email,
+      customer_phone: telefon,
+      products: { items: varer },
+      total_price: parseFloat(total),
+      status: "Ny ordre",
+    },
+  ])
+  .select()
+  .single();
+
+if (error) {
+  throw error;
+}
+
+const ordrenummer = `JMS-${1000 + data.order_id}`;
+    await supabase
+  .from("orders")
+  .update({ order_number: ordrenummer })
+  .eq("id", data.id);
 
     await resend.emails.send({
       from: "JMSPrint <kontakt@jmsprint.no>",
