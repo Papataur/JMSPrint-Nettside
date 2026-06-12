@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   try {
     const { navn, postnummer, poststed, adresse, telefon, email, varer, total } = req.body;
 
-    if (!ordrenummer || !navn || !email || !varer || !total) {
+    if (!navn || !email || !varer || !total) {
       return res.status(400).json({ error: "Mangler nødvendig informasjon" });
     }
 
