@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { supabase } from "./lib/supabase";
 
+console.log("ADMIN LASTET");
+
 export default function Admin() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
