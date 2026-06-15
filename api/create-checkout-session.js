@@ -118,6 +118,10 @@ export async function POST(request) {
       mode: "payment",
       customer_email: customer.email,
 
+      metadata: {
+        orderNumber,
+      },
+
       line_items: [
         {
           price_data: {
