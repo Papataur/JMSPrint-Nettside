@@ -553,9 +553,10 @@ export default function App() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          total: totalPrice,
-        }),
-      });
+        total: totalPrice,
+        customer,
+        cart,
+       }),
 
       const result = await response.json();
 
