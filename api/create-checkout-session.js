@@ -14,8 +14,6 @@ export async function POST(request) {
   try {
     const { total, customer, cart } = await request.json();
 
-    const orderNumber = `JMS-${Date.now()}`;
-
     const varerTekst = cart
       .map((item) => {
         const productName = item.name || item.title || "Ukjent produkt";
@@ -28,19 +26,38 @@ export async function POST(request) {
 
     const varerHtml = varerTekst.replace(/\n/g, "<br>");
 
-    await supabase.from("orders").insert([
-      {
-        order_number: orderNumber,
-        customer_name: customer.name,
-        customer_email: customer.email,
-        customer_phone: customer.phone,
-        products: {
-          items: varerTekst,
+    const { data: order, error: orderError } = await supabase
+      .from("orders")
+      .insert([
+        {
+          order_number: "Midlertidig",
+          customer_name: customer.name,
+          customer_email: customer.email,
+          customer_phone: customer.phone,
+          products: {
+            items: varerTekst,
+          },
+          total_price: total,
+          status: "Venter betaling",
         },
-        total_price: total,
-        status: "Venter betaling",
-      },
-    ]);
+      ])
+      .select()
+      .single();
+
+    if (orderError) {
+      throw orderError;
+    }
+
+    const orderNumber = `JMS-${String(order.id).padStart(4, "0")}`;
+
+    const { error: updateError } = await supabase
+      .from("orders")
+      .update({ order_number: orderNumber })
+      .eq("id", order.id);
+
+    if (updateError) {
+      throw updateError;
+    }
 
     await resend.emails.send({
       from: "JMSPrint <kontakt@jmsprint.no>",
