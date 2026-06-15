@@ -22,7 +22,7 @@ export async function POST(request) {
         const colorName = item.color || item.selectedColor || "Ukjent farge";
         const price = item.price || 0;
 
-        return `${item.quantity || 1}. ${productName} - ${colorName} - ${price} kr`;
+        return `${item.quantity || 1}. ${productName} - ${colorName} - ${price}`;
       })
       .join("\n");
 
