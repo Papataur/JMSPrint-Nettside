@@ -17,12 +17,13 @@ export async function POST(request) {
     const orderNumber = `JMS-${Date.now()}`;
 
     const varerTekst = cart
-      .map(
-        (item) =>
-          `${item.quantity || 1}. ${item.name} - ${
-            item.color || "Ukjent farge"
-          } - ${item.price} kr`
-      )
+      .map((item) => {
+        const productName = item.name || item.title || "Ukjent produkt";
+        const colorName = item.color || item.selectedColor || "Ukjent farge";
+        const price = item.price || 0;
+
+        return `${item.quantity || 1}. ${productName} - ${colorName} - ${price} kr`;
+      })
       .join("\n");
 
     const varerHtml = varerTekst.replace(/\n/g, "<br>");
@@ -53,11 +54,9 @@ export async function POST(request) {
         <h2>🎉 Takk for bestillingen hos JMSPrint!</h2>
 
         <p>Hei ${customer.name},</p>
-
         <p>Vi har mottatt bestillingen din.</p>
 
         <p><strong>Ordrenummer:</strong> ${orderNumber}</p>
-
         <p><strong>Varer:</strong><br>${varerHtml}</p>
 
         <p><strong>Frakt:</strong> 69 kr</p>
@@ -65,9 +64,7 @@ export async function POST(request) {
 
         <p>📦 <strong>Forventet leveringstid:</strong> 2–5 virkedager</p>
 
-        <p>
-          Vi begynner produksjonen så snart bestillingen er behandlet.
-        </p>
+        <p>Vi begynner produksjonen så snart bestillingen er behandlet.</p>
 
         <p>
           Med vennlig hilsen<br><br>
@@ -95,7 +92,6 @@ export async function POST(request) {
         <p><strong>E-post:</strong> ${customer.email}</p>
 
         <p><strong>Varer:</strong><br>${varerHtml}</p>
-
         <p><strong>Total:</strong> ${total} kr</p>
       `,
     });
@@ -103,7 +99,6 @@ export async function POST(request) {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
-
       customer_email: customer.email,
 
       line_items: [
