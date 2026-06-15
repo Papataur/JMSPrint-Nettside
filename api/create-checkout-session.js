@@ -20,7 +20,11 @@ export async function POST(request) {
         customer_name: customer.name,
         customer_email: customer.email,
         customer_phone: customer.phone,
-        products: { items: cart },
+        products: {
+        items: cart.map((item) =>
+        `${item.quantity || 1}. ${item.name} - ${item.color || "Ukjent farge"} - ${item.price} kr`
+       ).join("\n"),
+      },
         total_price: total,
         status: "Venter betaling",
       },
