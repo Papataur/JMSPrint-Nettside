@@ -536,73 +536,42 @@ export default function App() {
                     />
 
                     <button
-                      className="cartCheckout"
-                      disabled={isSendingOrder || isPaying || orderSuccess || vippsSuccess}
-                      onClick={async () => {
-                        if (!validateCustomer()) return;
+  className="cartCheckout"
+  disabled={isSendingOrder || isPaying || orderSuccess || vippsSuccess}
+  onClick={async () => {
+    if (!validateCustomer()) return;
 
-                        setCheckoutError("");
-                        setOrderSuccess(false);
-                        setVippsSuccess(false);
-                        setIsSendingOrder(true);
+    setCheckoutError("");
+    setOrderSuccess(false);
+    setVippsSuccess(false);
+    setIsPaying(true);
 
-                        const orderText = cart
-                          .map(
-                            (item, index) =>
-                              `${index + 1}. ${item.title} - ${item.color} - ${item.price}`
-                          )
-                          .join("\n");
+    try {
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          total: totalPrice,
+        }),
+      });
 
-                        try {
-                          const response = await fetch("/api/send-order", {
-                            method: "POST",
-                            headers: {
-                              "Content-Type": "application/json",
-                              Accept: "application/json",
-                            },
-                            body: JSON.stringify({
-                              navn: customer.name,
-                              adresse: customer.address,
-                              telefon: customer.phone,
-                              email: customer.email,
-                              postnummer: customer.postalCode,
-                              poststed: customer.city,
-                              varer: orderText,
-                              total: `${totalPrice} kr`,
-                            }),
-                          });
+      const result = await response.json();
 
-                          const result = await response.json();
-                          setLastOrderNumber(result.ordrenummer);
+      if (!response.ok) {
+        throw new Error("Kunne ikke starte betaling");
+      }
 
-                          if (!response.ok) {
-                            throw new Error("Kunne ikke sende bestilling");
-                          }
-
-                          setIsSendingOrder(false);
-                          setOrderSuccess(true);
-
-                          setTimeout(() => {
-                            setCart([]);
-                            setOrderSuccess(false);
-                            setLastOrderNumber("");
-                            setCustomer({
-                              name: "",
-                              address: "",
-                              postalCode: "",
-                              city: "",
-                              phone: "",
-                              email: "",
-                            });
-                          }, 6000);
-                        } catch (error) {
-                          setIsSendingOrder(false);
-                          setCheckoutError("Noe gikk galt. Prøv igjen eller kontakt oss direkte.");
-                        }
-                      }}
-                    >
-                      {isSendingOrder ? "Sender bestilling..." : "Bestill med Vipps"}
-                    </button>
+      window.location.href = result.url;
+    } catch (error) {
+      setIsPaying(false);
+      setCheckoutError("Kunne ikke starte kortbetaling. Prøv igjen.");
+    }
+  }}
+>
+  {isPaying ? "Sender til betaling..." : "Betal med kort"}
+</button>
 
                     {checkoutError && (
                       <p className="checkoutError">{checkoutError}</p>
