@@ -592,7 +592,7 @@ export default function App() {
                     )}
 
                     <p className="checkoutNote">
-                      Vi sender Vipps-forespørsel så snart bestillingen er behandlet.
+                       Sikker betaling med kort via Stripe.
                     </p>
                   </div>
                 </div>
