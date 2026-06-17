@@ -17,6 +17,18 @@ export default async function handler(req, res) {
 
   try {
     const { total, customer, cart } = req.body;
+    const rawPhone = customer.phone?.replace(/\D/g, "");
+
+const vippsPhone =
+  rawPhone?.length === 8
+    ? `47${rawPhone}`
+    : rawPhone;
+
+if (!vippsPhone || vippsPhone.length < 10) {
+  return res.status(400).json({
+    error: "Telefonnummer må være gyldig norsk mobilnummer",
+  });
+}
 
     const varerTekst = cart
       .map((item) => {
@@ -152,7 +164,7 @@ export default async function handler(req, res) {
           type: "WALLET",
         },
         customer: {
-          phoneNumber: customer.phone?.replace(/\s/g, ""),
+          phoneNumber: vippsPhone,
         },
         reference: orderNumber,
         returnUrl: `https://www.jmsprint.no/api/confirm-vipps-payment?orderNumber=${orderNumber}`,
