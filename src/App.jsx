@@ -208,6 +208,8 @@ export default function App() {
 
   const data = await response.json();
 
+    console.log(data);
+
     if (data.url) {
       window.location.href = data.url;
     } else {
