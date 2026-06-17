@@ -34,6 +34,16 @@ export default async function handler(req, res) {
       throw new Error(tokenData.message || "Kunne ikke hente Vipps-token");
     }
 
+    const { data: order, error: orderFetchError } = await supabase
+      .from("orders")
+      .select("total_price")
+      .eq("order_number", orderNumber)
+      .single();
+
+    if (orderFetchError) throw orderFetchError;
+
+    const captureAmount = Math.round(Number(order.total_price) * 100);
+
     const captureResponse = await fetch(
       `https://api.vipps.no/epayment/v1/payments/${orderNumber}/capture`,
       {
@@ -52,7 +62,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           modificationAmount: {
             currency: "NOK",
-            value: 8800,
+            value: captureAmount,
           },
         }),
       }
