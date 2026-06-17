@@ -171,7 +171,9 @@ export default function App() {
   const [showToast, setShowToast] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
   const [isPaying, setIsPaying] = useState(false);
+  const [isVippsPaying, setIsVippsPaying] = useState(false);
   const [isSendingOrder, setIsSendingOrder] = useState(false);
+  const [isVippsPayment, setIsVippsPayment] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [lastOrderNumber, setLastOrderNumber] = useState("");
   const [vippsSuccess, setVippsSuccess] = useState(false);
@@ -185,6 +187,39 @@ export default function App() {
       setShowToast(false);
     }, 2200);
   };
+  
+  const handleVippsPayment = async () => {
+  if (!validateCustomer()) return;
+
+  setIsVippsPayment(true);
+
+  try {
+  const response = await fetch("/api/create-vipps-payment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cart,
+        customer,
+        totalPrice,
+      }),
+    });
+
+  const data = await response.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert("Kunne ikke starte Vipps-betaling.");
+    }
+   } catch (error) {
+    console.error(error);
+    alert("Feil ved Vipps-betaling.");
+   }
+
+   setIsVippsPayment(false);
+   };
 
   const removeFromCart = (indexToRemove) => {
     setCart(cart.filter((_, index) => index !== indexToRemove));
@@ -575,6 +610,15 @@ export default function App() {
   {isPaying ? "Sender til betaling..." : "Betal med kort"}
 </button>
 
+ <button
+  className="vippsButton"
+  onClick={handleVippsPayment}
+  disabled={isVippsPayment}
+>
+  <img src="/vipps-logo.jpg" alt="Vipps" className="vippsLogo" />
+  Betal med Vipps
+</button>
+
                     {checkoutError && (
                       <p className="checkoutError">{checkoutError}</p>
                     )}
@@ -594,7 +638,7 @@ export default function App() {
                     )}
 
                     <p className="checkoutNote">
-                       Sikker betaling med kort via Stripe.
+                       🔒 Sikker betaling med Vipps eller kort via Stripe.
                     </p>
                   </div>
                 </div>

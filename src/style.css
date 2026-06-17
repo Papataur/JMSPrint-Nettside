@@ -637,16 +637,39 @@ h1 span {
   white-space: nowrap;
 }
 
-.cartCheckout {
+ .cartCheckout {
   display: block;
-  margin-top: 16px;
+  margin-top: 20px;
+  padding: 13px 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+}
+
+.vippsButton {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
   padding: 13px 16px;
   border-radius: 14px;
   background: linear-gradient(135deg, #ff5b24, #ff7a45);
   color: white;
   text-align: center;
-  text-decoration: none;
   font-weight: 800;
+  border: none;
+  cursor: pointer;
+}
+
+.vippsLogo {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
 }
 
 @media (max-width: 700px) {
