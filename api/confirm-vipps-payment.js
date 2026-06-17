@@ -26,9 +26,9 @@ export default async function handler(req, res) {
       throw error;
     }
 
-    return res.redirect(
-      `https://www.jmsprint.no/?vipps=success&order=${orderNumber}`
-    );
+      return res.redirect(
+     `https://www.jmsprint.no/betaling-fullfort?order=${orderNumber}`
+   );
   } catch (error) {
     console.error(error);
 
