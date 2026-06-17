@@ -103,7 +103,7 @@ export default async function handler(req, res) {
     const paymentData = await paymentResponse.json();
 
     if (!paymentResponse.ok) {
-      throw new Error(paymentData.detail || paymentData.message || "Kunne ikke starte Vipps-betaling");
+      throw new Error(JSON.stringify(paymentData));
     }
 
     return res.status(200).json({
