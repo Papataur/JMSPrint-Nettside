@@ -666,10 +666,8 @@ h1 span {
 }
 
 .vippsLogo {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  vertical-align: middle;
+  width: 18px;
+  height: 18px;
 }
 
 @media (max-width: 700px) {
@@ -831,6 +829,11 @@ h1 span {
   font-size: 15px;
   cursor: pointer;
   box-shadow: 0 12px 32px rgba(255, 91, 36, 0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .vippsButton:hover {
