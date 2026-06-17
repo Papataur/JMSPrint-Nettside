@@ -94,7 +94,7 @@ export default async function handler(req, res) {
           phoneNumber: customer.phone?.replace(/\s/g, ""),
         },
         reference: orderNumber,
-        returnUrl: `https://www.jmsprint.no/?vipps=success&order=${orderNumber}`,
+        returnUrl: `https://www.jmsprint.no/api/confirm-vipps-payment?orderNumber=${orderNumber}`,
         userFlow: "WEB_REDIRECT",
         paymentDescription: `Bestilling ${orderNumber}`,
       }),
