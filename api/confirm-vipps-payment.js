@@ -1,45 +1,39 @@
-import { createClient } from "@supabase/supabase-js";
+const { createClient } = require("@supabase/supabase-js");
 
 const supabase = createClient(
   process.env.VITE_SUPABASE_URL,
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   try {
     const { orderNumber } = req.query;
 
     if (!orderNumber) {
-      return res.status(400).json({
-        error: "Mangler ordrenummer",
-      });
+      return res.status(400).json({ error: "Mangler ordrenummer" });
     }
 
-    const tokenResponse = await fetch(
-      "https://api.vipps.no/accesstoken/get",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          client_id: process.env.VIPPS_CLIENT_ID,
-          client_secret: process.env.VIPPS_CLIENT_SECRET,
-          "Ocp-Apim-Subscription-Key": process.env.VIPPS_SUBSCRIPTION_KEY,
-          "Merchant-Serial-Number": process.env.VIPPS_MSN,
-          "Vipps-System-Name": "JMSPrint",
-          "Vipps-System-Version": "1.0.0",
-          "Vipps-System-Plugin-Name": "JMSPrint checkout",
-          "Vipps-System-Plugin-Version": "1.0.0",
-        },
-      }
-    );
+    const tokenResponse = await fetch("https://api.vipps.no/accesstoken/get", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        client_id: process.env.VIPPS_CLIENT_ID,
+        client_secret: process.env.VIPPS_CLIENT_SECRET,
+        "Ocp-Apim-Subscription-Key": process.env.VIPPS_SUBSCRIPTION_KEY,
+        "Merchant-Serial-Number": process.env.VIPPS_MSN,
+        "Vipps-System-Name": "JMSPrint",
+        "Vipps-System-Version": "1.0.0",
+        "Vipps-System-Plugin-Name": "JMSPrint checkout",
+        "Vipps-System-Plugin-Version": "1.0.0",
+      },
+    });
 
     const tokenData = await tokenResponse.json();
 
     if (!tokenResponse.ok) {
-      throw new Error(tokenData.message || "Kunne ikke hente Vipps-token");
+      throw new Error(JSON.stringify(tokenData));
     }
 
-    // Hent ordrebeløpet fra databasen
     const { data: order, error: orderFetchError } = await supabase
       .from("orders")
       .select("total_price")
@@ -50,7 +44,6 @@ export default async function handler(req, res) {
 
     const captureAmount = Math.round(Number(order.total_price) * 100);
 
-    // Trekk riktig beløp i Vipps
     const captureResponse = await fetch(
       `https://api.vipps.no/epayment/v1/payments/${orderNumber}/capture`,
       {
@@ -81,7 +74,6 @@ export default async function handler(req, res) {
       throw new Error(JSON.stringify(captureData));
     }
 
-    // Oppdater status i Supabase
     const { error } = await supabase
       .from("orders")
       .update({ status: "Betalt" })
@@ -99,4 +91,4 @@ export default async function handler(req, res) {
       error: error.message,
     });
   }
-}
+};
