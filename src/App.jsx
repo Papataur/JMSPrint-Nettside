@@ -200,10 +200,10 @@ export default function App() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        cart,
-        customer,
-        totalPrice,
-      }),
+      cart,
+      customer,
+      total: totalPrice,
+     }),
     });
 
   const data = await response.json();
