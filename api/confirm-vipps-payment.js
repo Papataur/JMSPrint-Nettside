@@ -52,7 +52,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           modificationAmount: {
             currency: "NOK",
-            value: 0,
+            value: 8800,
           },
         }),
       }
