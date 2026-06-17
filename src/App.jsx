@@ -663,6 +663,37 @@ export default function App() {
         />
 
         <Route
+          path="/betaling-fullfort"
+          element={
+            <div
+              style={{
+                minHeight: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                color: "white",
+                textAlign: "center",
+                padding: "20px",
+              }}
+            >
+              <h1>🎉 Betaling gjennomført!</h1>
+
+              <p>Takk for bestillingen hos JMSPrint.</p>
+
+              <p>Ordrebekreftelse er sendt til e-postadressen din.</p>
+
+              <p>📦 Forventet leveringstid: 2–5 virkedager</p>
+
+              <a href="/" className="btn primary">
+                Tilbake til butikken
+              </a>
+            </div>
+          }
+        />
+
+
+        <Route
           path="/admin"
           element={
             <Suspense fallback={<div style={{ padding: "30px", color: "white" }}>Laster admin...</div>}>
