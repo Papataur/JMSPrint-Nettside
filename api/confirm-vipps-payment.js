@@ -10,27 +10,72 @@ export default async function handler(req, res) {
     const { orderNumber } = req.query;
 
     if (!orderNumber) {
-      return res.status(400).json({
-        error: "Mangler ordrenummer",
-      });
+      return res.status(400).json({ error: "Mangler ordrenummer" });
+    }
+
+    const tokenResponse = await fetch("https://api.vipps.no/accesstoken/get", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        client_id: process.env.VIPPS_CLIENT_ID,
+        client_secret: process.env.VIPPS_CLIENT_SECRET,
+        "Ocp-Apim-Subscription-Key": process.env.VIPPS_SUBSCRIPTION_KEY,
+        "Merchant-Serial-Number": process.env.VIPPS_MSN,
+        "Vipps-System-Name": "JMSPrint",
+        "Vipps-System-Version": "1.0.0",
+        "Vipps-System-Plugin-Name": "JMSPrint checkout",
+        "Vipps-System-Plugin-Version": "1.0.0",
+      },
+    });
+
+    const tokenData = await tokenResponse.json();
+
+    if (!tokenResponse.ok) {
+      throw new Error(tokenData.message || "Kunne ikke hente Vipps-token");
+    }
+
+    const captureResponse = await fetch(
+      `https://api.vipps.no/epayment/v1/payments/${orderNumber}/capture`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${tokenData.access_token}`,
+          "Ocp-Apim-Subscription-Key": process.env.VIPPS_SUBSCRIPTION_KEY,
+          "Merchant-Serial-Number": process.env.VIPPS_MSN,
+          "Idempotency-Key": `${orderNumber}-capture`,
+          "Vipps-System-Name": "JMSPrint",
+          "Vipps-System-Version": "1.0.0",
+          "Vipps-System-Plugin-Name": "JMSPrint checkout",
+          "Vipps-System-Plugin-Version": "1.0.0",
+        },
+        body: JSON.stringify({
+          modificationAmount: {
+            currency: "NOK",
+            value: 0,
+          },
+        }),
+      }
+    );
+
+    const captureData = await captureResponse.json();
+
+    if (!captureResponse.ok) {
+      throw new Error(JSON.stringify(captureData));
     }
 
     const { error } = await supabase
       .from("orders")
-      .update({
-        status: "Betalt",
-      })
+      .update({ status: "Betalt" })
       .eq("order_number", orderNumber);
 
-    if (error) {
-      throw error;
-    }
+    if (error) throw error;
 
-      return res.redirect(
-     `https://www.jmsprint.no/betaling-fullfort?order=${orderNumber}`
-   );
+    return res.redirect(
+      `https://www.jmsprint.no/betaling-fullfort?order=${orderNumber}`
+    );
   } catch (error) {
-    console.error(error);
+    console.error("Vipps capture error:", error);
 
     return res.status(500).json({
       error: error.message,
