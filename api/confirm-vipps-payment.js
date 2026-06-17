@@ -13,6 +13,19 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Mangler ordrenummer" });
     }
 
+<<<<<<< HEAD
+=======
+    const { data: order, error: orderFetchError } = await supabase
+      .from("orders")
+      .select("total_price")
+      .eq("order_number", orderNumber)
+      .single();
+
+    if (orderFetchError) throw orderFetchError;
+
+    const captureAmount = Math.round(Number(order.total_price) * 100);
+
+>>>>>>> 9fe8ad1 (Fix dynamic Vipps capture amount)
     const tokenResponse = await fetch("https://api.vipps.no/accesstoken/get", {
       method: "POST",
       headers: {
@@ -34,6 +47,7 @@ export default async function handler(req, res) {
       throw new Error(tokenData.message || "Kunne ikke hente Vipps-token");
     }
 
+<<<<<<< HEAD
     const { data: order, error: orderFetchError } = await supabase
       .from("orders")
       .select("total_price")
@@ -44,6 +58,8 @@ export default async function handler(req, res) {
 
     const captureAmount = Math.round(Number(order.total_price) * 100);
 
+=======
+>>>>>>> 9fe8ad1 (Fix dynamic Vipps capture amount)
     const captureResponse = await fetch(
       `https://api.vipps.no/epayment/v1/payments/${orderNumber}/capture`,
       {
